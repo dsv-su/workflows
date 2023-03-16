@@ -8,9 +8,12 @@
             </div>
         </div>
         <div class="row">
+
             <div class="col-md-12">
-                <a href="{{ route('workflow.create') }}" class="btn btn-default">{{__('workflows::workflows.create')}}</a>
+                <a role="button" type="button" href="{{ route('workflow.create') }}" class="btn btn-outline-primary">{{__('workflows::workflows.create')}}</a>
+                <a role="button" type="button" href="{{ route('dashboard') }}" class="btn btn-outline-primary">Dashboard</a>
             </div>
+
         </div>
         <div class="row">
             <div class="col-md-12">
