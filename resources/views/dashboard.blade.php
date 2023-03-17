@@ -13,20 +13,16 @@
                             </div>
                         @endif
                         You are Logged In
+                            <a href="/workflows" role="button" type="button" class="btn btn-outline-primary">Workflow scheme</a>
+                            <a href="{{ route('register') }}" role="button" type="button" class="btn btn-outline-primary">Create a new user</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <br>
-    <div class="card">
-        <div class="card-header">
-            42 Workflows
-        </div>
-        <div class="card-body">
-            <p class="card-text">42 Workflows is an free open source package to help you to automate your workflows. <a href="https://workflows.42coders.com/" target="_blank">Manual</a></p>
-            <a href="/workflows" role="button" type="button" class="btn btn-outline-primary">Go to test 42 Workflows</a>
-            <a href="{{ route('register') }}" role="button" type="button" class="btn btn-outline-primary">Create a new user</a>
-        </div>
-    </div>
+
+
+    <br>
+    <a href="{{ route('travel-request') }}">Duty Travel Request</a>
 @endsection
