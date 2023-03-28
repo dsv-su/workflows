@@ -40,6 +40,7 @@ return [
         'LoadModel' => [
             'classes' => [
                 \App\Models\User::class => 'User',
+                \App\Models\TravelRequest::class => 'TraveRequest',
             ],
         ],
     ],
@@ -101,6 +102,7 @@ return [
             ],
             'classes' => [
                 \App\Models\User::class => 'User',
+                \App\Models\TravelRequest::class => 'TraveRequest',
                 \the42coders\Workflows\Loggers\WorkflowLog::class => 'WorkflowLog',
             ],
         ],

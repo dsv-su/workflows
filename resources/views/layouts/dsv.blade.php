@@ -17,6 +17,11 @@
 
 </head>
 <body>
+<style>
+    html {
+        font-size: 12px;
+    }
+</style>
 @include('layouts.partials.header')
 
 

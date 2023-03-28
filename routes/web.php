@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 /*
@@ -13,9 +14,7 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function () {
     \the42coders\Workflows\Workflows::routes();
 });
@@ -28,4 +27,8 @@ Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 //Travelrequest
-Route::get('/travel', [\App\Http\Controllers\TravelRequestController::class, 'show'])->name('travel-request');
+Route::get('/travel', [\App\Http\Controllers\TravelRequestController::class, 'create'])->name('travel-request-create');
+Route::get('/travel/{travelRequest}', [\App\Http\Controllers\TravelRequestController::class, 'show'])->name('travel-request');
+Route::post('/travel', [\App\Http\Controllers\TravelRequestController::class, 'submit'])->name('travel-submit');
+Route::get('/travel/approved/{travelRequest}', [\App\Http\Controllers\TravelRequestController::class, 'approve'])->name('travel-approve');
+Route::get('/travel/denied/{travelRequest}', [\App\Http\Controllers\TravelRequestController::class, 'deny'])->name('travel-deny');

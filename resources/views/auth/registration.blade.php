@@ -37,7 +37,19 @@
                                         @endif
                                     </div>
                                 </div>
-
+                                <div class="form-group row">
+                                    <label for="role" class="col-md-4 col-form-label text-md-right">Role</label>
+                                    <div class="col-md-6">
+                                        <select id="role" class="form-control" name="role" required>
+                                            <option value="staff">Staff</option>
+                                            <option value="project-leader">Project-leader</option>
+                                            <option value="unit-head">Unit-head</option>
+                                        </select>
+                                        @if ($errors->has('role'))
+                                            <span class="text-danger">{{ $errors->first('role') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-4">
                                         <div class="checkbox">

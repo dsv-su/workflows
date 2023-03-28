@@ -16,6 +16,20 @@ class TravelRequest extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'created',
         'user',
+        'purpose',
+        'paper',
+        'contribution',
+        'other',
+        'departure',
+        'return',
+        'total',
+        'project',
+        'projectleader',
+        'unithead',
+        'status',
+        'approved',
+        'departmenthead'
     ];
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\TravelRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -66,23 +67,54 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'role' => 'required',
         ]);
 
         $data = $request->all();
         $check = $this->create($data);
+        switch($request->role) {
+            case('staff'):
+                $check->assignRole('staff');
+                break;
+            case('project-leader'):
+                $check->assignRole('project-leader');
+                break;
+            case('unit-head'):
+                $check->assignRole('unit-head');
+                break;
+        }
 
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+        return redirect("dashboard")->withSuccess('Great! You have Successfully created a new user');
     }
 
     /**
      * Write code on Method
      *
-     * @return response()
+     *
      */
     public function dashboard()
     {
         if(Auth::check()){
-            return view('dashboard');
+
+
+            if(Auth::user()->hasRole('staff')) {
+                $travel = TravelRequest::where('user', Auth::user()->email)->get();
+            }
+
+            if(Auth::user()->hasRole('project-leader')) {
+                $travel = TravelRequest::where('approved', 0)->get();
+                $plapproval = TravelRequest::where('projectleader', 0)->get();
+            } else {
+                $plapproval = [];
+            }
+            if(Auth::user()->hasRole('unit-head')) {
+                $travel = TravelRequest::where('approved', 1)->get();
+                $uhapproval = TravelRequest::where('unithead', 0)->get();
+            } else {
+                $uhapproval = [];
+            }
+
+            return view('dashboard', ['travelrequests' => $travel, 'plapproval' => $plapproval, 'uhapproval' => $uhapproval]);
         }
 
         return redirect("login")->withSuccess('Opps! You do not have access');
