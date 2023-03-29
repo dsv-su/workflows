@@ -5442,8 +5442,7 @@ p.kill-p, .kill-p p {
 }
 
 a.logo, a.logo:hover, a.logo:active {
-    font-family: "TheSansB2-Light", Verdana, sans-serif;
-    font-family: "TheSansB2-Light", Verdana, sans-serif;
+    font-family: "Roboto", Verdana, sans-serif;
     text-decoration: none;
     color: #fff
 }
