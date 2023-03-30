@@ -37,12 +37,14 @@
                     <div class="card-header">{{ __('Your requests') }}</div>
 
                     <div class="card-body">
-                        <table>
+                        <table class="table">
+                            <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Date</th>
                                 <th>Status</th>
                             </tr>
+                            </thead>
 
                             @foreach($travelrequests as $key => $travel)
                                 <tr>
@@ -77,5 +79,6 @@
         <div class="row justify-content-center">
             <a href="{{ route('travel-request-create') }}">Duty Travel Request</a>
         </div>
+        
     </div>
 @endsection
