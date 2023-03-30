@@ -75,10 +75,36 @@
     </div>
 
     <br>
+
     <div class="container">
-        <div class="row justify-content-center">
-            <a href="{{ route('travel-request-create') }}">Duty Travel Request</a>
+        <div class="text-center mb-5">
+            <h3>Requests</h3>
+            <p class="lead"></p>
         </div>
-        
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex flex-column flex-lg-row">
+                    <div class="row flex-fill">
+                        <div class="col-sm-5">
+                            <h4 class="h5">Duty Travel Request</h4>
+                            <span class="badge bg-secondary"></span> <span class="badge bg-success"></span>
+                        </div>
+
+                        <div class="col-sm-4 py-2">
+                            <span class="badge bg-secondary"></span>
+                            <span class="badge bg-secondary"></span>
+                            <span class="badge bg-secondary"></span>
+                            <span class="badge bg-secondary"></span>
+                        </div>
+
+                        <div class="col-sm-3 text-lg-end">
+                            <a href="{{ route('travel-request-create') }}" class="btn btn-primary stretched-link">Request</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 @endsection
