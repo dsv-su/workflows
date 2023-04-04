@@ -7,7 +7,7 @@
             margin: 5px 0px;
             box-sizing: border-box;
             border: 1px solid #ccc;
-            font-size: 14px !important;
+            font-size: 16px !important;
             font-weight: 300
         }
     </style>
@@ -17,10 +17,10 @@
             <div class="col-12">
                 <span class="su-theme-anchor"></span>
                 <h1 class="su-theme-header mb-4">
-                    {{ __("Duty Travel Request") }}
+                    <i class="fas fa-arrow-circle-up fa-icon mr-2"></i>{{ __("Company car") }}
                 </h1>
                 <p class="font-1rem px-1">
-                    {{ __("Fill out the form below and click the 'Send Request'' button when you're done to submit your travel request") }}
+                    {{ __("Fill out the form below and click the 'Send Request'' button when you're done to submit your car request") }}
                 </p>
             </div> <!-- col-12 -->
         </div> <!-- row no-gutters -->
@@ -32,19 +32,13 @@
             <div class="row">
                 <div class="col-lg-10">
                     <div class="rounded border shadow p-3 my-2">
-                        {{--}}
-                        <div class="col-xl-3 col-sm-6 mb-5">
-                            <div class="bg-white py-5 px-2">
-                                <h5 class="mb-0">{{ Auth::user()->name }}</h5>
-                            </div>
-                        </div><!-- End -->
-                        {{--}}
+
                         <div class="row justify-content-between text-left">
                             <!-- Purpose -->
                             <div class="form-group col-sm-12 flex-column d-flex">
-                                <label for="title" class="form-control-label px-3">{{ __("Purpose of the mission with the web address of the conference") }}
+                                <label for="title" class="form-control-label px-1">{{ __("Purpose of the mission with the web address of the conference") }}
                                     <span class="text-danger"> *</span></label>
-                                <textarea id="purpose" name="purpose" class="form-control" rows="4"
+                                <textarea id="purpose" name="purpose" class="form-control"
                                           placeholder="{{ __("Purpose") }}" required></textarea>
 
                                 <div class="invalid-feedback">
@@ -53,21 +47,22 @@
                                 <div><small class="text-danger">{{ $errors->first('purpose') }}</small></div>
                             </div>
                         </div>
-                        <br>
+
                         <div class="row justify-content-between text-left">
                             <!-- Paper -->
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-select-label px-3" for="paper">{{ __("Paper accepted") }}</label>
+                                <label class="form-select-label" for="paper">{{ __("Paper accepted") }}</label>
                                 <div class="form-group form-group">
-                                    <select class="form-select-input form-control" id="paper" name="paper">
+                                    <select class="form-select-input" id="paper" name="paper">
                                         <option value="1">Yes</option>
                                         <option value="0">No</option>
                                     </select>
+
                                 </div>
                             </div>
                             <!-- Contribution -->
                             <div class="form-group col-sm-6 flex-column d-flex">
-                                <label for="title_en" class="form-control-label px-3">{{ __("I have requested contribution from") }}<span
+                                <label for="title_en" class="form-control-label px-1">{{ __("I have requested contribution from") }}<span
                                         class="text-danger"> *</span></label>
                                 <input class="form-control" id="contribution" name="contribution" type="text"
                                        placeholder="{{ __("Contribution") }}"
@@ -77,15 +72,17 @@
                                 </div>
                                 <div><small class="text-danger">{{ $errors->first('contribution') }}</small></div>
                             </div>
+
                         </div>
-                        <br>
+
+
                         <!-- Other reason -->
                         <div class="form-group col-sm-12 flex-column d-flex">
                             <label for="description" class="form-control-label px-1">{{ __("Other reason. Justify") }}</label>
                             <textarea id="reason" name="reason" class="form-control"
                                       placeholder="{{__("Other reason")}}"></textarea>
                         </div>
-                        <br>
+
                         <div class="row justify-content-between text-left">
                             <!-- Departure -->
                             <div class="form-group col-sm-6 flex-column d-flex">
@@ -114,10 +111,6 @@
                                 <div><small class="text-danger">{{ $errors->first('return') }}</small></div>
                             </div>
                         </div>
-                        <br>
-                        <livewire:travel-total />
-
-                        {{--}}
                         <!-- Total -->
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-3 flex-column d-flex">
@@ -132,8 +125,6 @@
                                 <div><small class="text-danger">{{ $errors->first('total') }}</small></div>
                             </div>
                         </div>
-                        {{--}}
-                        <br>
                         <!-- Project -->
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex">
@@ -148,15 +139,34 @@
                                 <div><small class="text-danger">{{ $errors->first('project') }}</small></div>
                             </div>
                         </div>
+
+                        <!-- Status -->
+                        {{--}}
+                        <div class="row justify-content-evenly text-left">
+                            <div class="form-group col-sm-3 flex-column d-flex">
+                                <div class="row justify-content-between text-center">
+                                    <label for="projectleader" class="form-control-label px-1">{{ __("The Project leader") }}</label>
+                                    <span class="badge badge-primary font-100">Waiting for approval</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-3 flex-column d-flex">
+                                <div class="row justify-content-between text-center">
+                                    <label for="unithead" class="form-control-label px-1">{{ __("Head of the unit") }}</label>
+                                    <span class="badge badge-primary font-100">Waiting for approval</span>
+                                </div>
+                            </div>
+                        </div>
+                        {{--}}
                     </div> <!-- end -->
                 </div>
             </div>
             <div class="d-flex row no-gutters col-sm-10 justify-content-end">
                 <div class="col-md-2">
                     <div class="d-flex flex-row">
-                        <button type="submit" id="submit" class="btn btn-primary m-auto"><strong>{{ __("Send Request") }}</strong></button>
+                        <button type="submit" id="submit" class="btn btn-lg btn-primary m-auto"><strong>{{ __("Send Request") }}</strong></button>
                     </div>
                 </div>
+
             </div>
 
         </form>

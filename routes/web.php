@@ -32,3 +32,6 @@ Route::get('/travel/{travelRequest}', [\App\Http\Controllers\TravelRequestContro
 Route::post('/travel', [\App\Http\Controllers\TravelRequestController::class, 'submit'])->name('travel-submit');
 Route::get('/travel/approved/{travelRequest}', [\App\Http\Controllers\TravelRequestController::class, 'approve'])->name('travel-approve');
 Route::get('/travel/denied/{travelRequest}', [\App\Http\Controllers\TravelRequestController::class, 'deny'])->name('travel-deny');
+
+//External
+Route::get('/car', [\App\Http\Controllers\ExternalRequestController::class, 'create'])->name('car-request-create');

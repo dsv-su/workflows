@@ -16,6 +16,7 @@ mix.sass('resources/scss/dsv.scss','public/css')
         'node_modules/bootstrap/dist/css/bootstrap.min.css',
         'resources/css/su.css',
         'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
+        'node_modules/@fortawesome/fontawesome-free/css/all.css',
         'node_modules/daterangepicker/daterangepicker.css'
     ], 'public/css/all.css')
     .combine(['public/css/dsv.css', 'public/css/all.css'], 'public/css/dsvworkflow.css')

@@ -89,14 +89,12 @@
                             <h4 class="h5">Duty Travel Request</h4>
                             <span class="badge bg-secondary"></span> <span class="badge bg-success"></span>
                         </div>
-
                         <div class="col-sm-4 py-2">
                             <span class="badge bg-secondary"></span>
                             <span class="badge bg-secondary"></span>
                             <span class="badge bg-secondary"></span>
                             <span class="badge bg-secondary"></span>
                         </div>
-
                         <div class="col-sm-3 text-lg-end">
                             <a href="{{ route('travel-request-create') }}" class="btn btn-primary stretched-link">Request</a>
                         </div>
@@ -104,6 +102,30 @@
                 </div>
             </div>
         </div>
+        <!-- Car -->
+        {{--}}
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex flex-column flex-lg-row">
+                    <div class="row flex-fill">
+                        <div class="col-sm-5">
+                            <h4 class="h5">Company car</h4>
+                            <span class="badge bg-secondary"></span> <span class="badge bg-success"></span>
+                        </div>
+                        <div class="col-sm-4 py-2">
+                            <span class="badge bg-secondary"></span>
+                            <span class="badge bg-secondary"></span>
+                            <span class="badge bg-secondary"></span>
+                            <span class="badge bg-secondary"></span>
+                        </div>
+                        <div class="col-sm-3 text-lg-end">
+                            <a href="{{ route('car-request-create') }}" class="btn btn-primary stretched-link">Request</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{--}}
     </div>
 
 

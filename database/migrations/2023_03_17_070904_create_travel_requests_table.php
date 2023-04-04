@@ -17,6 +17,7 @@ class CreateTravelRequestsTable extends Migration
             $table->id();
             $table->integer('created');
             $table->string('user');
+            $table->string('name');
             $table->string('purpose');
             $table->boolean('paper')->default(false);
             $table->string('contribution')->nullable();

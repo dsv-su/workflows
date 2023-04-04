@@ -12,19 +12,14 @@
     <link rel="shortcut icon" href="{{ asset('./images/favicon.ico') }}">
     <link rel="stylesheet" href="{{asset('/css/dsvworkflow.css')}}">
     <script src="{{asset('./js/dsvworkflow.js')}}"></script>
+    <!-- Laravel Livewire -->
+    <livewire:styles />
 
     <title>DSV Workflow Management</title>
-
 </head>
 <body>
-<style>
-    html {
-        font-size: 12px;
-    }
-</style>
+<livewire:scripts />
 @include('layouts.partials.header')
-
-
 <!-- -->
 <main id="main-content" class="pl-pr-sm-down-0">
     <div class="container-fluid pl-pr-sm-down-0 my-5 pb-5">
