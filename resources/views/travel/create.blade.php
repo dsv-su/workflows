@@ -54,6 +54,27 @@
                             </div>
                         </div>
                         <br>
+                        <!-- Project -->
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex" id="project-search-form">
+                                <label for="project" class="form-control-label px-1">{{ __("Project") }}<span
+                                        class="text-danger"> *</span></label>
+
+                                <div id="project-search-form" class="flex-column d-flex">
+                                    <input class="form-control mx-1 w-100" type="search"
+                                           id="project-search" name="project" autocomplete="off"
+                                           aria-haspopup="true"
+                                           placeholder="{{ __("Start typing to add a project number") }}"
+                                           aria-labelledby="project-search">
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{__("Project with number is required")}}
+                                </div>
+                                <div><small class="text-danger">{{ $errors->first('project') }}</small></div>
+                            </div>
+                        </div>
+                        <br>
                         <div class="row justify-content-between text-left">
                             <!-- Paper -->
                             <div class="form-group col-sm-6 flex-column d-flex">
@@ -117,35 +138,7 @@
                         <br>
                         <livewire:travel-total />
                         <br>
-                        <!-- Project -->
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex" id="project-search-form">
-                                <label for="project" class="form-control-label px-1">{{ __("Project") }}<span
-                                        class="text-danger"> *</span></label>
 
-                                {{--}}
-                                <input class="form-control" id="project" name="project" type="text"
-                                       placeholder="{{ __("Project with number") }}"
-                                       value="{{ old('project') ? old('project'): $project ?? '' }}" required>
-                                {{--}}
-
-
-                                <div id="project-search-form" class="flex-column d-flex">
-                                    <input class="form-control mx-1 w-100" type="search"
-                                           id="project-search" name="project" autocomplete="off"
-                                           aria-haspopup="true"
-                                           placeholder="{{ __("Start typing to add a project number") }}"
-                                           aria-labelledby="project-search">
-                                </div>
-
-                                <div class="invalid-feedback">
-                                    {{__("Project with number is required")}}
-                                </div>
-                                <div><small class="text-danger">{{ $errors->first('project') }}</small></div>
-                            </div>
-
-
-                        </div>
                     </div> <!-- end -->
                 </div>
             </div>
@@ -183,6 +176,18 @@
             weekStart: 1,
             todayHighlight: true
         }).datepicker("setDate", new Date());
+
+        $('.datepicker').datepicker()
+            .on('changeDate', function(e) {
+                var a = $("#departure").datepicker('getDate').getTime(),
+                    b = $("#return").datepicker('getDate').getTime(),
+                    c = 24*60*60*1000,
+                    diffDays = Math.round(Math.abs((a - b)/(c)));
+                Livewire.emit('getDays', diffDays);
+                console.log(diffDays); //show difference
+
+            });
+
 
         // Set the Options for "Bloodhound" suggestion engine
         var engine2 = new Bloodhound({

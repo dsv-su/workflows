@@ -12,6 +12,21 @@ class TravelTotal extends Component
     public $daily;
     public $conference;
     public $other;
+    public $days;
+
+    protected $listeners = [
+        'getDays'
+    ];
+
+    public function mount()
+    {
+        $this->days = 0;
+    }
+
+    public function getDays($value)
+    {
+        $this->days = $value;
+    }
 
     public function updatedFlight()
     {
@@ -45,6 +60,6 @@ class TravelTotal extends Component
 
     private function summarize()
     {
-        $this->total = (int)$this->flight + (int)$this->hotel + (int)$this->daily + (int)$this->conference + (int)$this->other;
+        $this->total = (int)$this->flight + (int)$this->hotel + ((int)$this->daily * $this->days) + (int)$this->conference + (int)$this->other;
     }
 }

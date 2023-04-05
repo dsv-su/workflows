@@ -16,7 +16,6 @@
                            placeholder="{{ __("SEK") }}"
                            value="{{ old('flight') ? old('flight'): $flight ?? '' }}">
                 </td>
-                {{$flight}}
             </tr>
             <tr>
                 <td>Hotel</td>
@@ -27,7 +26,10 @@
                 </td>
             </tr>
             <tr>
-                <td>Daily subsistence allowances</td>
+                <td @if($days)
+                    style="background-color: #F5F7FA;"
+                    @endif
+                >Daily subsistence allowances @if($days) x {{$days}} days @endif</td>
                 <td>
                     <input wire:model="daily" class="form-control" type="text"
                            placeholder="{{ __("SEK") }}"
