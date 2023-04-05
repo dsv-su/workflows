@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserSeeder::class);
         $this->call(CreateRolesSeeder::class);
-
+        $this->call(ProjectImportSeeder::class);
         Model::reguard(); // Enable mass assignment
     }
 }

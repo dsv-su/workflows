@@ -1,0 +1,18 @@
+#header-main-search-form .search_autocomplete, #tag-search-form .search_autocomplete, #course-search-form .search_autocomplete, #project-search-form .search_autocomplete, #presenter-search-form .search_autocomplete {
+    -webkit-box-shadow: 0 0 6px 0 rgba(76, 76, 76, 0.2);
+    box-shadow: 0 0 6px 0 rgba(76, 76, 76, 0.2);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #dadada;
+    width: 100%;
+    z-index: 99999;
+    color: #002f5f
+}
+
+#tag-search-form .search_autocomplete, #course-search-form .search_autocomplete, #project-search-form .search_autocomplete, #presenter-search-form .search_autocomplete {
+    padding: 4px;
+    margin: 4px;
+}

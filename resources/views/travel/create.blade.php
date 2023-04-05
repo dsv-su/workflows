@@ -116,37 +116,35 @@
                         </div>
                         <br>
                         <livewire:travel-total />
-
-                        {{--}}
-                        <!-- Total -->
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-3 flex-column d-flex">
-                                <label for="project" class="form-control-label px-1">{{ __("Total") }}<span
-                                        class="text-danger"> *</span></label>
-                                <input class="form-control" id="total" name="total" type="text"
-                                       placeholder="{{ __("Total in SEK") }}"
-                                       value="{{ old('total') ? old('total'): $total ?? '' }}" required>
-                                <div class="invalid-feedback">
-                                    {{__("Total sum is required")}}
-                                </div>
-                                <div><small class="text-danger">{{ $errors->first('total') }}</small></div>
-                            </div>
-                        </div>
-                        {{--}}
                         <br>
                         <!-- Project -->
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex">
+                            <div class="form-group col-sm-6 flex-column d-flex" id="project-search-form">
                                 <label for="project" class="form-control-label px-1">{{ __("Project") }}<span
                                         class="text-danger"> *</span></label>
+
+                                {{--}}
                                 <input class="form-control" id="project" name="project" type="text"
                                        placeholder="{{ __("Project with number") }}"
                                        value="{{ old('project') ? old('project'): $project ?? '' }}" required>
+                                {{--}}
+
+
+                                <div id="project-search-form" class="flex-column d-flex">
+                                    <input class="form-control mx-1 w-100" type="search"
+                                           id="project-search" name="query" autocomplete="off"
+                                           aria-haspopup="true"
+                                           placeholder="{{ __("Start typing to add a project number") }}"
+                                           aria-labelledby="project-search">
+                                </div>
+
                                 <div class="invalid-feedback">
                                     {{__("Project with number is required")}}
                                 </div>
                                 <div><small class="text-danger">{{ $errors->first('project') }}</small></div>
                             </div>
+
+
                         </div>
                     </div> <!-- end -->
                 </div>
@@ -185,5 +183,57 @@
             weekStart: 1,
             todayHighlight: true
         }).datepicker("setDate", new Date());
+
+        // Set the Options for "Bloodhound" suggestion engine
+        var engine2 = new Bloodhound({
+            remote: {
+                url: '/findproject?query=%QUERY%',
+                wildcard: '%QUERY%'
+            },
+            datumTokenizer: Bloodhound.tokenizers.whitespace('query'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace
+        });
+
+        $("#project-search").typeahead({
+            classNames: {
+                menu: 'search_autocomplete'
+            },
+            hint: false,
+            autoselect: false,
+            highlight: true,
+            minLength: 2
+        }, {
+            source: engine2.ttAdapter(),
+            limit: 20,
+            // This will be appended to "tt-dataset-" to form the class name of the suggestion menu.
+            name: 'autocomplete-items',
+            display: function (item) {
+                return item.project;
+            },
+            templates: {
+                empty: [
+                    ''
+                ],
+                header: [
+                    ''
+                ],
+                suggestion: function (data) {
+                    if ($('#addedProjects').find('input[value="' + data.id + '"]').length) {
+                        return '<span></span>';
+                    } else {
+                        var name = data.project;
+                        return '<a class="badge text-bg-light d-inline-block m-1 cursor-pointer" data-toggle="tooltip" data-title="' + name + '" data-id="' + data.id + '">' + '<span class="badge text-bg-primary">' + data.project + '</span>' + ' ' + data.description + data.projectleader + '</a>';
+                    }
+                }
+            }
+        }).on('keyup', function (e) {
+            //$(".tt-suggestion:first-child").addClass('tt-cursor');
+            let selected = $("#project-search").attr('aria-activedescendant');
+            if (e.which === 13) {
+                if (selected) {
+                     //window.location.href = $("#" + selected).find('a').prop('href');
+                }
+            }
+        });
     </script>
 @endsection

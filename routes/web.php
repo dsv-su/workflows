@@ -33,5 +33,10 @@ Route::post('/travel', [\App\Http\Controllers\TravelRequestController::class, 's
 Route::get('/travel/approved/{travelRequest}', [\App\Http\Controllers\TravelRequestController::class, 'approve'])->name('travel-approve');
 Route::get('/travel/denied/{travelRequest}', [\App\Http\Controllers\TravelRequestController::class, 'deny'])->name('travel-deny');
 
+//Search
+Route::get('/findproject', [\App\Http\Controllers\ProjectController::class, 'findProject']);
+
+//Import
+Route::get('/import', [\App\Http\Controllers\ProjectController::class, 'import'])->name('import-projects');
 //External
 Route::get('/car', [\App\Http\Controllers\ExternalRequestController::class, 'create'])->name('car-request-create');

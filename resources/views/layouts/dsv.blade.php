@@ -14,7 +14,11 @@
     <script src="{{asset('./js/dsvworkflow.js')}}"></script>
     <!-- Laravel Livewire -->
     <livewire:styles />
-
+    <style>
+        html {
+            font-size: 14px;
+        }
+    </style>
     <title>DSV Workflow Management</title>
 </head>
 <body>

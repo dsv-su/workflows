@@ -12,7 +12,7 @@
             <tr>
                 <td>Flight</td>
                 <td>
-                    <input wire:model.lazy="flight" class="form-control" type="text"
+                    <input wire:model="flight" class="form-control" type="text"
                            placeholder="{{ __("SEK") }}"
                            value="{{ old('flight') ? old('flight'): $flight ?? '' }}">
                 </td>
@@ -21,7 +21,7 @@
             <tr>
                 <td>Hotel</td>
                 <td>
-                    <input wire:model.lazy="hotel" class="form-control" type="text"
+                    <input wire:model="hotel" class="form-control" type="text"
                            placeholder="{{ __("SEK") }}"
                            value="{{ old('hotel') ? old('flight'): $hotel ?? '' }}">
                 </td>
@@ -29,7 +29,7 @@
             <tr>
                 <td>Daily subsistence allowances</td>
                 <td>
-                    <input wire:model.lazy="daily" class="form-control" type="text"
+                    <input wire:model="daily" class="form-control" type="text"
                            placeholder="{{ __("SEK") }}"
                            value="{{ old('daily') ? old('flight'): $daily ?? '' }}">
                 </td>
@@ -37,7 +37,7 @@
             <tr>
                 <td>Conference fee</td>
                 <td>
-                    <input wire:model.lazy="conference" class="form-control" type="text"
+                    <input wire:model="conference" class="form-control" type="text"
                            placeholder="{{ __("SEK") }}"
                            value="{{ old('conference') ? old('flight'): $conference ?? '' }}">
                 </td>
@@ -45,7 +45,7 @@
             <tr>
                 <td>Other , such as taxi, bus, train</td>
                 <td>
-                    <input wire:model.lazy="other" class="form-control" type="text"
+                    <input wire:model="other" class="form-control" type="text"
                            placeholder="{{ __("SEK") }}"
                            value="{{ old('other') ? old('flight'): $other ?? '' }}">
                 </td>

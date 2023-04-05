@@ -15,31 +15,36 @@ class TravelTotal extends Component
 
     public function updatedFlight()
     {
-        $this->total = (int)$this->flight + (int)$this->hotel + (int)$this->daily + (int)$this->conference + (int)$this->other;;
+        $this->summarize();
     }
 
     public function updatedHotel()
     {
-        $this->total = (int)$this->flight + (int)$this->hotel + (int)$this->daily + (int)$this->conference + (int)$this->other;;
+        $this->summarize();
     }
 
     public function updatedDaily()
     {
-        $this->total = (int)$this->flight + (int)$this->hotel + (int)$this->daily + (int)$this->conference + (int)$this->other;;
+        $this->summarize();
     }
 
     public function updatedConference()
     {
-        $this->total = (int)$this->flight + (int)$this->hotel + (int)$this->daily + (int)$this->conference + (int)$this->other;
+        $this->summarize();
     }
 
     public function updatedOther()
     {
-        $this->total = (int)$this->flight + (int)$this->hotel + (int)$this->daily + (int)$this->conference + (int)$this->other;
+        $this->summarize();
     }
 
     public function render()
     {
         return view('livewire.travel-total');
+    }
+
+    private function summarize()
+    {
+        $this->total = (int)$this->flight + (int)$this->hotel + (int)$this->daily + (int)$this->conference + (int)$this->other;
     }
 }
