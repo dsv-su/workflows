@@ -132,7 +132,7 @@
 
                                 <div id="project-search-form" class="flex-column d-flex">
                                     <input class="form-control mx-1 w-100" type="search"
-                                           id="project-search" name="query" autocomplete="off"
+                                           id="project-search" name="project" autocomplete="off"
                                            aria-haspopup="true"
                                            placeholder="{{ __("Start typing to add a project number") }}"
                                            aria-labelledby="project-search">
