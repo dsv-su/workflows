@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Country;
+use App\Models\TravelRequest;
 use Livewire\Component;
 
 class TravelTotal extends Component
@@ -13,10 +15,12 @@ class TravelTotal extends Component
     public $conference;
     public $other;
     public $days;
+    public $countryname;
 
     protected $listeners = [
-        'getDays'
+        'getDays', 'countryAllowance'
     ];
+
 
     public function mount()
     {
@@ -26,6 +30,15 @@ class TravelTotal extends Component
     public function getDays($value)
     {
         $this->days = $value;
+        $this->summarize();
+    }
+
+    public function countryAllowance($id)
+    {
+        $country = Country::find($id);
+        $this->daily = $country->allowance;
+        $this->countryname = $country->country;
+        $this->summarize();
     }
 
     public function updatedFlight()

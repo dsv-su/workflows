@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
+use App\Models\Dsvrequest;
 use App\Models\TravelRequest;
 use App\Models\User;
 use Carbon\Carbon;
@@ -18,32 +20,59 @@ class TravelRequestController extends Controller
      */
     public function show(TravelRequest $travelRequest)
     {
-        return view('travel.request', ['travel' => $travelRequest]);
+        $dsvrequest = Dsvrequest::where('requestid', $travelRequest->id)->first();
+        $projectleader = User::find($dsvrequest->projectleader)->name;
+        $unithead = User::find($dsvrequest->unithead)->name;
+
+        return view('travel.request', ['request' => $travelRequest, 'dsvrequest' => $dsvrequest, 'projectleader' => $projectleader, 'unithead' => $unithead]);
     }
 
     public function create()
     {
-        return view('travel.create');
+        $countries = Country::all();
+        $projectleaders = User::role('project-leader')->get();
+        $unitheads = User::role('unit-head')->get();
+
+        return view('travel.create', ['countries' => $countries, 'projectleaders' => $projectleaders,
+            'unitheads' => $unitheads]);
     }
 
     public function submit(Request $request)
     {
         if ($request->isMethod('post')) {
-            //dd($request->all());
-            TravelRequest::create([
+            //Create a new Travelreqeust
+            $travelrequest = TravelRequest::create([
                 'created' => 22, //now()->format('Y-m-d')
                 'user' => User::find(auth()->user()->id)->email,
+                'name' => User::find(auth()->user()->id)->name,
                 'purpose' => $request->purpose,
+                'project' => $request->project,
+                'country' => $request->countryname,
                 'paper' =>  $request->paper ?? false,
                 'contribution' => $request->contribution,
-                'other' => $request->other,
+                'other' => $request->reason,
                 'departure' => Carbon::createFromFormat('d/m/Y', $request->departure)->timestamp,
                 'return' => Carbon::createFromFormat('d/m/Y', $request->return)->timestamp,
-                'total' => $request->total, //$request->total,
-                'project' => $request->project,
-                'status' => 'requested',
-                'approved' => 0
+                'days' => $request->days,
+                'flight' => $request->flight,
+                'hotel' => $request->hotel,
+                'daily' => $request->daily,
+                'conference' => $request->conference,
+                'other_costs' => $request->other_costs,
+                'total' => $request->total
             ]);
+            //Start a new request
+            DsvRequest::create([
+                'userid' => User::find(auth()->user()->id)->id,
+                'requestid' => $travelrequest->id,
+                'type' => 'Travelrequest',
+                'projectleader' => (int)$request->project_leader,
+                'unithead' => (int)$request->unit_head,
+                'pl_status' => 1,
+                'uh_status' => 1,
+                'status' => 'requested'
+            ]);
+
             return redirect()->route('dashboard');
         }
     }
@@ -51,14 +80,16 @@ class TravelRequestController extends Controller
     public function approve(TravelRequest $travelRequest)
     {
         if(Auth::user()->hasRole('project-leader')) {
-            $travelRequest->approved = 1;
-            $travelRequest->status = 'Awaiting';
-            $travelRequest->save();
+            $dsv = Dsvrequest::where('requestid', $travelRequest->id)->first();
+            $dsv->pl_status = 2;
+            $dsv->status = 'awaiting';
+            $dsv->save();
         }
         elseif(Auth::user()->hasRole('unit-head')) {
-            $travelRequest->approved = 2;
-            $travelRequest->status = 'Approved';
-            $travelRequest->save();
+            $dsv = Dsvrequest::where('requestid', $travelRequest->id)->first();
+            $dsv->uh_status = 2;
+            $dsv->status = 'approved';
+            $dsv->save();
         }
         return redirect()->route('dashboard');
     }
@@ -66,14 +97,16 @@ class TravelRequestController extends Controller
     public function deny(TravelRequest $travelRequest)
     {
         if(Auth::user()->hasRole('project-leader')) {
-            $travelRequest->approved = 3;
-            $travelRequest->status = 'Denied';
-            $travelRequest->save();
+            $dsv = Dsvrequest::where('requestid', $travelRequest->id)->first();
+            $dsv->pl_status = 3;
+            $dsv->status = 'denied';
+            $dsv->save();
         }
         elseif(Auth::user()->hasRole('unit-head')) {
-            $travelRequest->approved = 3;
-            $travelRequest->status = 'Denied';
-            $travelRequest->save();
+            $dsv = Dsvrequest::where('requestid', $travelRequest->id)->first();
+            $dsv->uh_status = 2;
+            $dsv->status = 'denied';
+            $dsv->save();
         }
         return redirect()->route('dashboard');
     }

@@ -16,9 +16,9 @@
         <div class="row no-gutters w-100">
             <div class="col-12">
                 <span class="su-theme-anchor"></span>
-                <h1 class="su-theme-header mb-4">
+                <h2 class="su-theme-header mb-4">
                     {{ __("Duty Travel Request") }}
-                </h1>
+                </h2>
                 <p class="font-1rem px-1">
                     {{ __("Fill out the form below and click the 'Send Request'' button when you're done to submit your travel request") }}
                 </p>
@@ -33,11 +33,11 @@
                 <div class="col-lg-10">
                     <div class="rounded border shadow p-3 my-2">
                         {{--}}
-                        <div class="col-xl-3 col-sm-6 mb-5">
-                            <div class="bg-white py-5 px-2">
-                                <h5 class="mb-0">{{ Auth::user()->name }}</h5>
+                        <div class="form-control mx-1 w-100">
+                            <div class="bg-white py-2 px-2">
+                                <p class="mb-0">{{ Auth::user()->name }}</p>
                             </div>
-                        </div><!-- End -->
+                        </div>
                         {{--}}
                         <div class="row justify-content-between text-left">
                             <!-- Purpose -->
@@ -73,8 +73,52 @@
                                 </div>
                                 <div><small class="text-danger">{{ $errors->first('project') }}</small></div>
                             </div>
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label for="country" class="form-control-label px-1">{{ __("Country") }}<span
+                                        class="text-danger"> *</span></label>
+                                <!-- select country -->
+                                <select id="country" name="country" class="form-control mx-1 form-select"
+                                        data-placeholder="Choose one thing"
+                                        data-live-search="true"
+                                        style="width: 400px">
+                                    @foreach($countries as $country)
+                                        <option value="{{$country->id}}">{{$country->country}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <br>
+                        <!-- Project heads -->
+                        <div class="row justify-content-between text-left">
+                            <!-- Project leader -->
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-select-label px-3" for="paper">{{ __("Project leader") }}<span
+                                        class="text-danger"> *</span></label>
+                                <div class="form-group form-group">
+                                    <select class="form-select-input form-control form-select" id="project_leader" name="project_leader">
+                                        @foreach($projectleaders as $projectleader)
+                                        <option value="{{$projectleader->id}}">{{$projectleader->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Unit head -->
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label for="title_en" class="form-control-label px-3">{{ __("Unit head") }}<span
+                                        class="text-danger"> *</span></label>
+                                <div class="form-group form-group">
+                                    <select class="form-select-input form-control form-select" id="unit_head" name="unit_head">
+                                        @foreach($unitheads as $unithead)
+                                            <option value="{{$unithead->id}}">{{$unithead->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <br>
+                        <!-- -->
                         <div class="row justify-content-between text-left">
                             <!-- Paper -->
                             <div class="form-group col-sm-6 flex-column d-flex">
@@ -145,7 +189,7 @@
             <div class="d-flex row no-gutters col-sm-10 justify-content-end">
                 <div class="col-md-2">
                     <div class="d-flex flex-row">
-                        <button type="submit" id="submit" class="btn btn-primary m-auto"><strong>{{ __("Send Request") }}</strong></button>
+                        <button type="submit" id="submit" class="btn btn-outline-primary m-auto"><strong>{{ __("Send Request") }}</strong></button>
                     </div>
                 </div>
             </div>
@@ -153,6 +197,11 @@
         </form>
     </div>
     <script>
+        // Large using Bootstrap 5 classes
+        $("#country").select2({
+            theme: "bootstrap-5",
+            dropdownParent: $("#country").parent(), // Required for dropdown styling
+        });
 
         $("#paper").on('change', function() {
             if ($(this).is(':checked')) {
@@ -161,7 +210,6 @@
                 $(this).attr('value', 'false');
             }
         });
-
 
         $(document).ready(function () {
             $('#paper').attr('value', 'false');
@@ -184,10 +232,14 @@
                     c = 24*60*60*1000,
                     diffDays = Math.round(Math.abs((a - b)/(c)));
                 Livewire.emit('getDays', diffDays);
-                console.log(diffDays); //show difference
+
 
             });
 
+        $('#country').on("select2:select", function () {
+            var countryAllowance = $('#country').val();
+            Livewire.emit('countryAllowance', countryAllowance);
+        });
 
         // Set the Options for "Bloodhound" suggestion engine
         var engine2 = new Bloodhound({

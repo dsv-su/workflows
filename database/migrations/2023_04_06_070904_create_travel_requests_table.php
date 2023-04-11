@@ -19,18 +19,20 @@ class CreateTravelRequestsTable extends Migration
             $table->string('user');
             $table->string('name');
             $table->string('purpose');
+            $table->string('project');
+            $table->string('country');
             $table->boolean('paper')->default(false);
             $table->string('contribution')->nullable();
             $table->string('other')->nullable();
             $table->integer('departure');
             $table->integer('return');
+            $table->integer('days')->nullable();
+            $table->integer('flight')->nullable();
+            $table->integer('hotel')->nullable();
+            $table->integer('daily')->nullable();
+            $table->integer('conference')->nullable();
+            $table->integer('other_costs')->nullable();
             $table->integer('total');
-            $table->string('project');
-            $table->integer('projectleader')->default(0);
-            $table->integer('unithead')->default(0);
-            $table->string('status');
-            $table->integer('approved');
-            $table->integer('departmenthead')->default(0);
             $table->timestamps();
         });
     }

@@ -19,5 +19,7 @@ class CreateRolesSeeder extends Seeder
         User::find(1)->assignRole($role);
         $role = Role::create(['name' => 'project-leader']);
         User::find(2)->assignRole($role);
+        $role = Role::create(['name' => 'unit-head']);
+        User::find(3)->assignRole($role);
     }
 }

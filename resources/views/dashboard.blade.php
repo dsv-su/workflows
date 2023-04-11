@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -13,7 +13,6 @@
                             </div>
                         @endif
                         {{Auth::user()->name}}
-                            <br><br>
 
                             @hasanyrole('project-leader|unit-head')
                                 <a href="/workflows" role="button" type="button" class="btn btn-outline-primary">Workflow scheme</a>
@@ -32,39 +31,77 @@
     <br>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">{{ __('Your requests') }}</div>
-
                     <div class="card-body">
                         <table class="table">
                             <thead>
                             <tr>
+                                <th>Type</th>
                                 <th>Name</th>
                                 <th>Date</th>
                                 <th>Status</th>
                             </tr>
                             </thead>
-
-                            @foreach($travelrequests as $key => $travel)
+                            @foreach($requests as $key => $request)
                                 <tr>
-                                    <td><a href="{{route('travel-request', $travel->id)}}" class="link-primary">{{$key +1 }} {{$travel->purpose}}</a></td>
-                                    <td>{{$travel->created_at}}</td>
-
+                                    <td>{{$key +1 }} {{$request->type}}</td>
+                                    <td> <a href="{{route('travel-request', $request->id)}}" class="link-primary"> {{ \App\Models\TravelRequest::Find($request->requestid)->purpose }}</a></td>
+                                    <td>{{$request->created_at}}</td>
                                     <td>
-                                        @if($travel->status == 'requested')
-                                            <span class="badge bg-primary">Awaiting approval</span>
-                                        @elseif($travel->status == 'Awaiting')
+                                        @if($request->status == 'requested')
+                                            <span class="badge bg-primary">Awaiting review</span>
+                                        @elseif($request->status == 'awaiting')
                                             <span class="badge bg-warning">Awaiting approval</span>
-                                        @elseif($travel->status == 'Approved')
+                                        @elseif($request->status == 'approved')
                                             <span class="badge bg-success">Approved</span>
-                                        @elseif($travel->status == 'Denied')
+                                        @elseif($request->status == 'denied')
                                             <span class="badge bg-danger">Denied</span>
                                         @endif
-
                                     </td>
                                 </tr>
-
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        @hasanyrole('project-leader|unit-head')
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">{{ __('Awaiting your approval') }}</div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            @foreach($awaiting_requests as $key => $request)
+                                <tr>
+                                    @if((auth()->user()->id == $request->projectleader && $request->pl_status == 1) or (auth()->user()->id == $request->unithead && $request->uh_status == 1))
+                                    <td>{{$key +1 }}  {{$request->type}}</td>
+                                    <td> <a href="{{route('travel-request', $request->id)}}" class="link-primary">{{ \App\Models\TravelRequest::Find($request->requestid)->purpose }}</a></td>
+                                    <td>{{$request->created_at}}</td>
+                                    <td>
+                                        @if($request->pl_status == 1 && $request->uh_status == 1)
+                                            <span class="badge bg-warning text-dark">Waiting for review</span>
+                                        @elseif($request->pl_status == 2 && $request->uh_status == 1)
+                                            <span class="badge bg-secondary">Waiting for review from unit head</span>
+                                        @elseif($request->pl_status == 2 && $request->uh_status == 2)
+                                            <span class="badge bg-success">Approved</span>
+                                        @elseif($request->pl_status == 3 or $request->uh_status == 3)
+                                            <span class="badge bg-danger">Denied</span>
+                                        @endif
+                                    </td>
+                                    @endif
+                                </tr>
                             @endforeach
                         </table>
 
@@ -72,61 +109,32 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <br>
-
-    <div class="container">
-        <div class="text-center mb-5">
-            <h3>Requests</h3>
-            <p class="lead"></p>
-        </div>
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="d-flex flex-column flex-lg-row">
-                    <div class="row flex-fill">
-                        <div class="col-sm-5">
-                            <h4 class="h5">Duty Travel Request</h4>
-                            <span class="badge bg-secondary"></span> <span class="badge bg-success"></span>
-                        </div>
-                        <div class="col-sm-4 py-2">
-                            <span class="badge bg-secondary"></span>
-                            <span class="badge bg-secondary"></span>
-                            <span class="badge bg-secondary"></span>
-                            <span class="badge bg-secondary"></span>
-                        </div>
-                        <div class="col-sm-3 text-lg-end">
-                            <a href="{{ route('travel-request-create') }}" class="btn btn-primary stretched-link">Request</a>
+        @endhasanyrole
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column flex-lg-row">
+                            <div class="row flex-fill">
+                                <div class="col-sm-5">
+                                    <h4 class="h5">Duty Travel Request</h4>
+                                    <span class="badge bg-secondary"></span> <span class="badge bg-success"></span>
+                                </div>
+                                <div class="col-sm-4 py-2">
+                                    <span class="badge bg-secondary"></span>
+                                    <span class="badge bg-secondary"></span>
+                                    <span class="badge bg-secondary"></span>
+                                    <span class="badge bg-secondary"></span>
+                                </div>
+                                <div class="col-sm-3 text-lg-end">
+                                    <a href="{{ route('travel-request-create') }}" class="btn btn-primary stretched-link">Request</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Car -->
-        {{--}}
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="d-flex flex-column flex-lg-row">
-                    <div class="row flex-fill">
-                        <div class="col-sm-5">
-                            <h4 class="h5">Company car</h4>
-                            <span class="badge bg-secondary"></span> <span class="badge bg-success"></span>
-                        </div>
-                        <div class="col-sm-4 py-2">
-                            <span class="badge bg-secondary"></span>
-                            <span class="badge bg-secondary"></span>
-                            <span class="badge bg-secondary"></span>
-                            <span class="badge bg-secondary"></span>
-                        </div>
-                        <div class="col-sm-3 text-lg-end">
-                            <a href="{{ route('car-request-create') }}" class="btn btn-primary stretched-link">Request</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{--}}
     </div>
-
-
 @endsection

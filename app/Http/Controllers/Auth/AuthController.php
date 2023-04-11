@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\TravelRequest;
+use App\Models\Dsvrequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -95,26 +95,11 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
+            $user = Auth::user();
+            $your_requests = Dsvrequest::where('userid', $user->id)->get();
+            $awaiting_requests = Dsvrequest::where('projectleader', $user->id)->orWhere('unithead', $user->id)->get();
 
-
-            if(Auth::user()->hasRole('staff')) {
-                $travel = TravelRequest::where('user', Auth::user()->email)->get();
-            }
-
-            if(Auth::user()->hasRole('project-leader')) {
-                $travel = TravelRequest::where('approved', 0)->get();
-                $plapproval = TravelRequest::where('projectleader', 0)->get();
-            } else {
-                $plapproval = [];
-            }
-            if(Auth::user()->hasRole('unit-head')) {
-                $travel = TravelRequest::where('approved', 1)->get();
-                $uhapproval = TravelRequest::where('unithead', 0)->get();
-            } else {
-                $uhapproval = [];
-            }
-
-            return view('dashboard', ['travelrequests' => $travel, 'plapproval' => $plapproval, 'uhapproval' => $uhapproval]);
+            return view('dashboard', ['requests' => $your_requests, 'awaiting_requests' => $awaiting_requests]);
         }
 
         return redirect("login")->withSuccess('Opps! You do not have access');

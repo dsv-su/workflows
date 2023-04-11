@@ -18,18 +18,23 @@ class TravelRequest extends Model
     protected $fillable = [
         'created',
         'user',
+        'name',
         'purpose',
+        'project',
+        'country',
         'paper',
         'contribution',
         'other',
         'departure',
         'return',
-        'total',
-        'project',
-        'projectleader',
-        'unithead',
-        'status',
-        'approved',
-        'departmenthead'
+        'days',
+        'flight',
+        'hotel',
+        'daily',
+        'conference',
+        'other_costs',
+        'total'
+
+
     ];
 }

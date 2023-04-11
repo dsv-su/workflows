@@ -18,6 +18,7 @@ class Project extends Model
         'projectleader',
         'status'
     ];
+
     protected $searchable = [
         'columns' => [
             'project' => 10,
