@@ -97,7 +97,7 @@ class AuthController extends Controller
         if(Auth::check()){
             $user = Auth::user();
             $your_requests = Dsvrequest::where('userid', $user->id)->get();
-            $awaiting_requests = Dsvrequest::where('projectleader', $user->id)->orWhere('unithead', $user->id)->get();
+            $awaiting_requests = Dsvrequest::where('projectleader', $user->id)->orWhere('unithead', $user->id)->orWhere('financialmanager', $user->id)->get();
 
             return view('dashboard', ['requests' => $your_requests, 'awaiting_requests' => $awaiting_requests]);
         }

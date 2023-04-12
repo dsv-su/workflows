@@ -204,13 +204,17 @@
                             <div class="row justify-content-between text-center">
                                 <div class="form-group col-sm-12 flex-column d-flex">
                                     <label for="status" class="form-control-label px-1">{{ __("Status") }}</label>
-                                    @if($dsvrequest->pl_status == 1 && $dsvrequest->uh_status == 1)
-                                        <span class="badge bg-warning text-dark">Waiting for review</span>
+                                    @if($dsvrequest->pl_status == 1 && $dsvrequest->uh_status == 1 && $dsvrequest->admin_status == 1)
+                                        <span class="badge bg-warning">Waiting for review</span>
                                     @elseif($dsvrequest->pl_status == 2 && $dsvrequest->uh_status == 1)
                                         <span class="badge bg-secondary">Waiting for review from unit head</span>
-                                    @elseif($dsvrequest->pl_status == 2 && $dsvrequest->uh_status == 2)
+                                    @elseif($dsvrequest->pl_status == 1 && $dsvrequest->uh_status == 2)
+                                        <span class="badge bg-secondary">Waiting for review from pl</span>
+                                    @elseif($dsvrequest->pl_status == 2 && $dsvrequest->uh_status == 2 && $dsvrequest->admin_status == 1)
+                                        <span class="badge bg-info">Waiting for review from finacialmanager</span>
+                                    @elseif($dsvrequest->pl_status == 2 && $dsvrequest->uh_status == 2 && $dsvrequest->admin_status == 2)
                                         <span class="badge bg-success">Approved</span>
-                                    @elseif($dsvrequest->pl_status == 3 or $dsvrequest->uh_status == 3)
+                                    @elseif($dsvrequest->pl_status == 3 or $dsvrequest->uh_status == 3 or $dsvrequest->admin_status == 3)
                                         <span class="badge bg-danger">Denied</span>
                                     @endif
                                 </div>
@@ -223,8 +227,10 @@
         <div class="d-flex row no-gutters col-sm-10 justify-content-end">
             <div class="col-md-4">
                 <div class="d-flex space-y-1 flex-row">
-                    @hasanyrole('project-leader|unit-head')
-                    @if((auth()->user()->id == $dsvrequest->projectleader && $dsvrequest->pl_status == 1) or (auth()->user()->id == $dsvrequest->unithead && $dsvrequest->uh_status == 1))
+                    @hasanyrole('project-leader|unit-head|financial-manager')
+                    @if((auth()->user()->id == $dsvrequest->projectleader && $dsvrequest->pl_status == 1)
+                            or (auth()->user()->id == $dsvrequest->unithead && $dsvrequest->uh_status == 1)
+                             or (auth()->user()->id == $dsvrequest->financialmanager && $dsvrequest->admin_status == 1))
                             <a href="{{route('travel-deny', $request->id)}}" type="button" role="button" class="btn btn-outline-danger m-auto"><strong>{{ __("Deny") }}</strong></a>
                             <a href="{{route('travel-approve', $request->id)}}" type="button" role="button" class="btn btn-outline-success m-auto"><strong>{{ __("Approve") }}</strong></a>
                         @endif

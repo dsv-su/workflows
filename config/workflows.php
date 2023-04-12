@@ -41,6 +41,7 @@ return [
             'classes' => [
                 \App\Models\User::class => 'User',
                 \App\Models\TravelRequest::class => 'TraveRequest',
+                \App\Models\Dsvrequest::class => 'DSVRequestHandler',
             ],
         ],
     ],
@@ -103,6 +104,7 @@ return [
             'classes' => [
                 \App\Models\User::class => 'User',
                 \App\Models\TravelRequest::class => 'TraveRequest',
+                \App\Models\Dsvrequest::class => 'DSVRequestHandler',
                 \the42coders\Workflows\Loggers\WorkflowLog::class => 'WorkflowLog',
             ],
         ],

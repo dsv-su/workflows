@@ -40,6 +40,14 @@ class TravelRequestController extends Controller
     public function submit(Request $request)
     {
         if ($request->isMethod('post')) {
+            //Second validation
+            $this->validate($request, [
+                'purpose' => 'required',
+                'project' => 'required',
+                'country' => 'required',
+                'countryname' => 'required',
+            ]);
+
             //Create a new Travelreqeust
             $travelrequest = TravelRequest::create([
                 'created' => 22, //now()->format('Y-m-d')
@@ -68,8 +76,10 @@ class TravelRequestController extends Controller
                 'type' => 'Travelrequest',
                 'projectleader' => (int)$request->project_leader,
                 'unithead' => (int)$request->unit_head,
+                'financialmanager' => 9,
                 'pl_status' => 1,
                 'uh_status' => 1,
+                'admin_status' => 1,
                 'status' => 'requested'
             ]);
 
@@ -88,6 +98,12 @@ class TravelRequestController extends Controller
         elseif(Auth::user()->hasRole('unit-head')) {
             $dsv = Dsvrequest::where('requestid', $travelRequest->id)->first();
             $dsv->uh_status = 2;
+            $dsv->status = 'review';
+            $dsv->save();
+        }
+        elseif(Auth::user()->hasRole('financial-manager')) {
+            $dsv = Dsvrequest::where('requestid', $travelRequest->id)->first();
+            $dsv->admin_status = 2;
             $dsv->status = 'approved';
             $dsv->save();
         }
@@ -104,7 +120,13 @@ class TravelRequestController extends Controller
         }
         elseif(Auth::user()->hasRole('unit-head')) {
             $dsv = Dsvrequest::where('requestid', $travelRequest->id)->first();
-            $dsv->uh_status = 2;
+            $dsv->uh_status = 3;
+            $dsv->status = 'denied';
+            $dsv->save();
+        }
+        elseif(Auth::user()->hasRole('financialmanager')) {
+            $dsv = Dsvrequest::where('requestid', $travelRequest->id)->first();
+            $dsv->admin_status = 3;
             $dsv->status = 'denied';
             $dsv->save();
         }

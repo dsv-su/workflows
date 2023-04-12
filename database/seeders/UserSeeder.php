@@ -26,9 +26,40 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123456'),
         ]);
         DB::table('users')->insert([
-            'name' => 'Maria Lind',
-            'email' => 'lind@dsv.su.se',
+            'name' => 'Peter Idestam-Almquist (ACT)',
+            'email' => 'pi@dsv.su.se',
             'password' => Hash::make('123456'),
         ]);
+        DB::table('users')->insert([
+            'name' => 'Janis Stirna (IS)',
+            'email' => 'js@dsv.su.se',
+            'password' => Hash::make('123456'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Henricus Verhagen (IDEAL)',
+            'email' => 'verhagen@dsv.su.se',
+            'password' => Hash::make('123456'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Tony Lindgren (Systemanalys och Säkerhet)',
+            'email' => 'tony@dsv.su.se',
+            'password' => Hash::make('123456'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Tuija Lehtonen',
+            'email' => 'tuija@dsv.su.se',
+            'password' => Hash::make('123456'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Stefan Möller',
+            'email' => 'sm@dsv.su.se',
+            'password' => Hash::make('123456'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Ekonomiansvarig',
+            'email' => 'ekonomi@dsv.su.se',
+            'password' => Hash::make('123456'),
+        ]);
+
     }
 }

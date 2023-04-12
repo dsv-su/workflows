@@ -15,8 +15,10 @@ class Dsvrequest extends Model
         'type',
         'projectleader',
         'unithead',
+        'financialmanager',
         'pl_status',
         'uh_status',
+        'admin_status',
         'status'
     ];
 }

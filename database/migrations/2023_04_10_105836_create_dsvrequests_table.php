@@ -24,8 +24,11 @@ class CreateDsvrequestsTable extends Migration
             $table->foreign('projectleader')->references('id')->on('users');
             $table->unsignedBigInteger('unithead');
             $table->foreign('unithead')->references('id')->on('users');
+            $table->unsignedBigInteger('financialmanager');
+            $table->foreign('financialmanager')->references('id')->on('users');
             $table->integer('pl_status');
             $table->integer('uh_status');
+            $table->integer('admin_status');
             $table->string('status');
             $table->timestamps();
         });

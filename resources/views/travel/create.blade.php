@@ -45,7 +45,8 @@
                                 <label for="title" class="form-control-label px-3">{{ __("Purpose of the mission with the web address of the conference") }}
                                     <span class="text-danger"> *</span></label>
                                 <textarea id="purpose" name="purpose" class="form-control" rows="4"
-                                          placeholder="{{ __("Purpose") }}" required></textarea>
+                                          placeholder="{{ __("Purpose") }}"
+                                          required>{{ old('purpose') ? old('purpose'): $purpose ?? '' }}</textarea>
 
                                 <div class="invalid-feedback">
                                     {{__("Purpose is required")}}
@@ -65,6 +66,7 @@
                                            id="project-search" name="project" autocomplete="off"
                                            aria-haspopup="true"
                                            placeholder="{{ __("Start typing to add a project number") }}"
+                                           value="{{ old('project') ? old('project'): $project ?? '' }}"
                                            aria-labelledby="project-search">
                                 </div>
 
@@ -77,15 +79,20 @@
                                 <label for="country" class="form-control-label px-1">{{ __("Country") }}<span
                                         class="text-danger"> *</span></label>
                                 <!-- select country -->
-                                <select id="country" name="country" class="form-control mx-1 form-select"
-                                        data-placeholder="Choose one thing"
+                                <select id="country" name="country" class="form-control mx-1 js-states form-select"
+                                        data-placeholder="Choose one country"
                                         data-live-search="true"
                                         style="width: 400px">
+                                        <option></option>
                                     @foreach($countries as $country)
                                         <option value="{{$country->id}}">{{$country->country}}
                                         </option>
                                     @endforeach
                                 </select>
+                                <div class="invalid-feedback">
+                                    {{__("Country is required")}}
+                                </div>
+                                <div><small class="text-danger">{{ $errors->first('countryname') }}</small></div>
                             </div>
                         </div>
                         <br>
@@ -201,6 +208,8 @@
         $("#country").select2({
             theme: "bootstrap-5",
             dropdownParent: $("#country").parent(), // Required for dropdown styling
+            placeholder: "Select a country",
+            allowClear: true,
         });
 
         $("#paper").on('change', function() {

@@ -50,13 +50,17 @@
                                     <td> <a href="{{route('travel-request', $request->id)}}" class="link-primary"> {{ \App\Models\TravelRequest::Find($request->requestid)->purpose }}</a></td>
                                     <td>{{$request->created_at}}</td>
                                     <td>
-                                        @if($request->status == 'requested')
-                                            <span class="badge bg-primary">Awaiting review</span>
-                                        @elseif($request->status == 'awaiting')
-                                            <span class="badge bg-warning">Awaiting approval</span>
-                                        @elseif($request->status == 'approved')
+                                        @if($request->pl_status == 1 && $request->uh_status == 1 && $request->admin_status == 1)
+                                            <span class="badge bg-warning">Waiting for review</span>
+                                        @elseif($request->pl_status == 2 && $request->uh_status == 1)
+                                            <span class="badge bg-secondary">Waiting for review from unit head</span>
+                                        @elseif($request->pl_status == 1 && $request->uh_status == 2)
+                                            <span class="badge bg-secondary">Waiting for review from pl</span>
+                                        @elseif($request->pl_status == 2 && $request->uh_status == 2 && $request->admin_status == 1)
+                                            <span class="badge bg-info">Waiting for review from finacialmanager</span>
+                                        @elseif($request->pl_status == 2 && $request->uh_status == 2 && $request->admin_status == 2)
                                             <span class="badge bg-success">Approved</span>
-                                        @elseif($request->status == 'denied')
+                                        @elseif($request->pl_status == 3 or $request->uh_status == 3 or $request->admin_status == 3)
                                             <span class="badge bg-danger">Denied</span>
                                         @endif
                                     </td>
@@ -68,7 +72,7 @@
             </div>
         </div>
         <br>
-        @hasanyrole('project-leader|unit-head')
+        @hasanyrole('project-leader|unit-head|financial-manager')
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
@@ -85,18 +89,22 @@
                             </thead>
                             @foreach($awaiting_requests as $key => $request)
                                 <tr>
-                                    @if((auth()->user()->id == $request->projectleader && $request->pl_status == 1) or (auth()->user()->id == $request->unithead && $request->uh_status == 1))
+                                    @if((auth()->user()->id == $request->projectleader && $request->pl_status == 1) or (auth()->user()->id == $request->unithead && $request->uh_status == 1) or (auth()->user()->id == $request->financialmanager && $request->admin_status == 1))
                                     <td>{{$key +1 }}  {{$request->type}}</td>
                                     <td> <a href="{{route('travel-request', $request->id)}}" class="link-primary">{{ \App\Models\TravelRequest::Find($request->requestid)->purpose }}</a></td>
                                     <td>{{$request->created_at}}</td>
                                     <td>
-                                        @if($request->pl_status == 1 && $request->uh_status == 1)
-                                            <span class="badge bg-warning text-dark">Waiting for review</span>
+                                        @if($request->pl_status == 1 && $request->uh_status == 1 && $request->admin_status == 1)
+                                            <span class="badge bg-warning">Waiting for review</span>
                                         @elseif($request->pl_status == 2 && $request->uh_status == 1)
                                             <span class="badge bg-secondary">Waiting for review from unit head</span>
-                                        @elseif($request->pl_status == 2 && $request->uh_status == 2)
+                                        @elseif($request->pl_status == 1 && $request->uh_status == 2)
+                                            <span class="badge bg-secondary">Waiting for review from pl</span>
+                                        @elseif($request->pl_status == 2 && $request->uh_status == 2 && $request->admin_status == 1)
+                                            <span class="badge bg-info">Waiting for review from finacialmanager</span>
+                                        @elseif($request->pl_status == 2 && $request->uh_status == 2 && $request->admin_status == 2)
                                             <span class="badge bg-success">Approved</span>
-                                        @elseif($request->pl_status == 3 or $request->uh_status == 3)
+                                        @elseif($request->pl_status == 3 or $request->uh_status == 3 or $request->admin_status == 3)
                                             <span class="badge bg-danger">Denied</span>
                                         @endif
                                     </td>
