@@ -42,8 +42,9 @@
                                     <div class="col-md-6">
                                         <select id="role" class="form-control" name="role" required>
                                             <option value="staff">Staff</option>
-                                            <option value="project-leader">Project-leader</option>
-                                            <option value="unit-head">Unit-head</option>
+                                            <option value="project-leader">Project leader</option>
+                                            <option value="unit-head">Unit head</option>
+                                            <option value="financial-manager">Financial manager</option>
                                         </select>
                                         @if ($errors->has('role'))
                                             <span class="text-danger">{{ $errors->first('role') }}</span>
