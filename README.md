@@ -1,40 +1,117 @@
-<p align="center"><img src="https://statamic.com/assets/branding/Statamic-Logo+Wordmark-Rad.svg" width="400" alt="Statamic Logo" /></p>
+## 1. Overview
+Development setup for DSV Intranet.
 
-## About Statamic
+## 2. Requirements
+Requirements are best determined using Server Requirements page of corresponding Laravel 10 version
 
-Statamic is the flat-first, Laravel + Git powered CMS designed for building beautiful, easy to manage websites.
+- PHP version 8.1.*
 
-> **Note:** This repository contains the code for the Statamic application. To contribute to the core package, visit the [Statamic core package repository][cms-repo].
+- BCMath PHP Extension
+
+- Ctype PHP Extension
+
+- Fileinfo PHP extension
+
+- JSON PHP Extension
+
+- Mbstring PHP Extension
+
+- OpenSSL PHP Extension
+
+- PDO PHP Extension
+
+- Tokenizer PHP Extension
+
+- XML PHP Extension
+
+- SSH access to the server
+
+- Composer
+
+## 3. Installation
+
+* Make sure that composer is installed globally or install it in place
+
+    * Clone the repository
+
+        * Move into the directory. Move into the `/systemconfig` folder.
+
+            * Make sure that `/systemconfig/internt.ini` file is present and configured with the configuration details for your requirements and for the server (copy play.ini.example to .ini and fill in with your data)
+
+                    [global]
+                    app_env=local                           ; Make sure this is set to local NOTE! For production enviroment the settings should be set to: app_env=production and app_debug=false.
+                    app_debug=true                          ; Make sure this is set to true
+                    app_url=http://localhost                ; Set this to localhost or your domain
+                    authorization_parameter=entitlement     ; The authorization parameter NOTE! Not used for dev enviroments
+                    authorization=                          ; Authorization entitlements NOTE! Not used for dev enviroments
+                    login_route=/login                      ; The SSO login route for your application (The production server should be set ut with this route) 
 
 
-## Learning Statamic
+                    [database]
+                    db=mysql                                ; Here you can specify which database you use: mysql, sqlite, pgsql, sqlsrv or redis 
+                    db_host=127.0.0.1                       ; DB host address
+                    db_port=3306                            ; DB port
+                    db_database=                            ; Database used     
+                    db_username=                            ; DB user
+                    db_password=                            ; secret
 
-Statamic has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
-
-## Support
-
-We provide official developer support on [Statamic Pro](https://statamic.com/pricing) projects. Community-driven support is available on the [forum](https://statamic.com/forum) and in [Discord][discord].
-
-
-## Contributing
-
-Thank you for considering contributing to Statamic! We simply ask that you review the [contribution guide][contribution] before you open issues or send pull requests.
+                    [sukat]                                 ; SUKAT OpenLDAP account credentials
+                    host=
+                    username=
+                    password=
+                    port=636
+                    base_dn=
+                    timeout=5
+                    version=3
 
 
-## Code of Conduct
+* Make sure the subdirectories
+  `bootstrap/cache` and `/storage` is writable by your web server user.
 
-In order to ensure that the Statamic community is welcoming to all and generally a rad place to belong, please review and abide by the [Code of Conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct).
+Make sure these folder exist or create these folders under storage/framework:
+
+    sessions 
+    views
+    cache
+
+* Once the global settings are entered you can install the dependencies. `composer install`
+
+    * Make sure that .env file is present (copy .env.example to .env). If you are setting up a dev enviroment add the following settings to the .env file:
 
 
-## Important Links
+    EMULATE_IDP=true
+    SHIBB_NAME=Shib-cn
+    SHIBB_FNAME=Shib-givenName
+    SHIBB_LNAME=Shib-sn
+    SHIBB_EMAIL=Shib-mail
+    SHIBB_EMPLID=Shib-emplId
 
-- [Statamic Main Site](https://statamic.com)
-- [Statamic Documentation][docs]
-- [Statamic Core Package Repo][cms-repo]
-- [Statamic Migrator](https://github.com/statamic/migrator)
-- [Statamic Discord][discord]
+    LOG_CHANNEL=daily
 
-[docs]: https://statamic.dev/
-[discord]: https://statamic.com/discord
-[contribution]: https://github.com/statamic/cms/blob/master/CONTRIBUTING.md
-[cms-repo]: https://github.com/statamic/cms
+    LDAP_CACHE=true
+
+
+* Either create application key manually or do that with a command `php artisan key:generate`
+
+* If you need to change the email configuration. Open the .env file and set the needed values
+
+* Create the database with `php artisan migrate` (this should create database tables needed)
+
+
+## 4. Building assets (dev)
+
+Make sure you have updated npm to the latest version
+
+    npm update -g
+
+Install the dependecies
+
+    npm install
+
+Build the development assets by running
+
+    npm run dev
+
+For production build the production assets
+
+    npm run build
