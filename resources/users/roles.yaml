@@ -1,0 +1,4 @@
+staff:
+  title: Staff
+  permissions:
+    - 'access cp'
