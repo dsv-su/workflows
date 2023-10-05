@@ -1,4 +1,12 @@
 <?php
+use Illuminate\Support\Str;
+
+$file = base_path().'/systemconfig/internt.ini';
+if (!file_exists($file)) {
+    $file = base_path().'/systemconfig/internt.ini.example';
+}
+$system_config = parse_ini_file($file, true);
+
 return [
 
     /*
@@ -11,7 +19,8 @@ return [
     |
  */
 
-    'idp_login' => '/Shibboleth.sso/Login',
+    //'idp_login' => '/Shibboleth.sso/Login',
+    'idp_login' => $system_config['global']['login_route'],
     'idp_logout' => '/Shibboleth.sso/Logout',
     'authenticated' => '/',
 
