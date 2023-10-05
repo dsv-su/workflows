@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\SystemController;
 use App\Http\Controllers\TestController;
+use App\Services\Settings\AuthHandler;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +19,11 @@ use Illuminate\Support\Facades\Route;
 // Route::statamic('example', 'example-view', [
 //    'title' => 'Example'
 // ]);
+if (class_exists(AuthHandler::class))
+    $login = app()->make('SystemService')->authorize()->global->login_route;
+
+Route::get($login, [SystemController::class, 'login'])->name('login');
+
 Route::statamic('search', 'search')->name('search');
 Route::get('/test', [TestController::class, 'test'])->name('test');
+
