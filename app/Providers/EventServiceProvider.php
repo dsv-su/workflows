@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\UserCreatedSuccessful;
+use App\Listeners\SendNewUserNotification;
 use App\Listeners\SendUserConfirmationEmail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +23,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserCreatedSuccessful::class => [
             SendUserConfirmationEmail::class,
+            SendNewUserNotification::class,
         ],
     ];
 
