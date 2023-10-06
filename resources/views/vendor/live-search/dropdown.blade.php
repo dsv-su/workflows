@@ -10,10 +10,17 @@
                     sm:text-sm rounded-xl placeholder:text-gray-400 focus:border-blue-500 dark:bg-gray-900 dark:text-white" placeholder="Search" type="search">
 
     @if ($q)
-        <div class="origin-top-right absolute right-0 mt-2 z-20 w-64 rounded-md shadow-lg bg-white dark:bg-gray-800 dark:text-white ring-1 ring-black ring-opacity-5">
+        <div class="origin-top-right absolute right-0 mt-2 z-20 w-96 rounded-md shadow-lg bg-white dark:bg-gray-800 dark:text-white ring-1 ring-black ring-opacity-5">
             <div class="py-1 text-sm text-gray-700 dark:text-white">
                 @forelse($results as $result)
-                    <a href="{{ $result['url'] }}" class="block px-4 py-2 hover:bg-gray-100 hover:text-gray-900">{{ $result['title'] }}</a>
+                    <a href="{{ $result['url'] }}" class="block px-4 py-2 hover:bg-gray-100 hover:text-gray-900">
+                        {{ $result['title'] }}
+                        <span class="bg-blue-100 text-blue-800 text-xs font-normal mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                            {{ $result['collection'] }}
+                        </span>
+                        <div class="text-xs mt-2 text-blue-600">{!! $result['text_field'] ?? ''!!} </div>
+                        <hr>
+                    </a>
                 @empty
                     <div class="block px-4 py-2">No results found</div>
                 @endforelse
