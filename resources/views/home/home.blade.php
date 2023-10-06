@@ -99,7 +99,7 @@
                             <h3 class="text-left text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                                 Internal information
                             </h3>
-                            @foreach (\Statamic\Statamic::tag('collection:news')->sort('order')->fetch() as $entry)
+                            @foreach (\Statamic\Statamic::tag('collection:news')->fetch() as $entry)
                             <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
                                 {{ $entry['date'] }}
                             </div>
