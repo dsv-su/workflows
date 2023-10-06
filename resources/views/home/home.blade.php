@@ -13,7 +13,7 @@
                           2024
                         </span>
                         <h3 class="mt-6 text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-                           DSV Intranet
+                            DSV Intranet
                         </h3>
                         <p class="mt-2 text-gray-500">
                             The DSV Intranet is under construction. Scheduled for launch early 2024
@@ -70,23 +70,23 @@
             <!-- End Card -->
 
             <!-- Card -->
-            {{--}}
-            <a class="md:order-2 relative p-6 flex flex-col justify-center items-center md:min-h-[230px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-                    Internal documents
-                </h3>
-                <p class="mt-2 text-gray-500">
-                    For download
-                </p>
-                <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    Read more
-                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                    </svg>
-                </p>
-            </a>
-            {{--}}
-            <!-- End Card -->
+        {{--}}
+        <a class="md:order-2 relative p-6 flex flex-col justify-center items-center md:min-h-[230px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
+            <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
+                Internal documents
+            </h3>
+            <p class="mt-2 text-gray-500">
+                For download
+            </p>
+            <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                Read more
+                <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+            </p>
+        </a>
+        {{--}}
+        <!-- End Card -->
         </div>
         <!-- End Col -->
 
@@ -100,15 +100,15 @@
                                 Internal information
                             </h3>
                             @foreach (\Statamic\Statamic::tag('collection:news')->fetch() as $entry)
-                            <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
-                                {{ $entry['date'] }}
-                            </div>
-                            <div class="inline-flex text-left items-center gap-x-1.5 text-blue-600 font-medium">
-                                {{ $entry['title'] }}
-                                <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                                </svg>
-                            </div>
+                                <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
+                                    {{ $entry['date'] }}
+                                </div>
+                                <div class="inline-flex text-left items-center gap-x-1.5 text-blue-600 font-medium">
+                                    {{ $entry['title'] }}
+                                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    </svg>
+                                </div>
                             @endforeach
                         </div>
                     </div>
