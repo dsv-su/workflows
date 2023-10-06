@@ -2,7 +2,7 @@
     <div x-data="{ open: false }" class="relative flex flex-col w-full p-5 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 dark:border-gray-600 dark:bg-gray-900">
         <div class="flex flex-row items-center justify-between lg:justify-start">
             <a href="{{ config('app.url') }}" class="flex items-center">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{__('DSVIntranet')}}</span>
+                <span class="self-center text-2xl font-normal whitespace-nowrap dark:text-white">{{__('DSVIntranet')}}</span>
             </a>
             <button @click="open = !open" class="inline-flex items-center justify-center p-2 text-gray-400 hover:text-black focus:outline-none focus:text-black md:hidden">
                 <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -11,10 +11,10 @@
                 </svg>
             </button>
         </div>
-        <nav :class="{'flex': open, 'hidden': !open}" class="flex-col items-center flex-grow hidden md:ml-56 md:pb-0 md:flex sm:justify-end md:flex-row">
+        <nav :class="{'flex': open, 'hidden': !open}" class="flex-col items-center flex-grow hidden md:ml-16 md:pb-0 md:flex sm:justify-end md:flex-row">
             @foreach (\Statamic\Statamic::tag('nav:collection:pages')->sort('order')->fetch() as $entry)
                 @if(!$entry['children'])
-                    <a class="px-2 py-2 font-medium text-gray-900 dark:text-white lg:px-6 md:px-3 hover:text-blue-600 @if ($entry['is_parent'] || $entry['is_current']) font-semibold text-blue-500  @endif"
+                    <a class="px-1 py-2 font-medium text-gray-900 dark:text-white lg:px-4 md:px-3 hover:text-blue-600 @if ($entry['is_parent'] || $entry['is_current']) font-semibold text-blue-500  @endif"
                        href="{{ $entry['url']->value() }}">
                         {{ $entry['title']->value() }}
                     </a>
@@ -29,9 +29,10 @@
                                             <span>
                                               {{__($entry['title']->value())}}
                                             </span>
-                                            <svg class="inline w-3 h-3 mt-1 transition-transform duration-200 transform rotate-0 md:-mt-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                            <svg class="inline w-2 h-2 mt-1 transition-transform duration-200 transform rotate-0 md:-mt-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style="fill:gray" viewBox="0 0 10 6">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 1 4 4 4-4"/>
                                             </svg>
+
                                         </button>
                                     </div>
                                 </div>
@@ -88,6 +89,7 @@
             </div>
             {{--}}
             <!-- Workflow start -->
+            {{--}}
             <div class="inline-flex items-center gap-2 list-none lg:ml-auto">
                 <a href="#" id="workflow" data-tooltip-target="navbar-workflow-tooltip" data-tooltip-placement="bottom"
                    class="block py-2 pl-3 pr-4 text-gray-900 border-b border-gray-100 hover:bg-blue-200 md:hover:bg-transparent
@@ -98,6 +100,7 @@
                     </svg>
                 </a>
             </div>
+            {{--}}
         </nav>
     </div>
 </div>

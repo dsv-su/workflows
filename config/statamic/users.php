@@ -20,13 +20,13 @@ return [
 
     'repositories' => [
 
-        'file' => [
+        /*'file' => [
             'driver' => 'file',
             'paths' => [
                 'roles' => resource_path('users/roles.yaml'),
                 'groups' => resource_path('users/groups.yaml'),
             ],
-        ],
+        ],*/
 
         'eloquent' => [
             'driver' => 'eloquent',

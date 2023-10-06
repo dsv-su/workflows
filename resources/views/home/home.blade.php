@@ -99,37 +99,18 @@
                             <h3 class="text-left text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                                 Internal information
                             </h3>
-
+                            @foreach (\Statamic\Statamic::tag('collection:news')->sort('order')->fetch() as $entry)
                             <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
-                                2023-09-29
+                                {{ $entry['date'] }}
                             </div>
                             <div class="inline-flex text-left items-center gap-x-1.5 text-blue-600 font-medium">
-                                INVITATION Christmas buffet/Julbord 14 December
+                                {{ $entry['title'] }}
                                 <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                                 </svg>
                             </div>
-                            <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
-                                2023-09-19
-                            </div>
-                            <div class="inline-flex justify-start items-center gap-x-1.5 text-blue-600 font-medium">
-                                Important survey – please respond
-                                <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                                </svg>
-                            </div>
-                            <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
-                                2023-09-19
-                            </div>
-                            <div class="inline-flex justify-start items-center gap-x-1.5 text-blue-600 font-medium">
-                                VIKTIGT ang. Boka resa / IMPORTANT reg. Book trip
-                                <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                                </svg>
-                            </div>
+                            @endforeach
                         </div>
-
-
                     </div>
 
                     <div class="absolute top-0 inset-x-0 -z-[1] w-full h-full">

@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative order-last md:order-none">
     <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
         <span class="absolute inset-y-0 left-0 flex items-center pl-3">
              <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">

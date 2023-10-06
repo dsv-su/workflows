@@ -79,11 +79,12 @@
                         <div class="h-screen border border-gray-200 border-dashed rounded-lg">
                             <article class="mt-4 bg-white p-8 shadow-xl rounded-xl max-w-max prose dark:bg-gray-800 dark:text-white">
                                 {!! $page->content !!}
-                                    <!--Page author-->
-                                    <div class="text-gray-600 bg-white p-3 rounded-md leading-none dark:bg-gray-800 dark:text-white">
-                                        <p><i>{{__("Page editor:")}} {!! $page->author->name !!}</i></p>
-                                        <p><i>{{__("Last edited:")}} {!! $page->last_modified !!}</i></p>
-                                    </div>
+
+                                <!--Page author-->
+                                <div class="text-gray-600 bg-white p-3 rounded-md leading-none dark:bg-gray-800 dark:text-white">
+                                    <p><i>{{__("Page editor:")}} {!! $page->author->name !!}</i></p>
+                                    <p><i>{{__("Last edited:")}} {!! $page->last_modified !!}</i></p>
+                                </div>
                             </article>
                         </div>
                     </div>
