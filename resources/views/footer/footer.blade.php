@@ -9,7 +9,7 @@
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Stockholms universitet</span>
                 </a>
                 <a href="https://dsv.su.se/" class="flex items-center">
-                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Institutionen för data- och systemvetenskap</span>
+                    <span class="self-center text-xl font-semibold whitespace-pre-line dark:text-white">Institutionen för data- och systemvetenskap</span>
                 </a>
             </div>
             <div class="grid grid-cols-2 gap-4 sm:gap-3 sm:grid-cols-2">

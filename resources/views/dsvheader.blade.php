@@ -6,7 +6,7 @@
             <img class="md:hidden block h-12 m-3" src="{{asset('images/su_logo_no_text.svg')}}"  alt="Stockholms universitet">
         </div>
         <div class="items-center inline-flex justify-start col-span-3 sm:flex pl-5 bg-sudepartment">
-            <span class="self-center text-base font-normal font-sudepartment whitespace-pre-line text-white dark:text-white">Institutionen för data- och systemvetenskap</span>
+            <span class="self-center text-base font-normal font-sudepartment whitespace-pre-line text-white dark:text-white">{{__("Institutionen för data- och systemvetenskap")}}</span>
         </div>
     </div>
     <!-- Medium and large breakpoint -->
