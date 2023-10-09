@@ -70,23 +70,23 @@
             <!-- End Card -->
 
             <!-- Card -->
-        {{--}}
-        <a class="md:order-2 relative p-6 flex flex-col justify-center items-center md:min-h-[230px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
-            <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-                Internal documents
-            </h3>
-            <p class="mt-2 text-gray-500">
-                For download
-            </p>
-            <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                Read more
-                <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                </svg>
-            </p>
-        </a>
-        {{--}}
-        <!-- End Card -->
+            {{--}}
+            <a class="md:order-2 relative p-6 flex flex-col justify-center items-center md:min-h-[230px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
+                <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
+                    Internal documents
+                </h3>
+                <p class="mt-2 text-gray-500">
+                    For download
+                </p>
+                <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                    Read more
+                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </p>
+            </a>
+            {{--}}
+            <!-- End Card -->
         </div>
         <!-- End Col -->
 
@@ -132,7 +132,7 @@
             <!-- End Card -->
 
             <!-- Card left top -->
-            <a class="md:order-1 relative p-6 flex flex-col justify-center items-start md:min-h-[230px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">
+            <div class="md:order-1 relative p-6 flex flex-col justify-center items-start md:min-h-[230px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                     DSV Helpdesk
                 </h3>
@@ -158,23 +158,7 @@
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
                 </p>
-                <!-- b -->
-                <div class="absolute top-0 inset-x-0 -z-[1] w-full h-full">
-                    <svg class="w-auto h-full" width="364" height="476" viewBox="0 0 364 476" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g filter="url(#filter0_f_6966_190213)">
-                            <rect x="-76.6666" y="193" width="240.294" height="124.936" fill="#E2CCFF" fill-opacity="0.35"></rect>
-                        </g>
-                        <defs>
-                            <filter id="filter0_f_6966_190213" x="-276.667" y="-7" width="640.294" height="524.936" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-                                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_6966_190213"></feGaussianBlur>
-                            </filter>
-                        </defs>
-                    </svg>
-                </div>
-                <!-- end b -->
-            </a>
+            </div>
             <!-- End Card -->
         </div>
         <!-- End Col -->
@@ -246,22 +230,6 @@
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
                 </p>
-                <!-- b -->
-                <div class="absolute top-0 inset-x-0 -z-[1] w-full h-full">
-                    <svg class="w-auto h-full" width="364" height="476" viewBox="0 0 364 476" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g filter="url(#filter0_f_6966_190213)">
-                            <rect x="-76.6666" y="193" width="240.294" height="124.936" fill="#E2CCFF" fill-opacity="0.35"></rect>
-                        </g>
-                        <defs>
-                            <filter id="filter0_f_6966_190213" x="-276.667" y="-7" width="640.294" height="524.936" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-                                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_6966_190213"></feGaussianBlur>
-                            </filter>
-                        </defs>
-                    </svg>
-                </div>
-                <!-- end b -->
             </div>
             <!-- End Card -->
         </div>
