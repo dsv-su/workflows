@@ -2,3 +2,6 @@ staff:
   title: Staff
   permissions:
     - 'access cp'
+    - 'view news entries'
+    - 'edit news entries'
+    - 'create news entries'

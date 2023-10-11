@@ -70,27 +70,5 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col flex-1 w-0 overflow-hidden">
-        <main class="relative flex-1 overflow-y-auto focus:outline-none">
-            <div class="py-6">
-                <div class="px-4 mx-auto 2xl:max-w-7xl sm:px-6 md:px-8">
-                    <!-- Content-->
-                    <div class="py-4">
-                        <div class="h-screen border border-gray-200 border-dashed rounded-lg">
-                            <article class="mt-4 bg-white p-8 shadow-xl rounded-xl max-w-max prose dark:bg-gray-800 dark:text-white">
-                                {!! $page->content !!}
-
-                                <!--Page author-->
-                                <div class="text-gray-600 bg-white p-3 rounded-md leading-none dark:bg-gray-800 dark:text-white">
-                                    <p><i>{{__("Page editor:")}} {!! $page->author->name !!}</i></p>
-                                    <p><i>{{__("Last edited:")}} {!! $page->last_modified !!}</i></p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <!-- end content -->
-                </div>
-            </div>
-        </main>
-    </div>
+    @include('partials.page')
 </div>

@@ -17,7 +17,7 @@
         <nav :class="{'flex': open, 'hidden': !open}" class="flex-col items-center flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row">
         @foreach (\Statamic\Statamic::tag('nav:collection:pages')->sort('order')->fetch() as $entry)
             @if(!$entry['children'])
-                    <a class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600 dark:text-white @if ($entry['is_parent'] || $entry['is_current']) font-semibold text-blue-500  @endif"
+                    <a class="px-2 py-2 text-normal text-gray-900 lg:px-6 md:px-3 hover:text-blue-600 dark:text-white @if ($entry['is_parent'] || $entry['is_current']) font-semibold text-blue-500  @endif"
                        href="{{ $entry['url']->value() }}">
                         {{ $entry['title']->value() }}
                     </a>
@@ -27,8 +27,8 @@
                         <nav class="relative flex items-center justify-around w-full sm:h-10">
                             <div class="flex items-center justify-between flex-1">
                                 <div class="flex items-center -mr-2" x-on:click="openMobileMenu = !openMobileMenu">
-                                    <button type="button" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm text-left
-                                    text-gray-500 md:w-auto md:inline md:mt-0 hover:text-blue-600
+                                    <button type="button" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-normal text-left
+                                    text-gray-900 md:w-auto md:inline md:mt-0 hover:text-blue-600
                                     focus:outline-none focus:shadow-outline dark:text-white"
                                             id="main-menu" aria-label="Main menu" aria-haspopup="true">
                                     <span>
@@ -53,14 +53,14 @@
                                                     <div class="relative">
                                                         <div>
                                                             <div class="absolute flex items-center justify-center w-12 h-12 text-blue-500 rounded-xl bg-gray-50">
-                                                                <ion-icon class="w-6 h-6 md hydrated" name="document-outline" role="img" aria-label="document outline"></ion-icon>
+                                                                {!! $child['icon_field'] !!}
                                                             </div>
                                                             <p class="mt-4 ml-16 text-base font-medium text-black">
-                                                                {{$child['title']}}
+                                                                {!! $child['title'] !!}
                                                             </p>
                                                         </div>
                                                         <div class="mt-2 ml-16 text-sm text-gray-500">
-                                                            {{ $child['text_field'] }}
+                                                            {!! $child['text_field'] !!}
                                                         </div>
                                                     </div>
                                                 </a>

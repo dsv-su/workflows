@@ -31,7 +31,7 @@
                     </svg>
                 @else
                     @if(auth()->user()->avatar)
-                        <img class=" w-1/6 h-auto rounded-full mx-2 lg:block border-transparent border hover:border-white" src="{{asset(auth()->user()->avatar)}}" alt="{{asset(auth()->user()->name)}}">
+                        <img class="w-6 h-6 rounded-full mx-2 lg:block border-transparent border hover:border-white" src="{{ asset('assets/' . auth()->user()['avatar'] ) }}" alt="{{asset(auth()->user()->name)}}">
                     @else
                         <svg class="w-5 h-5 mx-2 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>

@@ -10,7 +10,7 @@
                     sm:text-sm rounded-xl placeholder:text-gray-400 focus:border-blue-500 dark:bg-gray-900 dark:text-white" placeholder="Search" type="search">
 
     @if ($q)
-        <div class="origin-top-right absolute right-0 mt-2 z-20 w-96 rounded-md shadow-lg bg-white dark:bg-gray-800 dark:text-white ring-1 ring-black ring-opacity-5">
+        <div class="origin-top-right absolute right-0 mt-2 z-20 w-72 md:w-96 rounded-md shadow-lg bg-white dark:bg-gray-800 dark:text-white ring-1 ring-black ring-opacity-5">
             <div class="py-1 text-sm text-gray-700 dark:text-white">
                 @forelse($results as $result)
                     <a href="{{ $result['url'] }}" class="block px-4 py-2 hover:bg-gray-100 hover:text-gray-900">

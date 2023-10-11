@@ -1,7 +1,7 @@
 <div class="max-w-[85rem] mx-auto px-4 py-6 sm:px-6 lg:px-8 md:pt-8 md:pb-24">
     <!-- Grid -->
-    <div class="grid grid-cols-12 gap-4 xl:gap-6">
-        <div class="col-span-12 md:col-span-6 md:order-2 lg:col-span-4 grid gap-4 xl:gap-6">
+    <div class="grid grid-cols-12 gap-2.5 xl:gap-4">
+        <div class="col-span-12 md:col-span-6 md:order-2 lg:col-span-4 grid gap-2.5 xl:gap-4">
             <!-- Card middle-->
             <div class="md:order-1 relative before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">
                 <div class="relative overflow-hidden w-full h-full rounded-xl">
@@ -90,12 +90,20 @@
         </div>
         <!-- End Col -->
 
-        <div class="col-span-12 md:col-span-6 lg:col-span-4 md:order-1 grid gap-4 xl:gap-6">
+        <div class="col-span-12 md:col-span-6 lg:col-span-4 md:order-1 grid gap-2.5 xl:gap-4">
             <!-- Card left bottom-->
-            <div class="md:order-2 text-left relative before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} after:absolute after:inset-x-0.5 after:bottom-0.5 after:z-10 after:w-[calc(100%-4px)] after:h-24 after:rounded-b-xl after:bg-gradient-to-t after:from-white after:via-white/[.9] after:to-white/[.4] dark:after:from-slate-900 dark:after:via-slate-900/[.9] dark:after:to-slate-900/[.4] dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">
-                <div class="relative text-left overflow-hidden w-full h-full rounded-xl">
-                    <div class="p-6 flex text-left flex-col md:min-h-[480px] rounded-xl dark:border-gray-700">
+            <!--<div class="md:order-2 text-left relative before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} after:absolute after:inset-x-0.5 after:bottom-0.5 after:z-10 after:w-[calc(100%-4px)] after:h-24 after:rounded-b-xl after:bg-gradient-to-t after:from-white after:via-white/[.9] after:to-white/[.4] dark:after:from-slate-900 dark:after:via-slate-900/[.9] dark:after:to-slate-900/[.4] dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">-->
+            <div class="md:order-2 text-left relative before:absolute before:inset-0 before:border before:border-gray-200 before:rounded-xl before:transition after:absolute after:inset-x-0.5 after:bottom-0.5 after:z-10 after:w-[calc(100%-4px)] after:h-24 after:rounded-b-xl after:bg-gradient-to-t after:from-white after:via-white/[.9] after:to-white/[.4] dark:after:from-slate-900 dark:after:via-slate-900/[.9] dark:after:to-slate-900/[.4] dark:before:border-gray-800">
+                <div class="relative overflow-hidden w-full h-full rounded-xl">
+                    <div class="p-6 flex flex-col md:min-h-[480px] rounded-xl dark:border-gray-700">
                         <div>
+                            @can('access cp')
+                                <a href="/cp/collections/news" class="float-right hover:border-blue-600">
+                                    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.109 17H1v-2a4 4 0 0 1 4-4h.87M10 4.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm7.95 2.55a2 2 0 0 1 0 2.829l-6.364 6.364-3.536.707.707-3.536 6.364-6.364a2 2 0 0 1 2.829 0Z"/>
+                                    </svg>
+                                </a>
+                            @endif
                             <h3 class="text-left text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                                 Internal information
                             </h3>
@@ -163,15 +171,15 @@
         </div>
         <!-- End Col -->
 
-        <div class="col-span-12 lg:col-span-4 md:order-3 grid md:grid-cols-2 lg:grid-cols-1 gap-4 xl:gap-6">
+        <div class="col-span-12 lg:col-span-4 md:order-3 md:grid-cols-2 lg:grid-cols-1 grid gap-2.5 xl:gap-4">
             <!-- Card right bottom-->
             <div class="md:order-2 relative overflow-hidden rounded-xl">
                 <div class="relative overflow-hidden p-6 flex flex-col justify-start items-start md:min-h-[480px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">
                     <div class="mt-0 text-left">
-                        <h3 class="text-left text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
+                        <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                             Information from DSV IT
                         </h3>
-                        <p class="mt-4 inline-flex text-left items-center gap-x-1.5 text-blue-600 font-medium">
+                        <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
                             Lecture room equipment status
                             <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
@@ -217,7 +225,7 @@
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                     Ongoing at DSV
                 </h3>
-                <p class="text-left text-gray-500 pt-2 pb-2">
+                <p class="text-gray-500 pt-2 pb-2">
                     News article
                 </p>
                 <p class="text-left text-gray-500">

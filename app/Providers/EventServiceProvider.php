@@ -3,12 +3,14 @@
 namespace App\Providers;
 
 use App\Events\UserCreatedSuccessful;
+use App\Listeners\SendDSVInfoNotification;
 use App\Listeners\SendNewUserNotification;
 use App\Listeners\SendUserConfirmationEmail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Statamic\Events\EntrySaved;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
             SendUserConfirmationEmail::class,
             SendNewUserNotification::class,
         ],
+        EntrySaved::class => [
+            SendDSVInfoNotification::class,
+        ]
     ];
 
     /**
