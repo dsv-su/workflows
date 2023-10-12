@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\TestController;
 use App\Services\Settings\AuthHandler;
@@ -23,7 +24,8 @@ if (class_exists(AuthHandler::class))
     $login = app()->make('SystemService')->authorize()->global->login_route;
 
 Route::get($login, [SystemController::class, 'login'])->name('login');
-
+//Language
+Route::get('lang/{lang}', [LocalizationController::class, 'index'])->name('language');
 Route::statamic('search', 'search')->name('search');
 Route::get('/test', [TestController::class, 'test'])->name('test');
 
