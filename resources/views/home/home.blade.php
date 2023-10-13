@@ -146,27 +146,28 @@
                     DSV Helpdesk
                 </h3>
                 <p class="mt-2 text-gray-500">
-                    DSV, tel 08-16 1648
+                    Phone: 08-16 1648
                 </p>
                 <p class="mt-2 text-gray-500">
                     Email: helpdesk@dsv.su.se
                 </p>
                 <p class="mt-2 text-gray-500">
                     SU, tel 08-16 1999
-
                 </p>
-                <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+
+                <a href="mailto:helpdesk@dsv.su.se" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
                     Contact DSV Helpdesk
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
-                </p>
-                <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                </a>
+
+                <a href="https://serviceportalen.su.se" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
                     Serviceportalen
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
-                </p>
+                </a>
             </div>
             <!-- End Card -->
         </div>
@@ -201,7 +202,7 @@
                         </p>
                     </div>
                 </div>
-
+                {{--}}
                 <div class="absolute top-0 end-0 -z-[1] w-70 h-auto">
                     <svg width="384" height="268" viewBox="0 0 384 268" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_f_6966_190390)">
@@ -216,6 +217,7 @@
                         </defs>
                     </svg>
                 </div>
+                {{--}}
             </div>
             <!-- End Card -->
 
