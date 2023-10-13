@@ -140,7 +140,8 @@
             <!-- End Card -->
 
             <!-- Card left top -->
-            <div class="md:order-1 relative p-6 flex flex-col justify-center items-start md:min-h-[230px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">
+            <div class="md:order-1 relative p-6 flex flex-col justify-center items-start md:min-h-[230px] text-center rounded-xl
+                border border-gray-200 dark:border-gray-800">
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                     DSV Helpdesk
                 </h3>
