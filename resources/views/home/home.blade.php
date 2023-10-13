@@ -174,7 +174,8 @@
         <div class="col-span-12 lg:col-span-4 md:order-3 md:grid-cols-2 lg:grid-cols-1 grid gap-2.5 xl:gap-4">
             <!-- Card right bottom-->
             <div class="md:order-2 relative overflow-hidden rounded-xl">
-                <div class="relative overflow-hidden p-6 flex flex-col justify-start items-start md:min-h-[480px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">
+                <div class="relative overflow-hidden p-6 flex flex-col justify-start items-start {{--}}md:min-h-[480px]{{--}}md:min-h-full text-center rounded-xl
+                    border border-gray-200 dark:border-gray-800">
                     <div class="mt-0 text-left">
                         <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                             Information from DSV IT
@@ -218,28 +219,81 @@
             <!-- End Card -->
 
             <!-- Card right top -->
-            <div class="md:order-1 p-6 relative flex flex-col justify-start items-start md:min-h-[230px]
-                text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200
-                before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">
+            <div class="md:order-1 p-6 relative flex flex-col justify-start items-start {{--}}md:min-h-[230px]{{--}} md:min-h-fit
+                text-center rounded-xl before:absolute border border-gray-200 dark:border-gray-800
+                before:rounded-xl before:transition">
 
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                     Ongoing at DSV
                 </h3>
+                {{--}}
                 <p class="text-gray-500 pt-2 pb-2">
                     News article
                 </p>
+                {{--}}
                 <p class="text-left text-gray-500">
-                    Be up to date with the latest news from the department.
+                    Be up to date with the latest news and events from the department.
                 </p>
-
-                <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    Read more
+                <a href="https://www.su.se/institutionen-for-data-och-systemvetenskap/nyheter" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                    News
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
-                </p>
+                </a>
+
+                <a href="https://www.su.se/institutionen-for-data-och-systemvetenskap/kalender" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                    Calender
+                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </a>
             </div>
             <!-- End Card -->
+
+            <!-- Card right bottom -->
+            <div class="md:order-3 p-6 relative flex flex-col justify-start items-start {{--}}md:min-h-[230px]{{--}} md:min-h-fit
+                text-center rounded-xl before:absolute border border-gray-200 dark:border-gray-800
+                before:rounded-xl before:transition">
+
+                <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
+                    Stockholms University
+                </h3>
+                <p class="text-left text-gray-500">
+                    Links to Stockholm University
+                </p>
+                <a href="https://www.su.se/english/news" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                    SU News
+                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </a>
+                <a href="https://www.su.se/english/about-the-university/contact/press-and-media/newsletter-1.534043" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                    SU Newsletter
+                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </a>
+                <a href="https://www.su.se/english/calendar" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                    SU Calender
+                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </a>
+                <a href="https://www.su.se/staff/" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                    SU Staff pages
+                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </a>
+                <a href="https://www.su.se/stockholm-university-library/" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                    SU Library
+                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </a>
+            </div>
+            <!-- End Card bottom-->
+
         </div>
         <!-- End Col -->
     </div>
