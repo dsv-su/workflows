@@ -46,7 +46,7 @@
                         <div class="relative overflow-hidden bg-white shadow-xl lg:bg-transparent" role="menu" aria-orientation="vertical" aria-labelledby="main-menu">
                             <div class="bg-white border-y">
                                 <div class="grid px-4 py-6 mx-auto sm:grid-cols-2 2xl:max-w-7xl gap-y-6 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-3 lg:px-8 lg:py-12 xl:py-16">
-                                    @foreach(collect($entry['children'])->chunk(3) as $chunk)
+                                    @foreach(collect($entry['children'])->chunk(4) as $chunk)
                                         <div class="grid grid-cols-1 gap-3 p-2 lg:p-0">
                                             @foreach($chunk as $child)
                                                 <a href="{{$child['url']}}" class="flex flex-col justify-between p-3 -m-3 transition duration-500 ease-in-out transform bg-transparent hover:bg-blue-100">
