@@ -202,7 +202,7 @@
                         </p>
                     </div>
                 </div>
-                {{--}}
+
                 <div class="absolute top-0 end-0 -z-[1] w-70 h-auto">
                     <svg width="384" height="268" viewBox="0 0 384 268" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_f_6966_190390)">
@@ -217,7 +217,7 @@
                         </defs>
                     </svg>
                 </div>
-                {{--}}
+
             </div>
             <!-- End Card -->
 

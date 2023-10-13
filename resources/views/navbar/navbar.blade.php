@@ -49,12 +49,14 @@
                                     @foreach(collect($entry['children'])->chunk(3) as $chunk)
                                         <div class="grid grid-cols-1 gap-3 p-2 lg:p-0">
                                             @foreach($chunk as $child)
-                                                <a href="{{$child['url']}}" class="flex flex-col justify-between p-6 -m-3 transition duration-500 ease-in-out transform bg-transparent hover:bg-gray-50">
+                                                <a href="{{$child['url']}}" class="flex flex-col justify-between p-3 -m-3 transition duration-500 ease-in-out transform bg-transparent hover:bg-blue-100">
                                                     <div class="relative">
                                                         <div>
+                                                            {{--}}
                                                             <div class="absolute flex items-center justify-center w-12 h-12 text-blue-500 rounded-xl bg-gray-50">
                                                                 {!! $child['icon_field'] !!}
                                                             </div>
+                                                            {{--}}
                                                             <p class="mt-4 ml-16 text-base font-medium text-black">
                                                                 {!! $child['title'] !!}
                                                             </p>
