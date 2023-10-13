@@ -44,9 +44,9 @@
                     </div>
                     <div x-on:click="openMobileMenu = false" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-95" :class="{'translate-y-0 shadow-md duration-150': openMobileMenu, '-translate-y-full': ! openMobileMenu}" class="fixed inset-0 top-0 z-40 h-screen overflow-y-auto transition origin-top transform -translate-y-full">
                         <div class="relative overflow-hidden bg-white shadow-xl lg:bg-transparent" role="menu" aria-orientation="vertical" aria-labelledby="main-menu">
-                            <div class="bg-white border-y">
+                            <div class="bg-white dark:bg-gray-900 border-y">
                                 <div class="grid px-4 py-6 mx-auto sm:grid-cols-2 2xl:max-w-7xl gap-y-6 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-3 lg:px-8 lg:py-12 xl:py-16">
-                                    @foreach(collect($entry['children'])->chunk(4) as $chunk)
+                                    @foreach(collect($entry['children'])->chunk(5) as $chunk)
                                         <div class="grid grid-cols-1 gap-3 p-2 lg:p-0">
                                             @foreach($chunk as $child)
                                                 <a href="{{$child['url']}}" class="flex flex-col justify-between p-3 -m-3 transition duration-500 ease-in-out transform bg-transparent hover:bg-blue-100">
@@ -57,11 +57,15 @@
                                                                 {!! $child['icon_field'] !!}
                                                             </div>
                                                             {{--}}
-                                                            <p class="mt-4 ml-16 text-base font-medium text-black">
+                                                            <p class="mt-4 ml-16 text-base font-medium text-blue-700">
                                                                 {!! $child['title'] !!}
+                                                                <svg class="w-2.5 h-2.5 inline-flex" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                    <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                                                </svg>
                                                             </p>
+
                                                         </div>
-                                                        <div class="mt-2 ml-16 text-sm text-gray-500">
+                                                        <div class="mt-2 ml-16 text-sm text-gray-500 dark:text-white">
                                                             {!! $child['text_field'] !!}
                                                         </div>
                                                     </div>
