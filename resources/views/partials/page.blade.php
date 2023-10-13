@@ -32,13 +32,12 @@
                                         @endforeach
                                     </ul>
                                 @elseif($content->type == "images")
-                                    <ul class="space-y-3 text-xs">
-                                        @foreach($content->image as $image)
-                                            <li class="flex space-x-3">
-                                                <img class="rounded-t-lg" src="{{$image->url}}" alt="" />
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                                    @foreach($content->image as $image)
+                                        <div class="border border-blue-600">
+                                            <img class="rounded-t-lg" src="{{$image->url}}" alt="" />
+                                        </div>
+                                    @endforeach
+
                                 @endif
                             @endforeach
 
