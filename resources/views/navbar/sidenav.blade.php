@@ -13,7 +13,7 @@
                                             <div class="flex flex-col flex-grow px-3 mt-3">
                                                 <nav class="flex-1 space-y-1 bg-white dark:bg-gray-800 dark:text-white">
                                                     <ul>
-                                                        @foreach (\Statamic\Statamic::tag('nav:collection:pages')->sort('order')->fetch() as $entry)
+                                                        @foreach (\Statamic\Statamic::tag('nav:main')->sort('order')->fetch() as $entry)
                                                             @if($entry['children'])
                                                                 @foreach(collect($entry['children']) as $child)
                                                                     @if($child['is_current'])
