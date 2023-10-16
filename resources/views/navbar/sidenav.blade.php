@@ -1,5 +1,6 @@
 <div class="flex h-screen overflow-hidden bg-white dark:bg-gray-800 dark:text-white">
-    @foreach (\Statamic\Statamic::tag('nav:collection:pages')->sort('order')->fetch() as $entry)
+    <!-- nav:collection:pages -->
+    @foreach (\Statamic\Statamic::tag('nav:main')->sort('order')->fetch() as $entry)
         @if($entry['children'])
             @foreach(collect($entry['children']) as $child)
                 @if($child['is_current'])

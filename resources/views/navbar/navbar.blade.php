@@ -15,7 +15,8 @@
             </button>
         </div>
         <nav :class="{'flex': open, 'hidden': !open}" class="flex-col items-center flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row">
-        @foreach (\Statamic\Statamic::tag('nav:collection:pages')->sort('order')->fetch() as $entry)
+        <!-- nav:collection:pages -->
+        @foreach (\Statamic\Statamic::tag('nav:main')->sort('order')->fetch() as $entry)
             @if(!$entry['children'])
                     <a class="px-2 py-2 text-normal text-gray-900 lg:px-6 md:px-3 hover:text-blue-600 dark:text-white @if ($entry['is_parent'] || $entry['is_current']) font-semibold text-blue-500  @endif"
                        href="{{ $entry['url']->value() }}">

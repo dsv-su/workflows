@@ -10,13 +10,16 @@
                             <h2 class="mb-4 text-2xl tracking-tight font-bold text-gray-900 dark:text-white">
                                 {!! $page->title !!}
                             </h2>
-                            <h4 class="max-w-xl mt-4 text-base tracking-tight text-gray-600">
+                            <h4 class="max-w-xl mt-4 text-base tracking-tight text-gray-600 dark:text-white">
                                 {!! $page->text_field ?? ''!!}
                             </h4>
                             @foreach($page->content as $content)
                                 <!-- Content text -->
                                 @if($content->type == "text")
-                                    {!! $content->text !!}
+                                    <div class="dark:text-white">
+                                        {!! $content->text !!}
+                                    </div>
+
                                 <!-- Content file assets -->
                                 @elseif($content->type == "fileassets")
                                     <ul class="space-y-3 text-xs">
