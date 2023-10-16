@@ -11,7 +11,7 @@
                                 {!! $page->title !!}
                             </h2>
                             <h4 class="max-w-xl mt-4 text-base tracking-tight text-gray-600 dark:text-white">
-                                {!! $page->text_field ?? ''!!}
+                                {!! $page->intro ?? ''!!}
                             </h4>
                             @foreach($page->content as $content)
                                 <!-- Content text -->

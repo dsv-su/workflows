@@ -67,7 +67,7 @@
 
                                                         </div>
                                                         <div class="mt-2 ml-16 text-sm text-gray-500 dark:text-white">
-                                                            {!! $child['text_field'] !!}
+                                                            {!! $child['intro'] !!}
                                                         </div>
                                                     </div>
                                                 </a>
