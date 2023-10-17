@@ -47,7 +47,7 @@
                         <!--Page author-->
                             <div class="text-gray-600 text-sm bg-white p-3 rounded-md leading-none dark:bg-gray-800 dark:text-white">
                                 <hr>
-                                <p><i>{{__("Page editor:")}} {!! $page->author->name !!}</i></p>
+                                <p><i>{{__("Responsible for the page:")}} {!! $page->author->name !!}</i></p>
                                 <p><i>{{__("Last edited:")}} {!! $page->last_modified !!}</i></p>
                             </div>
                         </article>
