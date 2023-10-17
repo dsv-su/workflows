@@ -109,7 +109,7 @@
                             </h3>
                             @foreach (\Statamic\Statamic::tag('collection:news')->fetch() as $entry)
                                 <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
-                                    {{ $entry['date'] }}
+                                    {{ $entry['date'] }} | {{ $entry['author']->name ?? ''}}
                                 </div>
                                 <div class="inline-flex text-left items-center gap-x-1.5 text-blue-600 font-medium">
                                     {{ $entry['title'] }}
@@ -174,9 +174,10 @@
         <!-- End Col -->
 
         <div class="col-span-12 lg:col-span-4 md:order-3 md:grid-cols-2 lg:grid-cols-1 grid gap-2.5 xl:gap-4">
+
             <!-- Card right bottom-->
             <div class="md:order-2 relative overflow-hidden rounded-xl">
-                <div class="relative overflow-hidden p-6 flex flex-col justify-start items-start {{--}}md:min-h-[480px]{{--}}md:min-h-full text-center rounded-xl
+                <div class="relative overflow-hidden p-6 flex flex-col justify-start items-start {{--}}<!--md:min-h-[480px]-->{{--}}md:min-h-full text-center rounded-xl
                     border border-gray-200 dark:border-gray-800">
                     <div class="mt-0 text-left">
                         <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
@@ -202,7 +203,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="absolute top-0 end-0 -z-[1] w-70 h-auto">
                     <svg width="384" height="268" viewBox="0 0 384 268" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_f_6966_190390)">
@@ -217,9 +217,9 @@
                         </defs>
                     </svg>
                 </div>
-
             </div>
             <!-- End Card -->
+
 
             <!-- Card right top -->
             <div class="md:order-1 p-6 relative flex flex-col justify-start items-start {{--}}md:min-h-[230px]{{--}} md:min-h-fit
@@ -252,9 +252,9 @@
                 </a>
             </div>
             <!-- End Card -->
-
+            {{--}}
             <!-- Card right bottom -->
-            <div class="md:order-3 p-6 relative flex flex-col justify-start items-start {{--}}md:min-h-[230px]{{--}} md:min-h-fit
+            <div class="md:order-3 p-6 relative flex flex-col justify-start items-start md:min-h-fit
                 text-center rounded-xl before:absolute border border-gray-200 dark:border-gray-800
                 before:rounded-xl before:transition">
 
@@ -296,6 +296,55 @@
                 </a>
             </div>
             <!-- End Card bottom-->
+            {{--}}
+            <!-- DSVSystem -->
+            <a href="https://daisy.dsv.su.se" class="md:order-3 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+                text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl
+                before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
+
+                <span class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-2xl font-bold">
+                       Daisy
+                </span>
+            </a>
+            <a href="https://forum.dsv.su.se" class="md:order-4 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+                text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
+
+                <span class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-2xl font-bold">
+                       Forum
+                </span>
+            </a>
+            <a href="https://handledning.dsv.su.se" class="md:order-5 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+                text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500ß">
+
+                <span class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-2xl font-bold">
+                       Handledning
+                </span>
+            </a>
+            <a href="https://ilearn.dsv.su.se" class="md:order-6 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+                text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl
+                before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
+
+                <span class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-2xl font-bold">
+                       ilearn
+                </span>
+            </a>
+            <a href="https://otrs.dsv.su.se" class="md:order-7 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+                text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl
+                before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
+
+                <span class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-2xl font-bold">
+                       OTRS
+                </span>
+            </a>
+            <a href="https://play.dsv.su.se" class="md:order-7 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+                text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl
+                before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
+
+                <span class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-2xl font-bold">
+                       Play
+                </span>
+            </a>
+            <!-- end dsvsystem -->
 
         </div>
         <!-- End Col -->
