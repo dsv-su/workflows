@@ -109,7 +109,7 @@
                             </h3>
                             @foreach (\Statamic\Statamic::tag('collection:news')->fetch() as $entry)
                                 <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
-                                    {{ $entry['date'] }} | {{ $entry['author']->name ?? ''}}
+                                    {{ $entry['date'] }}  {{-- $entry['author']->name ?? '' --}}
                                 </div>
                                 <div class="inline-flex text-left items-center gap-x-1.5 text-blue-600 font-medium">
                                     {{ $entry['title'] }}
@@ -222,7 +222,7 @@
 
 
             <!-- Card right top -->
-            <div class="md:order-1 p-6 relative flex flex-col justify-start items-start {{--}}md:min-h-[230px]{{--}} md:min-h-fit
+            <div class="md:order-1 p-6 relative flex flex-col justify-start items-start md:min-h-[230px]{{--}} md:min-h-fit{{--}}
                 text-center rounded-xl before:absolute border border-gray-200 dark:border-gray-800
                 before:rounded-xl before:transition">
 
