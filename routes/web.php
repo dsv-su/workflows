@@ -27,5 +27,8 @@ Route::get($login, [SystemController::class, 'login'])->name('login');
 //Language
 Route::get('lang/{lang}', [LocalizationController::class, 'index'])->name('language');
 Route::statamic('search', 'search')->name('search');
+
+//Workflow
+
 Route::get('/test', [TestController::class, 'test'])->name('test');
 

@@ -223,8 +223,8 @@
 
             <!-- Card right top -->
             <div class="md:order-1 p-6 relative flex flex-col justify-start items-start md:min-h-[230px]{{--}} md:min-h-fit{{--}}
-                text-center rounded-xl before:absolute border border-gray-200 dark:border-gray-800
-                before:rounded-xl before:transition">
+                text-center rounded-xl {{--}}before:absolute{{--}} border border-gray-200 dark:border-gray-800
+                {{--}}before:rounded-xl before:transition{{--}}">
 
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                     Ongoing at DSV
@@ -252,11 +252,11 @@
                 </a>
             </div>
             <!-- End Card -->
-            {{--}}
+
             <!-- Card right bottom -->
             <div class="md:order-3 p-6 relative flex flex-col justify-start items-start md:min-h-fit
-                text-center rounded-xl before:absolute border border-gray-200 dark:border-gray-800
-                before:rounded-xl before:transition">
+                text-center rounded-xl {{--}}before:absolute{{--}} border border-gray-200 dark:border-gray-800
+                {{--}}before:rounded-xl before:transition{{--}}">
 
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                     Stockholms University
@@ -296,9 +296,9 @@
                 </a>
             </div>
             <!-- End Card bottom-->
-            {{--}}
+
             <!-- DSVSystem -->
-            <a href="https://daisy.dsv.su.se" class="md:order-3 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+            <a href="https://daisy.dsv.su.se" class="sm:hidden md:order-4 p-4 relative flex flex-col justify-center items-center md:min-h-fit
                 text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl
                 before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
 
@@ -306,21 +306,21 @@
                        Daisy
                 </span>
             </a>
-            <a href="https://forum.dsv.su.se" class="md:order-4 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+            <a href="https://forum.dsv.su.se" class="sm:hidden md:order-5 p-4 relative flex flex-col justify-center items-center md:min-h-fit
                 text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
 
                 <span class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-2xl font-bold">
                        Forum
                 </span>
             </a>
-            <a href="https://handledning.dsv.su.se" class="md:order-5 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+            <a href="https://handledning.dsv.su.se" class="sm:hidden md:order-6 p-4 relative flex flex-col justify-center items-center md:min-h-fit
                 text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500ß">
 
                 <span class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-2xl font-bold">
                        Handledning
                 </span>
             </a>
-            <a href="https://ilearn.dsv.su.se" class="md:order-6 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+            <a href="https://ilearn.dsv.su.se" class="sm:hidden md:order-7 p-4 relative flex flex-col justify-center items-center md:min-h-fit
                 text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl
                 before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
 
@@ -328,7 +328,7 @@
                        ilearn
                 </span>
             </a>
-            <a href="https://otrs.dsv.su.se" class="md:order-7 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+            <a href="https://otrs.dsv.su.se" class="sm:hidden md:order-8 p-4 relative flex flex-col justify-center items-center md:min-h-fit
                 text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl
                 before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
 
@@ -336,7 +336,7 @@
                        OTRS
                 </span>
             </a>
-            <a href="https://play.dsv.su.se" class="md:order-8 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+            <a href="https://play.dsv.su.se" class="sm:hidden md:order-9 p-4 relative flex flex-col justify-center items-center md:min-h-fit
                 text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl
                 before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
 
@@ -344,7 +344,7 @@
                        Play
                 </span>
             </a>
-            <a href="https://projectproposals.dsv.su.se" class="md:order-8 p-4 relative flex flex-col justify-center items-center md:min-h-fit
+            <a href="https://projectproposals.dsv.su.se" class="sm:hidden md:order-10 p-4 relative flex flex-col justify-center items-center md:min-h-fit
                 text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl
                 before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
 
