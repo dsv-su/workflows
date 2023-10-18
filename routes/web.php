@@ -30,5 +30,5 @@ Route::statamic('search', 'search')->name('search');
 
 //Workflow
 
-Route::get('/test', [TestController::class, 'test'])->name('test');
+Route::get('/test', [TestController::class, 'test'])->name('workflow-dashboard');
 

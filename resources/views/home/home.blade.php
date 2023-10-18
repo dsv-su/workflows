@@ -1,9 +1,9 @@
-<div class="max-w-[85rem] mx-auto px-4 py-6 sm:px-6 lg:px-8 md:pt-8 md:pb-24">
+<div class="max-w-[85rem] mx-auto px-4 py-6 sm:px-6 lg:px-8 md:pt-8 md:pb-8">
     <!-- Grid -->
     <div class="grid grid-cols-12 gap-2.5 xl:gap-4">
         <div class="col-span-12 md:col-span-6 md:order-2 lg:col-span-4 grid gap-2.5 xl:gap-4">
             <!-- Card middle-->
-            <div class="md:order-1 relative before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">
+            <div class="md:order-1 relative border border-gray-200 dark:border-gray-800 rounded-xl">
                 <div class="relative overflow-hidden w-full h-full rounded-xl">
                     <div class="p-6 flex flex-col justify-center items-center md:min-h-[480px] text-center rounded-xl dark:border-gray-700">
                         <p class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-xs font-semibold uppercase">
@@ -23,12 +23,6 @@
 
                     <div class="absolute top-0 inset-x-0 -z-[1] w-full h-full">
                         <svg class="w-full h-full" width="411" height="476" viewBox="0 0 411 476" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            {{--}}
-                            <circle opacity="0.4" cx="401.833" cy="560.5" r="317" stroke="#DDD6FE" stroke-dasharray="3 0"></circle>
-                            <circle opacity="0.6" cx="401.833" cy="560.5" r="245" stroke="#DDD6FE" stroke-dasharray="3 0"></circle>
-                            <circle opacity="0.8" cx="401.833" cy="560.5" r="168" stroke="#DDD6FE" stroke-dasharray="3 0"></circle>
-                            <circle cx="401.833" cy="560.5" r="99" stroke="#DDD6FE" stroke-dasharray="3 0"></circle>
-                            {{--}}
                             <g filter="url(#filter0_f_6966_190348)">
                                 <rect x="281.333" y="498" width="240.294" height="124.936" fill="#DAEAFF" fill-opacity="0.9"></rect>
                             </g>
@@ -68,32 +62,12 @@
                 </div>
             </div>
             <!-- End Card -->
-
-            <!-- Card -->
-            {{--}}
-            <a class="md:order-2 relative p-6 flex flex-col justify-center items-center md:min-h-[230px] text-center rounded-xl before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg dark:before:border-gray-800 dark:before:hover:border-blue-500">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-                    Internal documents
-                </h3>
-                <p class="mt-2 text-gray-500">
-                    For download
-                </p>
-                <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    Read more
-                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                    </svg>
-                </p>
-            </a>
-            {{--}}
-            <!-- End Card -->
         </div>
         <!-- End Col -->
 
-        <div class="col-span-12 md:col-span-6 lg:col-span-4 md:order-1 grid gap-2.5 xl:gap-4">
+        <div class="col-span-12 md:col-span-6 md:order-1 lg:col-span-4 grid gap-2.5 xl:gap-4">
             <!-- Card left bottom-->
-            <!--<div class="md:order-2 text-left relative before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:rounded-xl before:transition {{--}}before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg{{--}} after:absolute after:inset-x-0.5 after:bottom-0.5 after:z-10 after:w-[calc(100%-4px)] after:h-24 after:rounded-b-xl after:bg-gradient-to-t after:from-white after:via-white/[.9] after:to-white/[.4] dark:after:from-slate-900 dark:after:via-slate-900/[.9] dark:after:to-slate-900/[.4] dark:before:border-gray-800 {{--}}dark:before:hover:border-blue-500{{--}}">-->
-            <div class="md:order-2 text-left relative before:absolute before:inset-0 before:border before:border-gray-200 before:rounded-xl before:transition after:absolute after:inset-x-0.5 after:bottom-0.5 after:z-10 after:w-[calc(100%-4px)] after:h-24 after:rounded-b-xl after:bg-gradient-to-t after:from-white after:via-white/[.9] after:to-white/[.4] dark:after:from-slate-900 dark:after:via-slate-900/[.9] dark:after:to-slate-900/[.4] dark:before:border-gray-800">
+            <div class="md:order-2 text-left relative border border-gray-200 dark:border-gray-800 rounded-xl md:min-h-[230px]">
                 <div class="relative overflow-hidden w-full h-full rounded-xl">
                     <div class="p-6 flex flex-col md:min-h-[480px] rounded-xl dark:border-gray-700">
                         <div>
@@ -107,7 +81,7 @@
                             <h3 class="text-left text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                                 Internal information
                             </h3>
-                            @foreach (\Statamic\Statamic::tag('collection:news')->fetch() as $entry)
+                            @foreach (\Statamic\Statamic::tag('collection:news')->limit(5)->fetch() as $entry)
                                 <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
                                     {{ $entry['date'] }}  {{-- $entry['author']->name ?? '' --}}
                                 </div>
@@ -140,36 +114,40 @@
             <!-- End Card -->
 
             <!-- Card left top -->
-            <div class="md:order-1 relative p-6 flex flex-col justify-center items-start md:min-h-[230px] text-center rounded-xl
+            <div class="hidden md:block md:order-1 relative p-6 flex flex-col justify-center items-start {{--}}md:min-h-[230px]{{--}}md:h-fit text-center rounded-xl
                 border border-gray-200 dark:border-gray-800">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-                    DSV Helpdesk
-                </h3>
-                <p class="mt-2 text-gray-500">
-                    Phone: 08-16 1648
-                </p>
-                <p class="mt-2 text-gray-500">
-                    Email: helpdesk@dsv.su.se
-                </p>
-                <p class="mt-2 text-gray-500">
-                    SU, tel 08-16 1999
-                </p>
+                <div class="mt-0 text-left">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
+                        DSV Helpdesk
+                    </h3>
+                    <p class="mt-2 text-gray-500">
+                        Phone: 08-16 1648
+                    </p>
+                    <p class="mt-2 text-gray-500">
+                        Email: helpdesk@dsv.su.se
+                    </p>
+                    <p class="mt-2 text-gray-500">
+                        SU, tel 08-16 1999
+                    </p>
 
-                <a href="mailto:helpdesk@dsv.su.se" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    Contact DSV Helpdesk
-                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                    </svg>
-                </a>
+                    <a href="mailto:helpdesk@dsv.su.se" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                        Contact DSV Helpdesk
+                        <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                    </a>
+                    <br>
+                    <a href="https://serviceportalen.su.se" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
+                        Serviceportalen
+                        <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                    </a>
+                </div>
 
-                <a href="https://serviceportalen.su.se" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    Serviceportalen
-                    <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                    </svg>
-                </a>
             </div>
             <!-- End Card -->
+
         </div>
         <!-- End Col -->
 
@@ -177,7 +155,7 @@
 
             <!-- Card right bottom-->
             <div class="md:order-2 relative overflow-hidden rounded-xl">
-                <div class="relative overflow-hidden p-6 flex flex-col justify-start items-start {{--}}<!--md:min-h-[480px]-->{{--}}md:min-h-full text-center rounded-xl
+                <div class="relative overflow-hidden p-6 flex flex-col justify-start items-start {{--}}md:min-h-[480px]{{--}}md:h-fit text-center rounded-xl
                     border border-gray-200 dark:border-gray-800">
                     <div class="mt-0 text-left">
                         <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
@@ -222,18 +200,10 @@
 
 
             <!-- Card right top -->
-            <div class="md:order-1 p-6 relative flex flex-col justify-start items-start md:min-h-[230px]{{--}} md:min-h-fit{{--}}
-                text-center rounded-xl {{--}}before:absolute{{--}} border border-gray-200 dark:border-gray-800
-                {{--}}before:rounded-xl before:transition{{--}}">
-
+            <div class="md:order-1 p-6 relative flex flex-col justify-start items-start {{--}}md:min-h-[230px]{{--}}md:h-fit text-center rounded-xl border border-gray-200 dark:border-gray-800">
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                     Ongoing at DSV
                 </h3>
-                {{--}}
-                <p class="text-gray-500 pt-2 pb-2">
-                    News article
-                </p>
-                {{--}}
                 <p class="text-left text-gray-500">
                     Be up to date with the latest news and events from the department.
                 </p>
@@ -254,10 +224,7 @@
             <!-- End Card -->
 
             <!-- Card right bottom -->
-            <div class="md:order-3 p-6 relative flex flex-col justify-start items-start md:min-h-fit
-                text-center rounded-xl {{--}}before:absolute{{--}} border border-gray-200 dark:border-gray-800
-                {{--}}before:rounded-xl before:transition{{--}}">
-
+            <div class="md:order-3 p-6 relative flex flex-col justify-start items-start md:min-h-fit text-center rounded-xl border border-gray-200 dark:border-gray-800">
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
                     Stockholms University
                 </h3>
