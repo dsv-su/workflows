@@ -5,7 +5,7 @@
             <!-- mobile logo -->
             <img class="md:hidden block h-12 m-3" src="{{asset('images/su_logo_no_text.svg')}}"  alt="Stockholms universitet">
         </div>
-        <div class="items-center inline-flex justify-start col-span-3 sm:flex pl-5 bg-sudepartment">
+        <div class="items-center inline-flex justify-start col-span-3 sm:flex px-5 bg-sudepartment">
             <span class="self-center text-base font-normal font-sudepartment whitespace-pre-line text-white dark:text-white">{{__("Department of Computer and Systems Sciences")}}</span>
         </div>
     </div>
