@@ -12,12 +12,15 @@
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "jonassiewertsen/statamic-live-search": "^1.7",
+        "laravel-workflow/laravel-workflow": "^1.0",
         "laravel/framework": "^10.8",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
+        "maatwebsite/excel": "^3.1",
         "statamic/cms": "^4.0",
         "statamic/eloquent-driver": "^2.7",
-        "uabookstores/laravel-shibboleth": "dev-master"
+        "uabookstores/laravel-shibboleth": "dev-master",
+        "yohang/finite": "^1.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8.1",

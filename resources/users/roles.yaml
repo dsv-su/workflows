@@ -34,3 +34,15 @@ staff_administration:
     - 'edit news entries'
     - 'create news entries'
     - 'view main nav'
+workflow_admin:
+  title: workflow_admin
+  permissions:
+    - 'access cp'
+project_leader:
+  title: project_leader
+  permissions:
+    - 'access cp'
+unit_head:
+  title: unit_head
+  permissions:
+    - 'access cp'

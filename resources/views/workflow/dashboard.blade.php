@@ -18,7 +18,9 @@
                 <p class="mt-2 text-gray-500">
                     Is under construction. Scheduled for launch early 2024
                 </p>
-
+                <p class="mt-2 text-gray-500">
+                   {{$wf}}
+                </p>
             </div>
 
             <div class="absolute top-0 inset-x-0 -z-[1] w-full h-full">
