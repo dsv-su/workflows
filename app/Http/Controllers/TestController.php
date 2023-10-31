@@ -17,5 +17,10 @@ use Workflow\WorkflowStub;
 
 class TestController extends Controller
 {
-    
+    public function test()
+   {
+
+   }
+
+   
 }

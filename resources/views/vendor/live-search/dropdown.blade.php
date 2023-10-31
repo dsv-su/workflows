@@ -6,7 +6,8 @@
              </svg>
         </span>
     </div>
-    <input wire:model="q" id="search" name="search" class="w-full py-2 pl-10 pr-4 text-black bg-white border border-gray-200 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-500
+    <input wire:model="q" id="search" name="search"
+           class="w-full py-2 pl-10 pr-4 text-black bg-white border border-gray-200 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-500
                     sm:text-sm rounded-xl placeholder:text-gray-400 focus:border-blue-500 dark:bg-gray-900 dark:text-white" placeholder="Search" type="search">
 
     @if ($q)

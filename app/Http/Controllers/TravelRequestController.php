@@ -47,13 +47,13 @@ class TravelRequestController extends Controller
     public function submit(Request $request)
     {
         if ($request->isMethod('post')) {
-            //dd($request->all());
             //Second validation
             $this->validate($request, [
                 'purpose' => 'required',
                 'project' => 'required',
                 'country' => 'required',
-                //'countryname' => 'required',
+                'project_leader' => 'required',
+                'unit_head' => 'required',
             ]);
 
             //Create a new Travelreqeust
@@ -61,10 +61,6 @@ class TravelRequestController extends Controller
                 'name' => $request->name,
                 'created' => Carbon::createFromFormat('d/m/Y', now()->format('d/m/Y'))->timestamp,
                 'state' => 'submitted',
-                'user_id' => auth()->user()->id,
-                'manager_id' => $request->project_leader,
-                'fo_id' => 1, //Testmode - to be changed
-                'head_id' => 1, //Testmode - to be changed
                 'purpose' => $request->purpose,
                 'project' => $request->project,
                 'country' => $request->country,
@@ -73,41 +69,36 @@ class TravelRequestController extends Controller
                 'other' => $request->reason,
                 'departure' => Carbon::createFromFormat('d/m/Y', $request->start)->timestamp,
                 'return' => Carbon::createFromFormat('d/m/Y', $request->end)->timestamp,
-                //'days' => $request->days,
-                //'flight' => $request->flight,
-                //'hotel' => $request->hotel,
-                //'daily' => $request->daily,
-                //'conference' => $request->conference,
-                //'other_costs' => $request->other_costs,
-                //'total' => $request->total
-                'days' => 1,
-                'flight' => 1,
-                'hotel' => 1,
-                'daily' => 1,
-                'conference' => 1,
-                'other_costs' => 1,
-                'total' => 1
+                'days' => $request->days,
+                'flight' => $request->flight,
+                'hotel' => $request->hotel,
+                'daily' => $request->daily,
+                'conference' => $request->conference,
+                'other_costs' => $request->other,
+                'total' => $request->total,
+
             ]);
 
-            //Create a new Travelreqeust
+            //Create a new Dashboard post
             $dashboard = Dashboard::create([
                 'request_id' => $travelrequest->id,
                 'name' => $request->name,
                 'created' => Carbon::createFromFormat('d/m/Y', now()->format('d/m/Y'))->timestamp,
                 'state' => 'submitted',
                 'status' => 'unread',
+                'type' => 'Travelrequest',
                 'user_id' => auth()->user()->id,
                 'manager_id' => $request->project_leader,
                 'fo_id' => 1, //Testmode - to be changed
-                'head_id' => 1 //Testmode - to be changed
+                'head_id' => $request->unit_head
             ]);
 
             // Create workflow
-            /*$workflow = WorkflowStub::make(TravelRequestWorkflow::class);
+            $workflow = WorkflowStub::make(TravelRequestWorkflow::class);
+            // start workflow [DashboardId]
+            $workflow->start($dashboard->id);
 
-            // start workflow
-            $workflow->start($travelrequest->id);
-            $workflow->submit();*/
+            $workflow->submit();
 
 
             return redirect()->route('statamic.site');

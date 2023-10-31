@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('state');
             $table->integer('created');
             $table->string('status');
+            $table->string('type');
             $table->foreignId('user_id')->constrained();
             $table->unsignedBigInteger('manager_id');
             $table->foreign('manager_id')->references('id')->on('users');

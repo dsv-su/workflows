@@ -2,7 +2,11 @@
 
 namespace App\Workflows;
 
-use App\Models\TravelRequest;
+use App\Workflows\FO\FORequestNotification;
+use App\Workflows\Manager\ManagerChangeStateApproved;
+use App\Workflows\Manager\ManagerChangeStateDenied;
+use App\Workflows\Manager\ManagerChangeStateReturn;
+use App\Workflows\Manager\ManagerRequestNotification;
 use Finite\State\State;
 use Finite\State\StateInterface;
 use Finite\StatefulInterface;
@@ -202,7 +206,7 @@ class TravelRequestWorkflow extends Workflow implements StatefulInterface
         yield WorkflowStub::await(fn () => $this->isSubmitted());
 
         //Fire email to manager
-        $result = yield ActivityStub::make(ManagerRequestNotification::class);
+        $result = yield ActivityStub::make(ManagerRequestNotification::class, $travelRequest);
 
         //Wait for manager to process request
         yield WorkflowStub::await(fn () => $this->ManagerApproved() || $this->ManagerDenied() || $this->ManagerReturned());
@@ -211,16 +215,19 @@ class TravelRequestWorkflow extends Workflow implements StatefulInterface
         switch ($this->stateMachine->getCurrentState()->getName()) {
             case('manager_approved'):
                 //Request has been approved ny manager
+                yield ActivityStub::make(ManagerChangeStateApproved::class, $travelRequest);
                 //Fire email to FO
-                $result = yield ActivityStub::make(FORequestNotification::class);
+                yield ActivityStub::make(FORequestNotification::class, $travelRequest);
                 break;
             case('manager_returned'):
                 //Request had been returned by manager
+                yield ActivityStub::make(ManagerChangeStateReturn::class, $travelRequest);
                 //Notify requester
-                return 'MReturned: '. $this->stateMachine->getCurrentState()->getName();
+                yield ActivityStub::make(ReturnedRequestNotification::class, $travelRequest);
                 break;
             case('manager_denied'):
                 //Request has been denied by manager
+                yield ActivityStub::make(ManagerChangeStateDenied::class, $travelRequest);
                 //Notify requester
                 return 'MD:' . $this->stateMachine->getCurrentState()->getName();
                 break;

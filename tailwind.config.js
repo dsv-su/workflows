@@ -17,6 +17,7 @@ module.exports = {
       './resources/**/*.vue',
       './resources/**/*.twig',
       './node_modules/flowbite/**/*.js',
+      './vendor/haringsrob/livewire-datepicker/resources/**/*.blade.php',
   ],
     theme: {
         extend: {

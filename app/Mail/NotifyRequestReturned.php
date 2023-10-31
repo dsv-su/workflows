@@ -7,25 +7,24 @@ use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NotifyRequestFO extends Mailable
+class NotifyRequestReturned extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $user, $manager, $dashboard;
+    public $user, $return, $dashboard;
 
-    public function __construct(User $user, User $manager, Dashboard $dashboard)
+    public function __construct(User $user, User $return, Dashboard $dashboard)
     {
         $this->user = $user;
         $this->dashboard = $dashboard;
-        $this->manager = $manager;
+        $this->return = $return;
     }
 
     /**
@@ -34,8 +33,7 @@ class NotifyRequestFO extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('noreply@dsv.su.se', 'Intranet'),
-            subject: '[DSV Intranet] New ' . $this->dashboard->type,
+            subject: '[DSV Intranet] Returned '. $this->dashboard->type,
         );
     }
 
@@ -45,7 +43,7 @@ class NotifyRequestFO extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.request.newtofo',
+            view: 'emails.request.returned',
         );
     }
 

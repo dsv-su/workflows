@@ -11,10 +11,6 @@ class TravelRequest extends Model
     protected $fillable = [
         'created',
         'state',
-        'user_id',
-        'manager_id',
-        'fo_id',
-        'head_id',
         'name',
         'purpose',
         'project',

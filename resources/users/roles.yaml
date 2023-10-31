@@ -46,3 +46,7 @@ unit_head:
   title: unit_head
   permissions:
     - 'access cp'
+financial_officer:
+  title: financial_officer
+  permissions:
+    - 'access cp'

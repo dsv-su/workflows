@@ -16,13 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->integer('created');
             $table->string('state');
-            $table->foreignId('user_id')->constrained();
-            $table->unsignedBigInteger('manager_id');
-            $table->foreign('manager_id')->references('id')->on('users');
-            $table->unsignedBigInteger('fo_id');
-            $table->foreign('fo_id')->references('id')->on('users');
-            $table->unsignedBigInteger('head_id');
-            $table->foreign('head_id')->references('id')->on('users');
             $table->string('purpose');
             $table->string('project');
             $table->string('country');
