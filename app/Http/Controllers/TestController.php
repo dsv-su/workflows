@@ -22,5 +22,46 @@ class TestController extends Controller
 
    }
 
+    public function approve($id)
+    {
+        $workflow = WorkflowStub::load($id);
+        $workflow->manager_approve();
+        return $workflow->output();
+    }
 
+    public function foapprove($id)
+    {
+        $workflow = WorkflowStub::load($id);
+        $workflow->head_approve();
+        return $workflow->output();
+    }
+
+    public function return($id)
+    {
+        $workflow = WorkflowStub::load($id);
+        $workflow->manager_return();
+        return $workflow->output();
+    }
+
+    public function deny($id)
+    {
+        $workflow = WorkflowStub::load($id);
+        $workflow->manager_deny();
+        return $workflow->output();
+    }
+
+    public function truncate_workflows()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('workflow_exceptions')->truncate();
+        DB::table('workflow_logs')->truncate();
+        DB::table('workflow_relationships')->truncate();
+        DB::table('workflow_signals')->truncate();
+        DB::table('workflow_timers')->truncate();
+        DB::table('workflows')->truncate();
+        DB::table('travel_requests')->truncate();
+        DB::table('dashboards')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        return ('Done');
+    }
 }

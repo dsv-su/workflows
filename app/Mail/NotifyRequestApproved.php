@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Dashboard;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,10 +19,12 @@ class NotifyRequestApproved extends Mailable
     /**
      * Create a new message instance.
      */
-    public $user;
-    public function __construct(User $user)
+    public $user, $dashboard;
+
+    public function __construct(User $user, Dashboard $dashboard)
     {
         $this->user = $user;
+        $this->dashboard = $dashboard;
     }
 
     /**
@@ -31,7 +34,7 @@ class NotifyRequestApproved extends Mailable
     {
         return new Envelope(
             from: new Address('noreply@dsv.su.se', 'Intranet'),
-            subject: '[DSV Intranet] Approved Request',
+            subject: '[DSV Intranet] Approved '. $this->dashboard->type,
         );
     }
 

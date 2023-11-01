@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Workflows\Manager;
+namespace App\Workflows\Transitions;
 
 use App\Models\Dashboard;
 use Workflow\Activity;
 
-class ManagerChangeStateReturn extends Activity
+class StateUpdateTransition extends Activity
 {
-    protected $dashboard;
+    protected $dashboard, $state;
 
-    public function execute($request)
+    public function execute($state, $request)
     {
         //Retrive request dashboard
         $id = $request[0];
         $this->dashboard = Dashboard::find($id);
         //Transition state
-        $this->dashboard->state = 'manager_returned';
+        $this->state = $state;
+        $this->dashboard->state = $state;
         $this->dashboard->save();
     }
 }

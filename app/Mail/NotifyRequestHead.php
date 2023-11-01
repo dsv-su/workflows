@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Dashboard;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,10 +19,13 @@ class NotifyRequestHead extends Mailable
     /**
      * Create a new message instance.
      */
-    public $user;
-    public function __construct(User $user)
+    public $user, $manager, $dashboard;
+
+    public function __construct(User $user, User $manager, Dashboard $dashboard)
     {
         $this->user = $user;
+        $this->dashboard = $dashboard;
+        $this->manager = $manager;
     }
 
     /**
@@ -31,7 +35,7 @@ class NotifyRequestHead extends Mailable
     {
         return new Envelope(
             from: new Address('noreply@dsv.su.se', 'Intranet'),
-            subject: '[DSV Intranet] New Request',
+            subject: '[DSV Intranet] New ' . $this->dashboard->type,
         );
     }
 

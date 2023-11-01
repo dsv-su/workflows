@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NotifyRequestReturned extends Mailable
+class NotifyUserChangedState extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,7 +33,7 @@ class NotifyRequestReturned extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '[DSV Intranet] Returned '. $this->dashboard->type,
+            subject: '[DSV Intranet] '. $this->dashboard->type . ' Status update',
         );
     }
 
@@ -43,7 +43,7 @@ class NotifyRequestReturned extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.request.returned',
+            view: 'emails.request.state',
         );
     }
 

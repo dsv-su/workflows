@@ -30,6 +30,7 @@ Route::post('/travel', [\App\Http\Controllers\TravelRequestController::class, 's
 Route::get('/test', [TestController::class, 'test'])->name('workflow-dashboard');
 Route::get('/submit/{id}', [TestController::class, 'submit']);
 Route::get('/approve/{id}', [TestController::class, 'approve']);
+Route::get('/foapprove/{id}', [TestController::class, 'foapprove']);
 Route::get('/deny/{id}', [TestController::class, 'deny']);
 Route::get('/return/{id}', [TestController::class, 'return']);
 Route::get('/truncate', [TestController::class, 'truncate_workflows']);
