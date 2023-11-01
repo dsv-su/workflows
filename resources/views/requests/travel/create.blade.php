@@ -16,14 +16,26 @@
             <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
                 <!--Name-->
                 <div class="w-full">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("You may change this name") }}<span class="text-red-600"> *</span></label>
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("You may change this name") }}<span class="text-red-600"> *</span>
+                        <button id="name-button" data-modal-toggle="name-modal" class="inline" type="button">
+                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </button>
+                    </label>
                     <input type="text" name="name" id="project" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                            value="{{ old('name') ? old('name'): $name ??  'Travelrequest for '. auth()->user()->name  }}" placeholder="Name" required="">
                 </div>
 
                 <!-- Purpose-->
                 <div class="sm:col-span-2">
-                    <label for="purpose" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Purpose of the mission with the web address of the conference") }}</label>
+                    <label for="purpose" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Purpose of the mission with the web address of the conference") }}
+                        <button id="purpose-button" data-modal-toggle="purpose-modal" class="inline" type="button">
+                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </button>
+                    </label>
                     <textarea id="purpose" rows="4" name="purpose"
                               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write a product description here...">
                     {{ old('purpose') ? old('purpose'): $purpose ?? '' }}
@@ -39,7 +51,13 @@
 
                 <!-- Projectleader -->
                 <div>
-                    <label for="project_leader" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Project leader") }}<span class="text-red-600"> *</span></label>
+                    <label for="project_leader" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Project leader") }}<span class="text-red-600"> *</span>
+                        <button id="projectleader-button" data-modal-toggle="projectleader-modal" class="inline" type="button">
+                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </button>
+                    </label>
                     <select id="project_leader" name="project_leader"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         @foreach($projectleaders as $projectleader)
@@ -49,7 +67,13 @@
                 </div>
                 <!--Unithead-->
                 <div>
-                    <label for="unit_head" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Unit head") }}<span class="text-red-600"> *</span></label>
+                    <label for="unit_head" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Unit head") }}<span class="text-red-600"> *</span>
+                        <button id="unithead-button" data-modal-toggle="unithead-modal" class="inline" type="button">
+                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </button>
+                    </label>
                     <select id="unit_head" name="unit_head"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         @foreach($unitheads as $unithead)
@@ -59,7 +83,13 @@
                 </div>
                 <!--Paper accepted -->
                 <div>
-                    <label for="paper" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Paper accepted") }}</label>
+                    <label for="paper" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Paper accepted") }}
+                        <button id="paper-button" data-modal-toggle="paper-modal" class="inline" type="button">
+                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </button>
+                    </label>
                     <select id="paper" name="paper"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option selected="" value="0">No</option>
@@ -68,7 +98,13 @@
                 </div>
                 <!--Contribution -->
                 <div class="w-full">
-                    <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("I have requested contribution from") }}</label>
+                    <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("I have requested contribution from") }}
+                        <button id="contribution-button" data-modal-toggle="contribution-modal" class="inline" type="button">
+                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </button>
+                    </label>
                     <input type="text" id="contribution" name="contribution"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block
                                 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -77,7 +113,13 @@
                 </div>
                 <!--Other reason-->
                 <div class="sm:col-span-2">
-                    <label for="purpose" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Other reason. Justify") }}</label>
+                    <label for="purpose" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Other reason. Justify") }}
+                        <button id="other-button" data-modal-toggle="other-modal" class="inline" type="button">
+                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </button>
+                    </label>
                     <textarea id="reason" rows="2"  name="reason"
                               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -117,17 +159,50 @@
             </div>
             <div class="mt-6 flex items-center justify-end gap-x-6">
                 <a type="button" href="{{ url()->previous() }}" class="text-sm bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">{{__("Cancel")}}</a>
-                <button type="submit" class="text-sm bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">{{__("Send in request")}}</button>
+                <div class="py-3 px-6 border border-blue-500 rounded">
+                    <button type="submit" class="text-sm bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">{{__("Send in request")}}</button>
+                </div>
+
             </div>
         </form>
     </div>
 </section>
+
+<!-- Modals -->
+@include('requests.travel.modals.travel_help')
 <script>
     document.getElementById("startInput").addEventListener("changeDate", function (e){
         Livewire.emit('changeStartDate', e.detail.datepicker.inputField.value)
     });
     document.getElementById("endInput").addEventListener("changeDate", function (e){
         Livewire.emit('changeEndDate', e.detail.datepicker.inputField.value)
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.getElementById('name-button').click();
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.getElementById('purpose-button').click();
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.getElementById('project-button').click();
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.getElementById('country-button').click();
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.getElementById('projectleader-button').click();
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.getElementById('unithead-button').click();
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.getElementById('paper-button').click();
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.getElementById('contribution-button').click();
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.getElementById('other-button').click();
     });
 </script>
 @include('layouts.darktoggler')

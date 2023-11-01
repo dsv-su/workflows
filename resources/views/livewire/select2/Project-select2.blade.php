@@ -1,5 +1,11 @@
 <div>
-    <label for="project" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Project") }}<span class="text-red-600"> *</span></label>
+    <label for="project" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Project") }}<span class="text-red-600"> *</span>
+        <button id="project-button" data-modal-toggle="project-modal" class="inline" type="button">
+            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+            </svg>
+        </button>
+    </label>
     <div class="w-full" x-data="{open:false}" x-on:click.away="open=false">
         <button type="button" class="bg-gray-50 border border-gray-300 text-gray-900 p-2.5 rounded-lg shadow-inner w-full flex justify-between items-center text-sm focus:outline-none" x-on:click="open=!open">
             <span class="float-left">{{$Project->project ?? 'Select Project'}}</span>
