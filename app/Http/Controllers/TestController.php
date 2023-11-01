@@ -2,18 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dashboard;
-use App\Models\User;
 use App\Workflows\TravelRequest;
-use App\Workflows\TravelRequestWorkflow;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
-use Statamic\Facades\Role;
-use Statamic\Query\Scopes\Filters\UserRole;
-use Statamic\Statamic;
-use Workflow\Workflow;
-use Workflow\WorkflowStub;
 
 class TestController extends Controller
 {
@@ -22,33 +12,6 @@ class TestController extends Controller
 
    }
 
-    public function approve($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->manager_approve();
-        return $workflow->output();
-    }
-
-    public function foapprove($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->head_approve();
-        return $workflow->output();
-    }
-
-    public function return($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->manager_return();
-        return $workflow->output();
-    }
-
-    public function deny($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->manager_deny();
-        return $workflow->output();
-    }
 
     public function truncate_workflows()
     {

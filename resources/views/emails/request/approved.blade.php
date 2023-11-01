@@ -17,4 +17,10 @@ This is a notification to inform you that your request has been successfully app
 <br>
 <br>
 With your request approved, this request workflow is now closed. If you have any questions or require further assistance, please do not hesitate to reach out to helpdesk@dsv.su.se
+<br><br>
+@if($dashboard->type == 'Travelrequest')
+    Bon Voyage
+@endif
+
+
 

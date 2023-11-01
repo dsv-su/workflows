@@ -9,10 +9,16 @@ Your <strong>{{$dashboard->type}}</strong> has been
     @case('fo_returned')
         returned
         @break
+    @case('head_returned')
+        returned
+        @break
     @case('manager_denied')
         denied
         @break
     @case('fo_denied')
+        denied
+        @break
+    @case('head_denied')
         denied
         @break
 @endswitch
