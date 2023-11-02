@@ -32,6 +32,13 @@ class TestController extends Controller
     public function foapprove($id)
     {
         $workflow = WorkflowStub::load($id);
+        $workflow->fo_approve();
+        return $workflow->output();
+    }
+
+    public function headapprove($id)
+    {
+        $workflow = WorkflowStub::load($id);
         $workflow->head_approve();
         return $workflow->output();
     }
@@ -39,11 +46,39 @@ class TestController extends Controller
     public function return($id)
     {
         $workflow = WorkflowStub::load($id);
+        $workflow->manager_return();
+        return $workflow->output();
+    }
+
+    public function foreturn($id)
+    {
+        $workflow = WorkflowStub::load($id);
+        $workflow->fo_return();
+        return $workflow->output();
+    }
+
+    public function headreturn($id)
+    {
+        $workflow = WorkflowStub::load($id);
         $workflow->head_return();
         return $workflow->output();
     }
 
     public function deny($id)
+    {
+        $workflow = WorkflowStub::load($id);
+        $workflow->manager_deny();
+        return $workflow->output();
+    }
+
+    public function fodeny($id)
+    {
+        $workflow = WorkflowStub::load($id);
+        $workflow->fo_deny();
+        return $workflow->output();
+    }
+
+    public function headdeny($id)
     {
         $workflow = WorkflowStub::load($id);
         $workflow->head_deny();

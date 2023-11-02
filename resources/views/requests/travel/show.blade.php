@@ -11,7 +11,7 @@
         </div>
 
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">{{ __("Duty Travel Request") }}</h2>
-        <form method="post" action="{{route('travel-submit')}}">
+        <form method="post" action="#">
             @csrf
             <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
                 <!--Name-->
@@ -24,7 +24,7 @@
                         </button>
                     </label>
                     <input type="text" name="name" id="project" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                           value="{{ old('name') ? old('name'): $name ??  'Travelrequest for '. auth()->user()->name  }}" placeholder="Name" required="">
+                           value="{{ $tr->name  }}" placeholder="Name" readonly>
                 </div>
 
                 <!-- Purpose-->
@@ -39,50 +39,17 @@
                     <textarea id="purpose" rows="4" name="purpose"
                               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              placeholder="Purpose of the mission">
-                    {{ old('purpose') ? old('purpose'): $purpose ?? '' }}
+                              placeholder="Purpose of the mission" readonly>
+                    {{ $tr->purpose}}
                     </textarea>
 
                 </div>
                 <!-- Project -->
-                <livewire:select2.project-select2 />
+
 
                 <!--Country-->
-                <livewire:select2.country-select2 />
-                <!--end -->
 
-                <!-- Projectleader -->
-                <div>
-                    <label for="project_leader" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Project leader") }}<span class="text-red-600"> *</span>
-                        <button id="projectleader-button" data-modal-toggle="projectleader-modal" class="inline" type="button">
-                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                            </svg>
-                        </button>
-                    </label>
-                    <select id="project_leader" name="project_leader"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        @foreach($projectleaders as $projectleader)
-                            <option value="{{$projectleader->id}}">{{$projectleader->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <!--Unithead-->
-                <div>
-                    <label for="unit_head" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Unit head") }}<span class="text-red-600"> *</span>
-                        <button id="unithead-button" data-modal-toggle="unithead-modal" class="inline" type="button">
-                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                            </svg>
-                        </button>
-                    </label>
-                    <select id="unit_head" name="unit_head"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        @foreach($unitheads as $unithead)
-                            <option value="{{$unithead->id}}">{{$unithead->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
+
                 <!--Paper accepted -->
                 <div>
                     <label for="paper" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Paper accepted") }}
@@ -110,8 +77,8 @@
                     <input type="text" id="contribution" name="contribution"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block
                                 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                           value="{{ old('contribution') ? old('contribution'): $contribution ?? '' }}"
-                           placeholder="{{ __("Contribution") }}">
+                           value="{{ $tr->contribution}}"
+                           placeholder="{{ __("Contribution") }}" readonly>
                 </div>
                 <!--Other reason-->
                 <div class="sm:col-span-2">
@@ -126,10 +93,10 @@
                               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                               placeholder="Write a product description here...">
-                    {{ old('reason') ? old('reason'): $reason ?? '' }}
+                    {{ $tr->reason  }}
                     </textarea>
                 </div>
-
+                {{--}}
                 <!--Departure return-->
                 <div date-rangepicker datepicker-format="dd/mm/yyyy" class="sm:col-span-2 inline-flex items-center">
                     <span class="mx-4 text-gray-500">{{__("From")}}</span>
@@ -151,13 +118,13 @@
                         <input name="end" id="endInput" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
                     </div>
                 </div>
-
-
+                {{--}}
+                {{--}}
                 <!--Expenses-->
                 <label for="expenses" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Expenses") }}</label>
                 <livewire:travel-request-expenses />
                 <!--end -->
-
+                {{--}}
             </div>
             <div class="mt-6 flex items-center justify-end gap-x-6">
                 <a type="button" href="{{ url()->previous() }}" class="text-sm bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">{{__("Cancel")}}</a>

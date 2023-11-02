@@ -20,9 +20,15 @@ class TravelRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $tr = TravelRequest::find($id);
+        dd($tr);
+
+        return (new \Statamic\View\View)
+            ->template('requests.travel.show')
+            ->layout('mylayout')
+            ->with(['tr' => $tr]);
     }
 
     public function create()
@@ -97,7 +103,7 @@ class TravelRequestController extends Controller
             $workflow = WorkflowStub::make(TravelRequestWorkflow::class);
             // start workflow [DashboardId]
             $workflow->start($dashboard->id);
-
+            //Submit TR
             $workflow->submit();
 
 
