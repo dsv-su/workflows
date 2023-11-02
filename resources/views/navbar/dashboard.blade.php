@@ -1,68 +1,20 @@
 <div class="flex flex-wrap justify-between items-center">
     <div class="flex items-center">
         <!-- Notifications -->
-        @php
-            //Should be moved to composer method for this view
-
-                if($user = auth()->user()){
-                    //Logged in user
-                    $role = Illuminate\Support\Facades\DB::table('role_user')->where('user_id', $user->id)->pluck('role_id');
-                    if($role) {
-                        //User has role
-                        switch($role) {
-                        case($role->contains('project_leader')):
-                            $requests = App\Models\Dashboard::where('manager_id', $user->id)->where('state', 'submitted')->whereNot('user_id', $user->id)->orderBy('status', 'desc')->get();
-                            break;
-                        case($role->contains('financial_officer')):
-                            $requests = App\Models\Dashboard::where('fo_id', $user->id)->where('state', 'manager_approved')->whereNot('user_id', $user->id)->orderBy('status', 'desc')->get();
-                            break;
-
-                        case($role->contains('unit_head')):
-                            $requests = App\Models\Dashboard::where('head_id', $user->id)->where('state', 'fo_approved')->whereNot('user_id', $user->id)->orderBy('status', 'desc')->get();
-                            break;
-
-                        default:
-                            $requests = collect([]);
-                            $flag = collect([]);
-
-                        }
-                    } else {
-                        //User
-                        $requests = collect([]);
-                        $flag = collect([]);
-                    }
-
-                    $flag = collect($requests->toArray())->flatten();
-                    $returned = App\Models\Dashboard::where('user_id', $user->id)
-                                                    ->where('state', 'manager_returned')
-                                                    ->orWhere('state', 'fo_returned')
-                                                    ->orWhere('state', 'head_returned')
-                                                    ->orderBy('status', 'desc')->get();
-                    if($returned == null) {
-                        $returned = collect([]);
-                    }
-
-                    $user_requests = App\Models\Dashboard::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
-                    }  else {
-                        //User is not logged in
-                        $requests = collect([]);
-                        $user_requests = collect([]);
-                        $flag = collect([]);
-                    }
-        @endphp
-
-
         @if($flag->contains('unread') )
-        <span class="relative flex h-3 w-3 -mt-3 -mr-3">
+            <span class="hidden md:block relative flex h-3 w-3 -mt-3 -mr-3">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-        </span>
+            </span>
         @endif
-        <button data-tooltip-target="workflow-notification-tooltip" type="button" data-dropdown-toggle="notification-dropdown" class="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
+        <!-- Desktop -->
+        <button data-tooltip-target="workflow-notification-tooltip" type="button" data-dropdown-toggle="notification-dropdown"
+                class="hidden md:block p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
             <span class="sr-only">View notifications</span>
             <!-- Bell icon -->
             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 21">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C15 15.4 15 16 14.462 16H1.538C1 16 1 15.4 1 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 8 3.464ZM4.54 16a3.48 3.48 0 0 0 6.92 0H4.54Z"/>
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                      d="M8 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C15 15.4 15 16 14.462 16H1.538C1 16 1 15.4 1 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 8 3.464ZM4.54 16a3.48 3.48 0 0 0 6.92 0H4.54Z"/>
             </svg>
         </button>
 
@@ -240,7 +192,8 @@
             <!--end Archive -->
         </div>
         <!-- Requestforms -->
-        <button data-tooltip-target="workflow-requests-tooltip" type="button" data-dropdown-toggle="apps-dropdown" class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
+        <button data-tooltip-target="workflow-requests-tooltip" type="button" data-dropdown-toggle="apps-dropdown"
+                class="hidden md:block p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
             <span class="sr-only">View notifications</span>
             <!-- Icon -->
             <svg style="fill:gray" class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">

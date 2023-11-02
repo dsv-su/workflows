@@ -1,3 +1,52 @@
+@php
+    //Should be moved to composer method for this view
+
+        if($user = auth()->user()){
+            //Logged in user
+            $role = Illuminate\Support\Facades\DB::table('role_user')->where('user_id', $user->id)->pluck('role_id');
+            if($role) {
+                //User has role
+                switch($role) {
+                case($role->contains('project_leader')):
+                    $requests = App\Models\Dashboard::where('manager_id', $user->id)->where('state', 'submitted')->whereNot('user_id', $user->id)->orderBy('status', 'desc')->get();
+                    break;
+                case($role->contains('financial_officer')):
+                    $requests = App\Models\Dashboard::where('fo_id', $user->id)->where('state', 'manager_approved')->whereNot('user_id', $user->id)->orderBy('status', 'desc')->get();
+                    break;
+
+                case($role->contains('unit_head')):
+                    $requests = App\Models\Dashboard::where('head_id', $user->id)->where('state', 'fo_approved')->whereNot('user_id', $user->id)->orderBy('status', 'desc')->get();
+                    break;
+
+                default:
+                    $requests = collect([]);
+                    $flag = collect([]);
+
+                }
+            } else {
+                //User
+                $requests = collect([]);
+                $flag = collect([]);
+            }
+
+            $flag = collect($requests->toArray())->flatten();
+            $returned = App\Models\Dashboard::where('user_id', $user->id)
+                                            ->where('state', 'manager_returned')
+                                            ->orWhere('state', 'fo_returned')
+                                            ->orWhere('state', 'head_returned')
+                                            ->orderBy('status', 'desc')->get();
+            if($returned == null) {
+                $returned = collect([]);
+            }
+
+            $user_requests = App\Models\Dashboard::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+            }  else {
+                //User is not logged in
+                $requests = collect([]);
+                $user_requests = collect([]);
+                $flag = collect([]);
+            }
+@endphp
 
 <div class="w-full mx-auto bg-white border-b 2xl:max-w-7xl">
     <div x-data="{ open: false }" class="relative flex flex-col w-full p-5 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 dark:border-gray-600 dark:bg-gray-900">
@@ -14,6 +63,32 @@
                 </svg>
             </a>
             {{--}}
+            <!-- Notifications -->
+            @if($flag->contains('unread') )
+                <span class="md:hidden relative flex h-2 w-2 -mt-3 ml-32">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+            @endif
+            <button @click="open = !open" data-tooltip-target="workflow-notification-tooltip" type="button" data-dropdown-toggle="notification-dropdown"
+                    class="md:hidden p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
+                <span class="sr-only">View notifications</span>
+                <!-- Bell icon -->
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 21">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                          d="M8 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C15 15.4 15 16 14.462 16H1.538C1 16 1 15.4 1 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 8 3.464ZM4.54 16a3.48 3.48 0 0 0 6.92 0H4.54Z"/>
+                </svg>
+            </button>
+            <!-- Requestforms -->
+            <button @click="open = !open" data-tooltip-target="workflow-requests-tooltip" type="button" data-dropdown-toggle="apps-dropdown"
+                    class="md:hidden p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
+                <span class="sr-only">View notifications</span>
+                <!-- Icon -->
+                <svg style="fill:gray" class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                    <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                </svg>
+            </button>
+
             <button @click="open = !open" class="inline-flex items-center justify-center p-2 text-gray-400 hover:text-black focus:outline-none focus:text-black md:hidden dark:text-white">
                 <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                     <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
