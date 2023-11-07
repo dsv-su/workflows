@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Workflows\TravelRequestWorkflow;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Workflow\WorkflowStub;
 
@@ -18,17 +19,38 @@ class TravelRequestController extends Controller
      * Show the TravelRequest form for a given user.
      *
      * @param  int  $id
-     * @return \Illuminate\View\View
+     * @return \Statamic\View\View
      */
     public function show($id)
     {
         $tr = TravelRequest::find($id);
-        dd($tr);
+        $dashboard = Dashboard::where('request_id', $id)->first();
+        $formtype = 'show';
+
+        // Retrieve the currently authenticated user's ID
+        $userid = Auth::id();
+
+        if ($userid == $dashboard->user_id) {
+            //Mark as read
+            $dashboard->status = 'read';
+            $dashboard->save();
+        }
 
         return (new \Statamic\View\View)
             ->template('requests.travel.show')
             ->layout('mylayout')
-            ->with(['tr' => $tr]);
+            ->with(['tr' => $tr, 'formtype' => $formtype]);
+    }
+
+    public function review($id)
+    {
+        $tr = TravelRequest::find($id);
+        $formtype = 'review';
+
+        return (new \Statamic\View\View)
+            ->template('requests.travel.show')
+            ->layout('mylayout')
+            ->with(['tr' => $tr, 'formtype' => $formtype]);
     }
 
     public function create()
@@ -92,7 +114,7 @@ class TravelRequestController extends Controller
                 'created' => Carbon::createFromFormat('d/m/Y', now()->format('d/m/Y'))->timestamp,
                 'state' => 'submitted',
                 'status' => 'unread',
-                'type' => 'Travelrequest',
+                'type' => 'travelrequest',
                 'user_id' => auth()->user()->id,
                 'manager_id' => $request->project_leader,
                 'fo_id' => 1, //Testmode - to be changed

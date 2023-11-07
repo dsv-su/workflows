@@ -2,7 +2,7 @@
 @include('dsvheader')
 @include('navbar.navbar')
 <section class="bg-white dark:bg-gray-900">
-    <div class="max-w-6xl px-4 py-8 mx-auto lg:py-16">
+    <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
 
         <div class="relative w-fit-content">
             <div class="absolute top-0 right-0 w-32">
@@ -11,7 +11,7 @@
         </div>
 
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">{{ __("Duty Travel Request") }}</h2>
-        <div class="grid gap-8 lg:grid-cols-2">
+
             <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
                 <!--Name-->
                 <div class="w-full">
@@ -125,13 +125,8 @@
                     </div>
                 </div>
             </div>
-
-            @include('requests.travel.comments')
-
-        </div>
-
-    @if($formtype == 'review')
-        <!-- Add Comments -->
+        @if($formtype == 'review')
+            <!-- Add Comments -->
             @include('review.bar')
         @endif
 

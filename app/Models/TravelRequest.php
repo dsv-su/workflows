@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class TravelRequest extends Model
 {
@@ -31,4 +32,28 @@ class TravelRequest extends Model
         'fo_comment_id',
         'head_comment_id'
     ];
+
+    /**
+     * Get the manager comment associated with the travelrequest.
+     */
+    public function managercomment(): HasOne
+    {
+        return $this->hasOne(ManagerComment::class, 'reqid');
+    }
+
+    /**
+     * Get the fo comment associated with the travelrequest.
+     */
+    public function focomment(): HasOne
+    {
+        return $this->hasOne(FoComment::class, 'reqid');
+    }
+
+    /**
+     * Get the head comment associated with the travelrequest.
+     */
+    public function headcomment(): HasOne
+    {
+        return $this->hasOne(HeadComment::class, 'reqid');
+    }
 }

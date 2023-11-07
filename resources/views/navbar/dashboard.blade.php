@@ -28,10 +28,10 @@
                 @endif
             </div>
             <div>
-                <!-- Notifications for user role -->
+                <!-- Notifications for role -->
                 @foreach($requests as $request)
-                    <a @if($request->type == 'Travelrequest')
-                        href="{{route('travel-request-show', $request->id)}}"
+                    <a @if($request->type == 'travelrequest')
+                        href="{{route('travel-request-review', $request->id)}}"
                        @else
                         href="#"
                        @endif
@@ -128,7 +128,7 @@
             </div>
             <div>
                 @foreach($user_requests as $user_request)
-                    <a href="#" class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+                    <a href="{{route('travel-request-show', $user_request->id)}}" class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
                         <div class="flex-shrink-0 mt-4">
                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                 <path stroke="currentColor" stroke-linejoin="round" stroke-width="1" d="M8 8v1h4V8m4 7H4a1 1 0 0 1-1-1V5h14v9a1 1 0 0 1-1 1ZM2 1h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"/>
