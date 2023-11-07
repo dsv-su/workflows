@@ -14,6 +14,6 @@ class ProjectImportSeeder extends Seeder
      */
     public function run(): void
     {
-        Excel::import(new ProjectImport, 'Projektinformation.xlsx');
+        Excel::import(new ProjectImport, 'projektinformation.xlsx');
     }
 }
