@@ -1,6 +1,5 @@
 @php
     //Should be moved to composer method for this view
-
         if($user = auth()->user()){
             //Logged in user
             $role = Illuminate\Support\Facades\DB::table('role_user')->where('user_id', $user->id)->pluck('role_id');

@@ -24,17 +24,17 @@ class TravelRequestController extends Controller
     public function show($id)
     {
         $tr = TravelRequest::find($id);
-        $dashboard = Dashboard::where('request_id', $id)->first();
         $formtype = 'show';
 
         // Retrieve the currently authenticated user's ID
+        /*$dashboard = Dashboard::where('request_id', $id)->first();
         $userid = Auth::id();
 
         if ($userid == $dashboard->user_id) {
             //Mark as read
             $dashboard->status = 'read';
             $dashboard->save();
-        }
+        }*/
 
         return (new \Statamic\View\View)
             ->template('requests.travel.show')

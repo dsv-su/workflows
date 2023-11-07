@@ -22,7 +22,8 @@ class ReviewController extends Controller
         $handler = new RequestReviewHandler($dashboard, $user, $request->comment);
         $handler->review();
 
-        return redirect('/')->with('status', 'Comments added!');
+
+        return redirect('/')->with('status', 'Request approved');
     }
 
 }
