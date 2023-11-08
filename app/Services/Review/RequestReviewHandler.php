@@ -57,15 +57,22 @@ class RequestReviewHandler
 
     private function getRole()
     {
-        //Return role
-        if($this->dashboard->manager_id == $this->reviewer->id) {
-            $role = 'manager';
-        }
-        elseif ($this->dashboard->fo_id == $this->reviewer->id) {
-            $role = 'fo';
-        }
-        elseif ($this->dashboard->head_id == $this->reviewer->id) {
-            $role = 'head';
+        switch ($this->dashboard->state) {
+            case('submitted'):
+                if($this->dashboard->manager_id == $this->reviewer->id) {
+                    $role = 'manager';
+                }
+                break;
+            case('manager_approved'):
+                if ($this->dashboard->fo_id == $this->reviewer->id) {
+                    $role = 'fo';
+                }
+                break;
+            case('fo_approved'):
+                if ($this->dashboard->head_id == $this->reviewer->id) {
+                    $role = 'head';
+                }
+
         }
         return $role;
     }

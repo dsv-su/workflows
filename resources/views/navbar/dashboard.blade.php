@@ -1,12 +1,6 @@
 <div class="flex flex-wrap justify-between items-center">
     <div class="flex items-center">
-        <!-- Notifications -->
-        @if($flag->contains('unread') )
-            <span class="hidden md:block relative flex h-3 w-3 -mt-3 -mr-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-            </span>
-        @endif
+        <livewire:indicator />
         <!-- Desktop -->
         <button data-tooltip-target="workflow-notification-tooltip" type="button" data-dropdown-toggle="notification-dropdown"
                 class="hidden md:block p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
@@ -20,180 +14,17 @@
 
         <!-- Dropdown menu -->
         <div class="hidden overflow-hidden z-50 my-4 w-full md:max-w-md text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700" id="notification-dropdown">
-            <div class="block py-2 px-4 text-base font-medium text-center text-white bg-blue-600 dark:bg-gray-700 dark:text-white">
-                @if(!(count($requests) > 0 or count($returned) > 0))
-                    {{__("No notifications")}}
-                @else
-                    {{__("Notifications")}}
-                @endif
-            </div>
+            <livewire:notificationstoggler />
             <div>
-                <!-- Notifications for role -->
-                @foreach($requests as $request)
-                    <a @if($request->type == 'travelrequest')
-                        href="{{route('travel-request-review', $request->id)}}"
-                       @else
-                        href="#"
-                       @endif
-                       class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
-                        <div class="flex-shrink-0 mt-4">
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 4a4 4 0 0 1 4 4v6M5 4a4 4 0 0 0-4 4v6h8M5 4h9M9 14h10V8a3.999 3.999 0 0 0-2.066-3.5M9 14v5m0-5h4v5m-9-8h2m8-4V1h2"/>
-                            </svg>
-                        </div>
-                        <div class="pl-3 w-full">
-                            <div class="text-gray-900 dark:text-white font-semibold text-sm mb-1.5 ">[{{$request->id}}] {{$request->name}}</div>
-                            <div class="text-xs font-medium text-primary-700 dark:text-white">
-                              @if($request->status == 'unread')
-                                <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
-                              @else
-                                <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500">
-                              @endif
-                                    {{__("Sent")}}
-                                </span>
-                                {{Carbon\Carbon::createFromTimestamp($request->created)->toDateString()}}
-                                | Status:
-                              @if($request->state == 'manager_denied' or $request->state == 'fo_denied' or $request->state == 'head_denied')
-                                <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
-                              @else
-                                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
-                              @endif
-                                    @switch($request->state)
-                                        @case('submitted')
-                                            {{__("Submitted")}}
-                                            @break
-                                    @case('manager_approved')
-                                            {{__("Approved by manager")}}
-                                            @break
-                                    @case('fo_approved')
-                                            {{__("Approved by FO")}}
-                                            @break
-                                    @case('head_approved')
-                                            {{__("Approved by Unit head")}}
-                                            @break
-                                    @endswitch
-                                </span>
-
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
-                <!-- Returned Notifications -->
-                @foreach($returned as $return)
-                    <a href="#" class="flex bg-red-200 py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
-                        <div class="flex-shrink-0 mt-4">
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 4a4 4 0 0 1 4 4v6M5 4a4 4 0 0 0-4 4v6h8M5 4h9M9 14h10V8a3.999 3.999 0 0 0-2.066-3.5M9 14v5m0-5h4v5m-9-8h2m8-4V1h2"/>
-                            </svg>
-                        </div>
-                        <div class="pl-3 w-full">
-                            <div class="text-gray-900 dark:text-white font-semibold text-sm mb-1.5 ">[{{$return->id}}] {{$return->name}}</div>
-                            <div class="text-xs font-medium text-primary-700 dark:text-white">
-                              @if($return->status == 'unread')
-                                    <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
-                              @else
-                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500">
-                              @endif
-                                    {{__("Sent")}}
-                                    </span>
-                                    {{Carbon\Carbon::createFromTimestamp($return->created)->toDateString()}}
-                                    | Status:
-                              <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
-                                @switch($return->state)
-                                    @case('manager_returned')
-                                    {{__("Returned by manager")}}
-                                    @break
-                                    @case('fo_returned')
-                                    {{__("Returned by FO")}}
-                                    @break
-                                    @case('head_returned')
-                                    {{__("Returned by Unit head")}}
-                                    @break
-                                @endswitch
-                              </span>
-
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
-
+                <livewire:requestnotifications />
+                <livewire:returnednotifications />
             </div>
-            <!-- Users request -->
-            <div class="block py-2 px-4 text-base font-medium text-center text-white bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
-                @if(!count($user_requests) > 0)
-                    {{__("No submitted requests")}}
-                @else
-                    {{__("Your submitted requests")}}
-                @endif
-            </div>
+            <livewire:userrequeststoggler />
+
             <div>
-                @foreach($user_requests as $user_request)
-                    <a href="{{route('travel-request-show', $user_request->id)}}" class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
-                        <div class="flex-shrink-0 mt-4">
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                <path stroke="currentColor" stroke-linejoin="round" stroke-width="1" d="M8 8v1h4V8m4 7H4a1 1 0 0 1-1-1V5h14v9a1 1 0 0 1-1 1ZM2 1h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"/>
-                            </svg>
-                        </div>
-                        <div class="pl-3 w-full">
-                            <div class="text-gray-900 dark:text-white font-semibold text-sm mb-1.5 ">[{{$user_request->id}}] {{$user_request->name}}</div>
-                            <div class="text-xs font-medium text-primary-700 dark:text-white">
-                              @if($user_request->status == 'unread')
-                                  <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
-                              @else
-                                  <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500">
-                              @endif
-                                  {{__("Sent")}}
-                                  </span>
-                                  {{Carbon\Carbon::createFromTimestamp($user_request->created)->toDateString()}}
-                                  | Status:
-                              @if($user_request->state == 'manager_denied' or $user_request->state == 'fo_denied' or $user_request->state == 'head_denied')
-                                   <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
-                              @elseif ($user_request->state == 'manager_returned' or $user_request->state == 'fo_returned' or $user_request->state == 'head_returned')
-                                   <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">
-                              @else
-                                   <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
-                              @endif
-                                      @switch($user_request->state)
-                                          @case('submitted')
-                                            {{__("Submitted")}}
-                                          @break
-                                          @case('manager_approved')
-                                            {{__("Approved by manager")}}
-                                          @break
-                                          @case('manager_denied')
-                                            {{__("Denied by manager")}}
-                                          @break
-                                          @case('manager_returned')
-                                            {{__("Returned by manager")}}
-                                          @break
-                                          @case('fo_approved')
-                                            {{__("Approved by FO")}}
-                                          @break
-                                          @case('fo_denied')
-                                            {{__("Denied by FO")}}
-                                          @break
-                                          @case('fo_returned')
-                                            {{__("Returned by FO")}}
-                                          @break
-                                          @case('head_approved')
-                                            {{__("Approved by Unit head")}}
-                                          @break
-                                          @case('head_denied')
-                                            {{__("Denied by Unit head")}}
-                                          @break
-                                          @case('head_returned')
-                                             {{__("Returned by Unit head")}}
-                                          @break
-                                      @endswitch
-                                </span>
-
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
-
+                <livewire:usernotifications />
             </div>
-            <!--end Archive -->
+
         </div>
         <!-- Requestforms -->
         <button data-tooltip-target="workflow-requests-tooltip" type="button" data-dropdown-toggle="apps-dropdown"

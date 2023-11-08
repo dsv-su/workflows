@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Workflows\TravelRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Statamic\Auth\User;
 use Workflow\WorkflowStub;
 
 class TestController extends Controller
 {
     public function test()
    {
+       $auth_user = Auth::user()->id;
+       $user = User::find($auth_user);
+       $userrole = collect($user->roles());
+       dd($userrole->keys()->all());
 
    }
 
