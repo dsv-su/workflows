@@ -84,6 +84,10 @@ class TravelRequestController extends Controller
                 'unit_head' => 'required',
             ]);
 
+            //Financial officer
+            $roleIds = DB::table('role_user')->where('role_id', 'financial_officer')->pluck('user_id');
+            $fo = User::whereIn('id', $roleIds)->first();
+
             //Create a new Travelreqeust
             $travelrequest = TravelRequest::create([
                 'name' => $request->name,
@@ -117,7 +121,7 @@ class TravelRequestController extends Controller
                 'type' => 'travelrequest',
                 'user_id' => auth()->user()->id,
                 'manager_id' => $request->project_leader,
-                'fo_id' => 1, //Testmode - to be changed
+                'fo_id' => $fo->id,
                 'head_id' => $request->unit_head
             ]);
 
