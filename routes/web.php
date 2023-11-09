@@ -31,6 +31,9 @@ Route::post('/travel', [\App\Http\Controllers\TravelRequestController::class, 's
 //ReviewHandler
 Route::post('/review/{id}', [\App\Http\Controllers\ReviewController::class, 'review'])->name('review');
 
+//FO Handler
+Route::get('/list', [\App\Http\Controllers\FOController::class, 'list'])->name('request-list');
+
 //Test
 Route::get('/test', [TestController::class, 'test'])->name('workflow-dashboard');
 Route::get('/truncate', [TestController::class, 'truncate_workflows']);
