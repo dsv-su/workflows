@@ -17,17 +17,27 @@ class Returnednotifications extends Component
     public function mount()
     {
         $this->user_roles = $this->getUserRoles();
-        $this->returned = Dashboard::where('user_id', $this->auth_user)
+        $this->returned = Dashboard::where('user_id', $this->auth_user)->where('status', 'unread')
             ->where(function(Builder $query) {
                 $query->where('state', 'manager_returned')
+                    ->orWhere('state', 'manager_denied')
                     ->orWhere('state', 'fo_returned')
-                    ->orWhere('state', 'head_returned');
+                    ->orWhere('state', 'fo_denied')
+                    ->orWhere('state', 'head_returned')
+                    ->orWhere('state', 'head_denied');
             })
             ->get();
         if($this->returned == null) {
             $this->returned = collect([]);
         }
 
+    }
+
+    public function read($id)
+    {
+        $dashboard = Dashboard::find($id);
+        $dashboard->status = 'read';
+        $dashboard->save();
     }
 
     private function getUserRoles()

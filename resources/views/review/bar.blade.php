@@ -16,15 +16,19 @@
                     hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:hover:bg-gray-800 group dark:border-gray-600">
                 <span class="text-sm text-blue-700 dark:text-gray-400 group-hover:text-white dark:group-hover:text-blue-500">{{__("Cancel and continue later")}}</span>
             </a>
-            <button type="button" class="inline-flex flex-col mx-2 items-center justify-center px-5 hover:bg-red-600 text-red-600 font-semibold
+            <button type="submit" name="decicion" value="deny"
+               href=""
+               class="inline-flex flex-col mx-2 items-center justify-center px-5 hover:bg-red-600 text-red-600 font-semibold
                     hover:text-white py-2 px-4 border border-red-600 hover:border-transparent rounded dark:hover:bg-gray-800 group dark:border-gray-600">
                 <span class="text-sm text-red-700 dark:text-gray-400 group-hover:text-white dark:group-hover:text-blue-500">{{__("Deny request")}}</span>
             </button>
-            <button type="button" class="inline-flex flex-col mx-2 items-center justify-center px-5 hover:bg-yellow-400 font-semibold
+            <button type="submit" name="decicion" value="return"
+               href=""
+               class="inline-flex flex-col mx-2 items-center justify-center px-5 hover:bg-yellow-400 font-semibold
                     hover:text-white py-2 px-4 border border-yellow-400 hover:border-transparent rounded dark:hover:bg-gray-800 group dark:border-gray-600">
                 <span class="text-sm text-yellow-400 dark:text-gray-400 group-hover:text-white dark:group-hover:text-blue-500">{{__("Return request")}}</span>
             </button>
-            <button type="submit"
+            <button type="submit" name="decicion" value="approve"
                     class="inline-flex flex-col mx-2 items-center justify-center px-5 hover:bg-blue-500 text-blue-700 font-semibold
                     hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:hover:bg-gray-800 group dark:border-gray-600">
                 <span class="text-sm text-blue-700 dark:text-gray-400 group-hover:text-white dark:group-hover:text-blue-500">{{__("Approve request")}}</span>

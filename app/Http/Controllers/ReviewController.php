@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-
     public function review(Request $request, $req)
     {
         //Check request type
@@ -19,11 +18,13 @@ class ReviewController extends Controller
         // Retrieve the currently authenticated user's ID
         $user = Auth::user();
 
-        $handler = new RequestReviewHandler($dashboard, $user, $request->comment);
+        //Approve
+        $handler = new RequestReviewHandler($dashboard, $user, $request->comment, $request->decicion);
         $handler->review();
 
-
-        return redirect('/')->with('status', 'Request approved');
+        return redirect('/')->with('status', 'Request updated');
     }
+
+
 
 }

@@ -1,7 +1,8 @@
 <div>
     <!-- Returned Notifications -->
     @foreach($returned as $return)
-        <a href="#" class="flex bg-red-200 py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+        <a href="{{route('travel-request-show', $return->id)}}" wire:click="read({{$return->id}})"
+           class="flex bg-red-200 py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
             <div class="flex-shrink-0 mt-4">
                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 4a4 4 0 0 1 4 4v6M5 4a4 4 0 0 0-4 4v6h8M5 4h9M9 14h10V8a3.999 3.999 0 0 0-2.066-3.5M9 14v5m0-5h4v5m-9-8h2m8-4V1h2"/>
@@ -21,15 +22,35 @@
                                 | Status:
                                 <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
                                 @switch($return->state)
+                                        @case('submitted')
+                                        {{__("Submitted")}}
+                                        @break
+                                        @case('manager_approved')
+                                        {{__("Approved by manager")}}
+                                        @break
+                                        @case('manager_denied')
+                                        {{__("Denied by manager")}}
+                                        @break
                                         @case('manager_returned')
                                         {{__("Returned by manager")}}
+                                        @break
+                                        @case('fo_approved')
+                                        {{__("Approved by FO")}}
+                                        @break
+                                        @case('fo_denied')
+                                        {{__("Denied by FO")}}
                                         @break
                                         @case('fo_returned')
                                         {{__("Returned by FO")}}
                                         @break
+                                        @case('head_approved')
+                                        {{__("Approved by Unit head")}}
+                                        @break
+                                        @case('head_denied')
+                                        {{__("Denied by Unit head")}}
+                                        @break
                                         @case('head_returned')
                                         {{__("Returned by Unit head")}}
-                                        @break
                                     @endswitch
                               </span>
 

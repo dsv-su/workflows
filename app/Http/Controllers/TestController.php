@@ -2,85 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Workflows\TravelRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Statamic\Auth\User;
-use Workflow\WorkflowStub;
+
 
 class TestController extends Controller
 {
     public function test()
    {
-       $auth_user = Auth::user()->id;
-       $user = User::find($auth_user);
-       $userrole = collect($user->roles());
-       dd($userrole->keys()->all());
 
    }
-
-    public function approve($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->manager_approve();
-        return $workflow->output();
-    }
-
-    public function foapprove($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->fo_approve();
-        return $workflow->output();
-    }
-
-    public function headapprove($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->head_approve();
-        return $workflow->output();
-    }
-
-    public function return($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->manager_return();
-        return $workflow->output();
-    }
-
-    public function foreturn($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->fo_return();
-        return $workflow->output();
-    }
-
-    public function headreturn($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->head_return();
-        return $workflow->output();
-    }
-
-    public function deny($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->manager_deny();
-        return $workflow->output();
-    }
-
-    public function fodeny($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->fo_deny();
-        return $workflow->output();
-    }
-
-    public function headdeny($id)
-    {
-        $workflow = WorkflowStub::load($id);
-        $workflow->head_deny();
-        return $workflow->output();
-    }
 
     public function truncate_workflows()
     {

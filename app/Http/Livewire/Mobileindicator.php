@@ -23,10 +23,22 @@ class Mobileindicator extends Component
     public function checkDashboard()
     {
         //Check dashboard
+        //Tasks
         $manager = collect(Dashboard::where('state', 'submitted')->where('manager_id', $this->auth_user)->get());
         $fo = collect(Dashboard::where('state', 'manager_approved')->where('fo_id', $this->auth_user)->get());
         $head = collect(Dashboard::where('state', 'fo_approved')->where('head_id', $this->auth_user)->get());
-        $this->dashboard = $manager->merge($fo)->merge($head);
+        //User
+        $manager_return = collect(Dashboard::where('state', 'manager_returned')->where('user_id', $this->auth_user)->where('status', 'unread')->get());
+        $manager_deny = collect(Dashboard::where('state', 'manager_denied')->where('user_id', $this->auth_user)->where('status', 'unread')->get());
+        $fo_return = collect(Dashboard::where('state', 'fo_returned')->where('user_id', $this->auth_user)->where('status', 'unread')->get());
+        $fo_deny = collect(Dashboard::where('state', 'fo_denied')->where('user_id', $this->auth_user)->where('status', 'unread')->get());
+        $head_return = collect(Dashboard::where('state', 'head_returned')->where('user_id', $this->auth_user)->where('status', 'unread')->get());
+        $head_deny = collect(Dashboard::where('state', 'head_denied')->where('user_id', $this->auth_user)->where('status', 'unread')->get());
+
+        $this->dashboard = $manager->merge($fo)->merge($head)
+            ->merge($manager_return)->merge($manager_deny)
+            ->merge($fo_return)->merge($fo_deny)
+            ->merge($head_return)->merge($head_deny);
     }
     public function hydrate()
     {

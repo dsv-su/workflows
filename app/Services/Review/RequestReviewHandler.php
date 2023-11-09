@@ -14,12 +14,14 @@ class RequestReviewHandler
     protected $reviewer;
     protected $comment;
     protected $workflowhandler;
+    protected $decicion;
 
-    public function __construct(Dashboard $dashboard, User $reviewer, $comment)
+    public function __construct(Dashboard $dashboard, User $reviewer, $comment, string $decicion)
     {
         $this->dashboard = $dashboard;
         $this->reviewer = $reviewer;
         $this->comment = $comment;
+        $this->decicion = $decicion;
         $this->workflowhandler = new WorkflowHandler($this->dashboard->request_id);
     }
 
@@ -38,20 +40,51 @@ class RequestReviewHandler
                     case('manager'):
                         $comment = $this->manager_comment('travelrequest', $tr->id, $this->reviewer->id, $this->comment);
                         $tr->manager_comment_id = $comment->id;
-                        $this->workflowhandler->ManagerApprove();
+                        switch($this->decicion) {
+                            case('approve'):
+                                $this->workflowhandler->ManagerApprove();
+                                break;
+                            case('return'):
+                                $this->workflowhandler->ManagerReturn();
+                                break;
+                            case('deny'):
+                                $this->workflowhandler->ManagerDeny();
+                                break;
+                        }
                         break;
                     case('fo'):
                         $comment = $this->fo_comment('travelrequest', $tr->id, $this->reviewer->id, $this->comment);
                         $tr->fo_comment_id = $comment->id;
-                        $this->workflowhandler->FOApprove();
+                        switch($this->decicion) {
+                            case('approve'):
+                                $this->workflowhandler->FOApprove();
+                                break;
+                            case('return'):
+                                $this->workflowhandler->FOReturn();
+                                break;
+                            case('deny'):
+                                $this->workflowhandler->FODeny();
+                                break;
+                        }
                         break;
                     case('head'):
                         $comment = $this->head_comment('travelrequest', $tr->id, $this->reviewer->id, $this->comment);
                         $tr->head_comment_id = $comment->id;
-                        $this->workflowhandler->HeadApprove();
+                        switch($this->decicion) {
+                            case('approve'):
+                                $this->workflowhandler->HeadApprove();
+                                break;
+                            case('return'):
+                                $this->workflowhandler->HeadReturn();
+                                break;
+                            case('deny'):
+                                $this->workflowhandler->HeadDeny();
+                                break;
+                        }
                         break;
                 }
                 $tr->save();
+                break;
         }
     }
 
