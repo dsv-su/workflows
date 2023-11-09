@@ -6,11 +6,13 @@ use App\Events\UserCreatedSuccessful;
 use App\Listeners\SendDSVInfoNotification;
 use App\Listeners\SendNewUserNotification;
 use App\Listeners\SendUserConfirmationEmail;
+use App\Listeners\UserRoleUpdate;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use Statamic\Events\EntrySaved;
+use Statamic\Events\UserSaved;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -29,6 +31,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         EntrySaved::class => [
             SendDSVInfoNotification::class,
+        ],
+        UserSaved::class => [
+            UserRoleUpdate::class,
         ]
     ];
 

@@ -18,7 +18,7 @@ staff_education:
     - 'publish other authors education entries'
     - 'delete other authors education entries'
 staff_administration:
-  title: Staff_administration
+  title: staff_administration
   permissions:
     - 'access cp'
     - 'view pages entries'
@@ -34,10 +34,6 @@ staff_administration:
     - 'edit news entries'
     - 'create news entries'
     - 'view main nav'
-workflow_admin:
-  title: workflow_admin
-  permissions:
-    - 'access cp'
 project_leader:
   title: project_leader
   permissions:
@@ -50,3 +46,7 @@ financial_officer:
   title: financial_officer
   permissions:
     - 'access cp'
+test:
+  title: Test
+  permissions:
+    - 'edit dsv_intranet globals'
