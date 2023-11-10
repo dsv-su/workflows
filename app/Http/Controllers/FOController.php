@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class FOController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('fo');
+    }
+
     public function list()
     {
         $dashboard = Dashboard::all();

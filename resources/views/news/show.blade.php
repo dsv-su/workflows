@@ -30,8 +30,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Avatar Media -->
-
         <!-- Content -->
         <div class="space-y-5 md:space-y-8">
             <div class="space-y-3">

@@ -15,6 +15,12 @@ use Workflow\WorkflowStub;
 
 class TravelRequestController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('show')->except(['create', 'submit']);
+    }
+
     /**
      * Show the TravelRequest form for a given user.
      *
@@ -26,23 +32,13 @@ class TravelRequestController extends Controller
         $tr = TravelRequest::find($id);
         $formtype = 'show';
 
-        // Retrieve the currently authenticated user's ID
-        /*$dashboard = Dashboard::where('request_id', $id)->first();
-        $userid = Auth::id();
-
-        if ($userid == $dashboard->user_id) {
-            //Mark as read
-            $dashboard->status = 'read';
-            $dashboard->save();
-        }*/
-
         return (new \Statamic\View\View)
             ->template('requests.travel.show')
             ->layout('mylayout')
             ->with(['tr' => $tr, 'formtype' => $formtype]);
     }
 
-    public function review($id)
+    /*public function review($id)
     {
         $tr = TravelRequest::find($id);
         $formtype = 'review';
@@ -51,7 +47,7 @@ class TravelRequestController extends Controller
             ->template('requests.travel.show')
             ->layout('mylayout')
             ->with(['tr' => $tr, 'formtype' => $formtype]);
-    }
+    }*/
 
     public function create()
     {

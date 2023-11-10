@@ -10,6 +10,22 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('review');
+    }
+
+    public function show($id)
+    {
+        $tr = TravelRequest::find($id);
+        $formtype = 'review';
+
+        return (new \Statamic\View\View)
+            ->template('requests.travel.show')
+            ->layout('mylayout')
+            ->with(['tr' => $tr, 'formtype' => $formtype]);
+    }
+
     public function review(Request $request, $req)
     {
         //Check request type
