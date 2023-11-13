@@ -100,13 +100,13 @@
 <div id="workflow-notification-tooltip" role="tooltip"
      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
      style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1443px, 692px);"
-     data-popper-placement="top">Workflow notifications
+     data-popper-placement="top">E-services notifications
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
 <div id="workflow-requests-tooltip" role="tooltip"
      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
      style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1443px, 692px);"
-     data-popper-placement="top">Workflow requests
+     data-popper-placement="top">E-services
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
 <div id="lists-requests-tooltip" role="tooltip"
