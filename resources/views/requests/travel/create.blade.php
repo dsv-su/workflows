@@ -25,6 +25,9 @@
                     </label>
                     <input type="text" name="name" id="project" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                            value="{{ old('name') ? old('name'): $name ??  'Travelrequest for '. auth()->user()->name  }}" placeholder="Name" required="">
+                    @error('name')
+                    <p class="mt-3 text-sm leading-6 text-red-600">{{__("This is a required input")}}</p>
+                    @enderror
                 </div>
 
                 <!-- Purpose-->
@@ -36,13 +39,15 @@
                             </svg>
                         </button>
                     </label>
-                    <textarea id="purpose" rows="4" name="purpose"
-                              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500
+                    <textarea id="purpose" rows="4" name="purpose" required
+                              class="@error('purpose') border-red-500 @enderror block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                               placeholder="Purpose of the mission">
                     {{ old('purpose') ? old('purpose'): $purpose ?? '' }}
                     </textarea>
-
+                    @error('purpose')
+                        <p class="mt-3 text-sm leading-6 text-red-600">{{__("This is a required input")}}</p>
+                    @enderror
                 </div>
                 <!-- Project -->
                 <livewire:select2.project-select2 />

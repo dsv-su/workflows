@@ -239,7 +239,6 @@ class TravelRequestWorkflow extends Workflow implements StatefulInterface
         //Handle FO decision
         switch ($new_state = $this->stateMachine->getCurrentState()->getName()) {
             case('fo_approved'):
-                //$result = yield ActivityStub::make(HeadRequestNotification::class);
                 //Request has been approved by fo
                 yield ActivityStub::make(StateUpdateTransition::class, $new_state, $travelRequest);
                 //Fire email to Head

@@ -38,17 +38,6 @@ class TravelRequestController extends Controller
             ->with(['tr' => $tr, 'formtype' => $formtype]);
     }
 
-    /*public function review($id)
-    {
-        $tr = TravelRequest::find($id);
-        $formtype = 'review';
-
-        return (new \Statamic\View\View)
-            ->template('requests.travel.show')
-            ->layout('mylayout')
-            ->with(['tr' => $tr, 'formtype' => $formtype]);
-    }*/
-
     public function create()
     {
         $countries = Country::all();
