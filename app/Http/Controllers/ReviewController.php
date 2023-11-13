@@ -34,8 +34,15 @@ class ReviewController extends Controller
         // Retrieve the currently authenticated user's ID
         $user = Auth::user();
 
+        //Mobile or desktop review
+        if($request->comment_mobile == null) {
+            $comment = $request->comment;
+        } else {
+            $comment = $request->comment_mobile;
+        }
+
         //Approve
-        $handler = new RequestReviewHandler($dashboard, $user, $request->comment, $request->decicion);
+        $handler = new RequestReviewHandler($dashboard, $user, $comment, $request->decicion);
         $handler->review();
 
         return redirect('/')->with('status', 'Request updated');

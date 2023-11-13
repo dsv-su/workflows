@@ -1,10 +1,9 @@
 <div class="fixed bottom-20 left-0 z-50 w-full md:h-fit bg-white dark:bg-gray-700 dark:border-gray-600">
     <form method="POST" action="{{route('review', $tr)}}">
         @csrf
-
         <div class="sm:hidden sm:col-span-4 my-4">
             <label for="purpose" class="block mb-2 text-sm font-medium text-blue-600 dark:text-white">{{ __("Please Review and Comment") }}</label>
-            <textarea id="comment" rows="4"  name="comment"
+            <textarea id="comment" rows="4"  name="comment_mobile"
                       class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-blue-600 focus:ring-primary-500 focus:border-primary-500
                                         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                       placeholder="Please comment the request">
