@@ -38,7 +38,7 @@
         <!-- Dropdown menu -->
         <div class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600" id="apps-dropdown">
             <div class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                {{__("Available requests")}}
+                {{__("Available e-services")}}
             </div>
             <div class="grid grid-cols-3 gap-4 p-4">
 

@@ -22,11 +22,10 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                //'sans': ['Nunito', 'Arial', 'sans-serif'],
-                //sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-                sans: ['Graphik', 'sans-serif'],
+                sans: ['Nunito', 'sans-serif'],
                 serif: ['Merriweather', 'serif'],
-                sudepartment: ['CaeciliaeText-Bold', 'Georgia', 'Times', 'Times New Roman', 'serif'],
+                //sudepartment: ['CaeciliaeText-Bold', 'Georgia', 'Times', 'Times New Roman', 'serif'],
+                sudepartment: ['Nunito', 'Verdana', 'sans-serif'],
             },
             colors: {
                 suprimary: '#002f5f',
