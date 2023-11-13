@@ -99,7 +99,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'helpdesk@dsv.su.se'),
-        'name' => env('MAIL_FROM_NAME', 'Intranet'),
+        'name' => env('MAIL_FROM_NAME', 'DSVIntranet'),
     ],
 
     /*

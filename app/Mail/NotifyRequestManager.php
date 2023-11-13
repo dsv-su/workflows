@@ -33,7 +33,7 @@ class NotifyRequestManager extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('noreply@dsv.su.se', 'DSV Intranet'),
+            from: new Address('noreply@dsv.su.se', 'DSVIntranet'),
             subject: '[DSV Intranet] New '. $this->dashboard->type,
         );
     }
