@@ -31,7 +31,7 @@ class SendUserConfirmation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('helpdesk@dsv.su.se', 'Intranet'),
+            from: new Address('helpdesk@dsv.su.se', 'DSV Intranet'),
             subject: '[DSV Intranet] User Confirmation',
         );
     }
