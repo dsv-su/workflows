@@ -36,5 +36,4 @@ Route::get('/list', [\App\Http\Controllers\FOController::class, 'list'])->name('
 
 //Test
 Route::get('/test', [TestController::class, 'test'])->name('workflow-dashboard');
-Route::get('/truncate', [TestController::class, 'truncate_workflows']);
 

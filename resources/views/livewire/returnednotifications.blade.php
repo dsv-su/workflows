@@ -1,4 +1,4 @@
-<div>
+<div wire:poll.keep-alive>
     <!-- Returned Notifications -->
     @foreach($returned as $return)
         <a href="{{route('travel-request-show', $return->id)}}" wire:click="read({{$return->id}})"
@@ -26,31 +26,31 @@
                                         {{__("Submitted")}}
                                         @break
                                         @case('manager_approved')
-                                        {{__("Approved by manager")}}
+                                        {{__("Processing")}}
                                         @break
                                         @case('manager_denied')
-                                        {{__("Denied by manager")}}
+                                        {{__("Denied")}}
                                         @break
                                         @case('manager_returned')
-                                        {{__("Returned by manager")}}
+                                        {{__("Returned")}}
                                         @break
                                         @case('fo_approved')
-                                        {{__("Approved by FO")}}
+                                        {{__("Processing")}}
                                         @break
                                         @case('fo_denied')
-                                        {{__("Denied by FO")}}
+                                        {{__("Denied")}}
                                         @break
                                         @case('fo_returned')
-                                        {{__("Returned by FO")}}
+                                        {{__("Returned")}}
                                         @break
                                         @case('head_approved')
-                                        {{__("Approved by Unit head")}}
+                                        {{__("Approved")}}
                                         @break
                                         @case('head_denied')
-                                        {{__("Denied by Unit head")}}
+                                        {{__("Denied")}}
                                         @break
                                         @case('head_returned')
-                                        {{__("Returned by Unit head")}}
+                                        {{__("Returned")}}
                                     @endswitch
                               </span>
 

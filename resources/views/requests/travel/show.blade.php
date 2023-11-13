@@ -130,12 +130,14 @@
 
         </div>
 
-    @if($formtype == 'review')
-        <!-- Add Comments -->
-            @include('review.bar')
-        @endif
 
     </div>
+
+
 </section>
+@if($formtype == 'review')
+    <!-- Add Comments -->
+    @include('review.bar')
+@endif
 
 @include('layouts.darktoggler')

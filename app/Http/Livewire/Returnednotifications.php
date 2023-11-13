@@ -17,6 +17,12 @@ class Returnednotifications extends Component
     public function mount()
     {
         $this->user_roles = $this->getUserRoles();
+        $this->getReturned();
+
+    }
+
+    public function getReturned()
+    {
         $this->returned = Dashboard::where('user_id', $this->auth_user)->where('status', 'unread')
             ->where(function(Builder $query) {
                 $query->where('state', 'manager_returned')
@@ -30,7 +36,11 @@ class Returnednotifications extends Component
         if($this->returned == null) {
             $this->returned = collect([]);
         }
+    }
 
+    public function hydrate()
+    {
+        $this->getReturned();
     }
 
     public function read($id)
