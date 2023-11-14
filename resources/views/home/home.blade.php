@@ -7,7 +7,7 @@
                 <div class="relative overflow-hidden w-full h-full rounded-xl">
                     <div class="p-6 flex flex-col justify-center items-center md:min-h-[480px] text-center rounded-xl dark:border-gray-700">
                         <p class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-xs font-semibold uppercase">
-                            Scheduled for launch early
+                            {{__("Scheduled for launch")}}
                         </p>
                         <span class="bg-clip-text bg-gradient-to-l from-purple-400 to-blue-600 text-transparent text-7xl font-bold">
                           2024
@@ -16,7 +16,7 @@
                             DSV Intranet
                         </h3>
                         <p class="mt-2 text-gray-500">
-                            The DSV Intranet is under construction. Scheduled for launch early 2024
+                            {{__("The DSV Intranet is under construction. Scheduled for launch 2024")}}
                         </p>
 
                     </div>
@@ -79,7 +79,7 @@
                                 </a>
                             @endif
                             <h3 class="text-left text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-                                Internal information
+                                {{__("Internal information")}}
                             </h3>
                             @foreach (\Statamic\Statamic::tag('collection:news')->limit(5)->fetch() as $entry)
                                 <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
@@ -121,17 +121,17 @@
                         DSV Helpdesk
                     </h3>
                     <p class="mt-2 text-gray-500">
-                        Phone: 08-16 1648
+                        {{__("Phone")}}: 08-16 1648
                     </p>
                     <p class="mt-2 text-gray-500">
-                        Email: helpdesk@dsv.su.se
+                        {{__("Email")}}: helpdesk@dsv.su.se
                     </p>
                     <p class="mt-2 text-gray-500">
                         SU, tel 08-16 1999
                     </p>
 
                     <a href="mailto:helpdesk@dsv.su.se" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                        Contact DSV Helpdesk
+                        {{__("Contact")}} DSV Helpdesk
                         <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                         </svg>
@@ -159,7 +159,7 @@
                     border border-gray-200 dark:border-gray-800">
                     <div class="mt-0 text-left">
                         <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-                            Information from DSV IT
+                            {{__("Information from DSV IT")}}
                         </h3>
                         @foreach (\Statamic\Statamic::tag('collection:itnews')->limit(5)->fetch() as $entry)
                             <div class="mt-4 text-gray-900 text-sm dark:text-gray-400">
@@ -195,20 +195,20 @@
             <!-- Card right top -->
             <div class="md:order-1 p-6 relative flex flex-col justify-start items-start {{--}}md:min-h-[230px]{{--}}md:h-fit text-center rounded-xl border border-gray-200 dark:border-gray-800">
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-                    Ongoing at DSV
+                    {{__("Ongoing at DSV")}}
                 </h3>
                 <p class="text-left text-gray-500">
-                    Be up to date with the latest news and events from the department.
+                    {{__("Be up to date with the latest news and events from the department.")}}
                 </p>
                 <a href="https://www.su.se/institutionen-for-data-och-systemvetenskap/nyheter" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    News
+                    {{__("News")}}
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
                 </a>
 
                 <a href="https://www.su.se/institutionen-for-data-och-systemvetenskap/kalender" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    Calender
+                    {{__("Calender")}}
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
@@ -219,37 +219,37 @@
             <!-- Card right bottom -->
             <div class="md:order-3 p-6 relative flex flex-col justify-start items-start md:min-h-fit text-center rounded-xl border border-gray-200 dark:border-gray-800">
                 <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
-                    Stockholms University
+                    {{__("Stockholms University")}}
                 </h3>
                 <p class="text-left text-gray-500">
-                    Links to Stockholm University
+                    {{__("Links to Stockholm University")}}
                 </p>
                 <a href="https://www.su.se/english/news" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    SU News
+                    SU {{__("News")}}
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
                 </a>
                 <a href="https://www.su.se/english/about-the-university/contact/press-and-media/newsletter-1.534043" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    SU Newsletter
+                    SU {{__("Newsletter")}}
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
                 </a>
                 <a href="https://www.su.se/english/calendar" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    SU Calender
+                    SU {{__("Calender")}}
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
                 </a>
                 <a href="https://www.su.se/staff/" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    SU Staff pages
+                    SU {{__("Staff pages")}}
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
                 </a>
                 <a href="https://www.su.se/stockholm-university-library/" class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 font-medium">
-                    SU Library
+                    SU {{__("Library")}}
                     <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
