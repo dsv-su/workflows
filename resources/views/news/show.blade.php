@@ -12,7 +12,7 @@
                             <div class="inline-block">
                                 <div class="sm:mb-1 block text-start">
                                       <span class="font-semibold text-gray-800 dark:text-gray-200">
-                                        {!! $page->author->name !!}
+                                        {!! $page->author->name ?? '' !!}
                                       </span>
                                 </div>
                             </div>
