@@ -39,12 +39,10 @@
                             </svg>
                         </button>
                     </label>
-                    <textarea id="purpose" rows="4" name="purpose" required
-                              class="@error('purpose') border-red-500 @enderror block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500
-                                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              placeholder="Purpose of the mission">
-                    {{ old('purpose') ? old('purpose'): $purpose ?? '' }}
-                    </textarea>
+                    <textarea id="purpose" rows="4" name="purpose"
+                              class="@error('purpose') border-red-500 @enderror block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300
+                              focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder="Describe the purpose of your mission">{{ old('purpose') ? old('purpose'): $purpose ?? '' }}</textarea>
                     @error('purpose')
                         <p class="mt-3 text-sm leading-6 text-red-600">{{__("This is a required input")}}</p>
                     @enderror
@@ -130,9 +128,7 @@
                     <textarea id="reason" rows="2"  name="reason"
                               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              placeholder="Write a product description here...">
-                    {{ old('reason') ? old('reason'): $reason ?? '' }}
-                    </textarea>
+                              placeholder="Justify other reason">{{ old('reason') ? old('reason'): $reason ?? '' }}</textarea>
                 </div>
 
                 <!--Departure return-->
