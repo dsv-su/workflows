@@ -7,6 +7,7 @@ use App\Models\Dashboard;
 use App\Models\TravelRequest;
 use App\Models\User;
 use App\Workflows\TravelRequestWorkflow;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,16 @@ class TravelRequestController extends Controller
             ->template('requests.travel.show')
             ->layout('mylayout')
             ->with(['tr' => $tr, 'formtype' => $formtype]);
+    }
+
+    public function download($id)
+    {
+        $tr = TravelRequest::find($id);
+        $user = User::find(Dashboard::where('request_id', $tr->id)->first()->user_id);
+        $manager = User::find(Dashboard::where('request_id', $tr->id)->first()->manager_id);
+        $head = User::find(Dashboard::where('request_id', $tr->id)->first()->head_id);
+        $pdf = Pdf::loadView('requests.travel.pdf', ['tr' => $tr, 'user' => $user, 'manager' => $manager, 'head' => $head]);
+        return $pdf->download('travelrequest_'.$tr->id.'.pdf');
     }
 
     public function create()

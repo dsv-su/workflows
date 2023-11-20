@@ -98,8 +98,26 @@
                             </td>
                             <td class="px-4 py-3">{{\App\Models\User::find($dashboard->user_id)->name}}</td>
                             <td class="px-4 py-3">{{\Carbon\Carbon::createFromTimestamp($dashboard->created)->toDateString()}}</td>
-                            <td class="px-6 py-4 text-right">
-                                <a href="{{route('travel-request-show', $dashboard->request_id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{__("Show")}}</a>
+                            <td>
+                                <a type="button"  href="{{route('travel-request-show', $dashboard->request_id)}}"
+                                   class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                                    <svg class="mr-1 mb-1 w-4 h-4 text-blue-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
+                                        <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+                                            <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                                            <path d="M10 13c4.97 0 9-2.686 9-6s-4.03-6-9-6-9 2.686-9 6 4.03 6 9 6Z"/>
+                                        </g>
+                                    </svg>
+                                    <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{__("Show")}}</span>
+                                </a>
+                            </td>
+                            <td>
+                                <a type="button"  href="{{route('travel-request-pdf', $dashboard->request_id)}}"
+                                        class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                                    <svg class="mr-1 mb-1 w-4 h-4 text-blue-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 19">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 15h.01M4 12H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3M9.5 1v10.93m4-3.93-4 4-4-4"/>
+                                    </svg>
+                                    <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{__("Download")}}</span>
+                                </a>
                             </td>
                         </tr>
 

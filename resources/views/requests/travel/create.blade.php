@@ -47,6 +47,23 @@
                         <p class="mt-3 text-sm leading-6 text-red-600">{{__("This is a required input")}}</p>
                     @enderror
                 </div>
+
+                <!--Paper accepted -->
+                <div class="w-full">
+                    <label for="paper" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Paper accepted") }}
+                        <button id="paper-button" data-modal-toggle="paper-modal" class="inline" type="button">
+                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </button>
+                    </label>
+                    <select id="paper" name="paper"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option selected="" value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <br>
                 <!-- Project -->
                 <livewire:select2.project-select2 />
 
@@ -86,21 +103,7 @@
                         @endforeach
                     </select>
                 </div>
-                <!--Paper accepted -->
-                <div>
-                    <label for="paper" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Paper accepted") }}
-                        <button id="paper-button" data-modal-toggle="paper-modal" class="inline" type="button">
-                            <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                            </svg>
-                        </button>
-                    </label>
-                    <select id="paper" name="paper"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <option selected="" value="0">No</option>
-                        <option value="1">Yes</option>
-                    </select>
-                </div>
+                {{--}}
                 <!--Contribution -->
                 <div class="w-full">
                     <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("I have requested contribution from") }}
@@ -116,6 +119,7 @@
                            value="{{ old('contribution') ? old('contribution'): $contribution ?? '' }}"
                            placeholder="{{ __("Contribution") }}">
                 </div>
+
                 <!--Other reason-->
                 <div class="sm:col-span-2">
                     <label for="purpose" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Other reason. Justify") }}
@@ -130,7 +134,7 @@
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                               placeholder="Justify other reason">{{ old('reason') ? old('reason'): $reason ?? '' }}</textarea>
                 </div>
-
+                {{--}}
                 <!--Departure return-->
                 <div date-rangepicker datepicker-format="dd/mm/yyyy" class="sm:col-span-2 inline-flex items-center">
                     <span class="mx-4 text-gray-500">{{__("From")}}</span>

@@ -25,6 +25,7 @@ Route::statamic('search', 'search')->name('search');
 //Travelrequest
 Route::get('/travel', [\App\Http\Controllers\TravelRequestController::class, 'create'])->name('travel-request-create');
 Route::get('/travel/show/{id}', [\App\Http\Controllers\TravelRequestController::class, 'show'])->name('travel-request-show');
+Route::get('/travel/pdf/{id}', [\App\Http\Controllers\TravelRequestController::class, 'download'])->name('travel-request-pdf');
 Route::post('/travel', [\App\Http\Controllers\TravelRequestController::class, 'submit'])->name('travel-submit');
 
 //ReviewHandler

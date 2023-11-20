@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('created');
             $table->string('state');
-            $table->string('purpose');
+            $table->text('purpose');
             $table->string('project');
             $table->string('country');
             $table->boolean('paper')->default(false);
