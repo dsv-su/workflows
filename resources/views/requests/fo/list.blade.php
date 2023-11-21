@@ -22,7 +22,6 @@
                 </div>
                 {{--}}
                 <!-- -->
-
             </div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -99,35 +98,25 @@
                             <td class="px-4 py-3">{{\App\Models\User::find($dashboard->user_id)->name}}</td>
                             <td class="px-4 py-3">{{\Carbon\Carbon::createFromTimestamp($dashboard->created)->toDateString()}}</td>
                             <td>
-                                <a type="button"  href="{{route('travel-request-show', $dashboard->request_id)}}"
-                                   class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
-                                    <svg class="mr-1 mb-1 w-4 h-4 text-blue-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
-                                        <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
-                                            <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                                            <path d="M10 13c4.97 0 9-2.686 9-6s-4.03-6-9-6-9 2.686-9 6 4.03 6 9 6Z"/>
-                                        </g>
-                                    </svg>
-                                    <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{__("Show")}}</span>
+                                <a type="button" href="{{route('travel-request-show', $dashboard->request_id)}}"
+                                        class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300
+                                font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
+                                    {{__("Show")}}
                                 </a>
                             </td>
                             <td>
-                                <a type="button"  href="{{route('travel-request-pdf', $dashboard->request_id)}}"
-                                        class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
-                                    <svg class="mr-1 mb-1 w-4 h-4 text-blue-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 19">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 15h.01M4 12H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3M9.5 1v10.93m4-3.93-4 4-4-4"/>
-                                    </svg>
-                                    <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{__("Download")}}</span>
+                                <a type="button" href="{{route('travel-request-pdf', $dashboard->request_id)}}"
+                                        class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
+                                        font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+                                    {{__("Download")}}
                                 </a>
                             </td>
                         </tr>
-
-
                     @endforeach
-
                     </tbody>
                 </table>
             </div>
-
+            {{--}}
             <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
                 <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                     Showing
@@ -135,6 +124,7 @@
                     of
                     <span class="font-semibold text-gray-900 dark:text-white">1000</span>
                 </span>
+
                 <ul class="inline-flex items-stretch -space-x-px">
                     <li>
                         <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -169,6 +159,7 @@
                     </li>
                 </ul>
             </nav>
+            {{--}}
         </div>
     </div>
 </section>

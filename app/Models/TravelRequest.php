@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class TravelRequest extends Model
 {
     use HasFactory;
+    use Search;
+
     protected $fillable = [
         'created',
         'state',
@@ -31,6 +33,12 @@ class TravelRequest extends Model
         'manager_comment_id',
         'fo_comment_id',
         'head_comment_id'
+    ];
+
+    protected $searchable = [
+        'name',
+        'purpose',
+        'project',
     ];
 
     /**
