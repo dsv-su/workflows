@@ -2,26 +2,31 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Dashboard;
 use App\Models\TravelRequest;
 use Livewire\Component;
 
 class RequestSearch extends Component
 {
-    public $term = "";
-    public $trs;
 
-    public function mount()
-    {
-        $this->search();
-    }
-
-    public function search()
-    {
-        $this->trs = TravelRequest::search($this->term)->paginate(10);
-    }
+    public $searchTerm;
+    public $dashboards;
 
     public function render()
     {
+        $searchTerm = '%' . $this->searchTerm . '%';
+        $this->dashboards = Dashboard::with(['user', 'travel'])
+            ->where('name', 'like', $searchTerm)
+            ->orWhereHas('user', function ($query) use ($searchTerm) {
+                $query->where('name', 'LIKE', $searchTerm ?? '')
+                    ->orWhere('email', 'LIKE', $searchTerm ?? '');
+            })
+            ->orWhereHas('travel', function ($query) use ($searchTerm) {
+                $query->where('project', 'LIKE', $searchTerm ?? '')
+                        ->orWhere('purpose', 'LIKE', $searchTerm ?? '');
+            })
+            ->get();
+
         return view('livewire.request-search');
     }
 }

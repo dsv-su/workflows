@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Dashboard extends Model
 {
@@ -21,4 +22,20 @@ class Dashboard extends Model
         'head_id'
 
     ];
+
+    /**
+     * Get the user that belongs to the dashboard.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the travelrequest that belongs to the dashboard.
+     */
+    public function travel(): BelongsTo
+    {
+        return $this->belongsTo(TravelRequest::class, 'request_id');
+    }
 }

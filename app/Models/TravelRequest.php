@@ -64,4 +64,12 @@ class TravelRequest extends Model
     {
         return $this->hasOne(HeadComment::class, 'reqid');
     }
+
+    /**
+     * Get the dashboard item associated with the travelrequest.
+     */
+    public function dashboard(): HasOne
+    {
+        return $this->hasOne(Dashboard::class);
+    }
 }
