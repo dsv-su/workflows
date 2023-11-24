@@ -14,46 +14,60 @@
         <img src="{{ asset('./images/su_cp.png') }}" alt="Stockholms University" width="100" />
     </div>
   </div>
-  <p style="margin-top:.8cm">{{__("Department of Computer and Systems Sciences")}}</p>
+  <p style="margin-top:.8cm; font-size:12pt;">{{__("Department of Computer and Systems Sciences")}}</p>
 </header>
+<div class="container">
+    <status>
+        <table>
+            <thead style="border: 1px solid;">
+            <tr>
+                <th colspan="2" style="border: 1px solid; padding-right: 10px;">
+                    <h3 style="margin: 10px;">{{__("TRAVELREQUEST")}}</h3>
+                </th>
 
+            </tr>
+            <tr>
+                <th style="border: 1px solid; padding: 5px;">{{__("Name")}}</th>
+                <th style="padding: 5px;">{{__("Created Date")}}</th>
+            </tr>
+            </thead>
+            <tbody style="border: 1px solid;">
+            <tr>
+                <td style="border: 1px solid; padding: 5px;">
+                    {{$user->name}}
+                </td>
+                <td style="padding: 5px;">
+                    {{\Carbon\Carbon::createFromTimestamp($tr->created)->toDateString()}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </status>
+</div>
+<br><br>
 <req>
     <table>
         <thead>
         <tr>
-            <th>{{__("Name")}}</th>
-            <th>{{__("Request Created")}}</th>
+            <th>{{__("ProjectID")}}</th>
+            <th>{{__("Project leader")}}</th>
+            <th>{{__("Unit head")}}</th>
+            <th>{{__("Approved date")}}</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>
-                {{$user->name}}
+                {{$tr->project}}
             </td>
             <td>
-                {{\Carbon\Carbon::createFromTimestamp($tr->created)->toDateString()}}
-            </td>
-        </tr>
-    </table>
-    <br>
-    <table>
-        <thead>
-        <tr>
-            <th>{{__("Purpose")}}</th>
-            <th>{{__("Paper accepted")}}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                {{$tr->purpose}}
+                {{$manager->name}}
             </td>
             <td>
-                @if($tr->paper == 0 or $tr->paper == null)
-                {{__("No")}}
-                @else
-                {{__("Yes")}}
-                @endif
+                {{$head->name}}
+            </td>
+            <td>
+                {{\Carbon\Carbon::parse($tr->updated_at)->format('Y-m-d')}}
             </td>
         </tr>
     </table>
@@ -87,35 +101,31 @@
             </td>
         </tr>
     </table>
-    <br>
+    <br><br>
     <table>
         <thead>
         <tr>
-            <th>{{__("ProjectID")}}</th>
-            <th>{{__("Project leader")}}</th>
-            <th>{{__("Unit head")}}</th>
-            <th>{{__("Approved date")}}</th>
+            <th>{{__("Purpose")}}</th>
+            <th>{{__("Paper accepted")}}</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>
-                {{$tr->project}}
+                {{$tr->purpose}}
             </td>
             <td>
-                {{$manager->name}}
-            </td>
-            <td>
-                {{$head->name}}
-            </td>
-            <td>
-                {{\Carbon\Carbon::parse($tr->updated_at)->format('Y-m-d')}}
+                @if($tr->paper == 0 or $tr->paper == null)
+                {{__("No")}}
+                @else
+                {{__("Yes")}}
+                @endif
             </td>
         </tr>
     </table>
     <br>
     <b>{{__("Comments from")}}:</b>
-    <br>
+    <br><br>
     <table>
         <thead>
         <tr>
@@ -150,7 +160,6 @@
         </tr>
     </table>
 </req>
-
 <br><br>
 <main>
   <table>

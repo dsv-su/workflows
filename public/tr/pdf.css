@@ -21,7 +21,7 @@ body{
     margin:0;
     padding:1cm 2cm;
     color:var(--font-color);
-    font-size:12pt;
+    font-size:10pt;
 }
 
 a{
@@ -33,7 +33,13 @@ hr{
     margin:1cm 0;
     height:0;
     border:0;
-    border-top:1mm solid var(--highlight-color);
+    border-top:1mm solid;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 header{
@@ -43,12 +49,12 @@ header{
 
 header .logoAndName{
     display:flex;
-    align-items:center;
+    align-items:start;
     justify-content:space-between;
     width:1.5cm;
     height:1.5cm;
-    /*margin-right:.5cm;*/
-    margin-bottom:.5cm;
+    margin-left: -.28cm;
+    padding-bottom: 8px;
 }
 
 header h1,
@@ -61,6 +67,12 @@ header p{
 header h2,
 header h3{
     text-transform:uppercase;
+}
+
+status table{
+    width:50%;
+    margin-left:50%;
+    border-collapse:collapse;
 }
 
 main table{
@@ -89,6 +101,11 @@ main table tbody td{
 
 main table thead th:last-of-type,
 main table tbody td:last-of-type{
+    text-align:right;
+}
+
+status table thead th:last-of-type,
+status table tbody td:last-of-type{
     text-align:right;
 }
 
