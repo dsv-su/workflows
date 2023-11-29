@@ -1,5 +1,5 @@
 [DSV Intranet - Test]<br><br>
-Dear Unit head
+Dear {{$manager->name}},
 <br><br>
 A new <strong>{{$dashboard->type}}</strong> has been submitted and approved from the project leader/manager and financial officer that requires your immediate consideration.
 Brief details in the request are as follows:

@@ -1,7 +1,7 @@
 [DSV Intranet - Test]<br><br>
-Dear Manager
+Dear {{$manager->name}},
 <br><br>
-A new <strong>{{$dashboard->type}}</strong> has been submitted that requires your immediate consideration.
+A new <strong>{{$dashboard->type}}</strong> has been submitted that requires your immediate consideration as project manager for the project.
 Brief details in the request are as follows:
 <br><br>
 Requester: {{$user->name}}

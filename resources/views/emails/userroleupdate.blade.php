@@ -24,7 +24,7 @@ Your roles have been updated to:
         @elseif ($role->title == 'staff_it')
             IT - Create, edit, and publish digital content, including articles, news posts, images, and other assets within it.
         @elseif ($role->title == 'financial_officer')
-            FINACIAL OFFICER - Review, grant, deny or return user requests for the entire institution.
+            FINACIAL OFFICER - Review, grant, deny or return user requests for the DSV department.
         @elseif ($role->title == 'project_leader')
             PROJECT LEADER - Review, grant, deny or return user requests within your project group.
         @elseif ($role->title == 'unit_head')

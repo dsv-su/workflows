@@ -50,7 +50,7 @@ class StateUpdateNotification extends Activity
                 //Notify
                 Mail::to($user->email)->send(new NotifyUserChangedState($user, $head, $this->dashboard));
                 break;
-            case('head_approved'):
+            case('fo_approved'):
                 //Approved Request
                 //Notify
                 Mail::to($user->email)->send(new NotifyRequestApproved($user, $this->dashboard));

@@ -27,13 +27,13 @@ class NewRequestNotification extends Activity
         //Send email to recipent
         switch($recipent) {
             case('manager'):
-                Mail::to($manager->email)->send(new NotifyRequestManager($user, $this->dashboard));
-                break;
-            case('fo'):
-                Mail::to($fo->email)->send(new NotifyRequestFO($user, $manager, $this->dashboard));
+                Mail::to($manager->email)->send(new NotifyRequestManager($user, $manager, $this->dashboard));
                 break;
             case('head'):
-                Mail::to($head->email)->send(new NotifyRequestHead($user, $manager, $this->dashboard));
+                Mail::to($head->email)->send(new NotifyRequestHead($user, $head, $this->dashboard));
+                break;
+            case('fo'):
+                Mail::to($fo->email)->send(new NotifyRequestFO($user, $fo, $this->dashboard));
                 break;
         }
     }

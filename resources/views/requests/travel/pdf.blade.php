@@ -145,14 +145,14 @@
             </td>
             <td>
                 @if($tr->head_comment_id ?? false)
-                    {{\App\Models\ManagerComment::find($tr->head_comment_id)->comment}}
+                    {{\App\Models\HeadComment::find($tr->head_comment_id)->comment}}
                 @else
                     {{__("No comments")}}
                 @endif
             </td>
             <td>
                 @if($tr->fo_comment_id ?? false)
-                    {{\App\Models\ManagerComment::find($tr->fo_comment_id)->comment}}
+                    {{\App\Models\FoComment::find($tr->fo_comment_id)->comment}}
                 @else
                     {{__("No comments")}}
                 @endif

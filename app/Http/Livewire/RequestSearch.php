@@ -23,6 +23,7 @@ class RequestSearch extends Component
             })
             ->orWhereHas('travel', function ($query) use ($searchTerm) {
                 $query->where('project', 'LIKE', $searchTerm ?? '')
+                        ->orWhere('country', 'LIKE', $searchTerm ?? '')
                         ->orWhere('purpose', 'LIKE', $searchTerm ?? '');
             })
             ->get();

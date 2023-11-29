@@ -15,6 +15,23 @@ class FOController extends Controller
         $this->middleware('fo');
     }
 
+    /**
+     * Show the TravelRequest form for a given user.
+     *
+     * @param  int  $id
+     * @return \Statamic\View\View
+     */
+    public function show($id)
+    {
+        $tr = TravelRequest::find($id);
+        $formtype = 'show';
+
+        return (new \Statamic\View\View)
+            ->template('requests.travel.show')
+            ->layout('mylayout')
+            ->with(['tr' => $tr, 'formtype' => $formtype]);
+    }
+
     public function list()
     {
         return (new \Statamic\View\View)

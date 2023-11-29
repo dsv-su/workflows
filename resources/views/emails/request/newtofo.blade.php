@@ -1,7 +1,7 @@
 [DSV Intranet - Test]<br><br>
-Dear FO
+Dear {{$manager->name}},
 <br><br>
-A new <strong>{{$dashboard->type}}</strong> has been submitted and approved from the project leader/manager that requires your immediate consideration.
+A new <strong>{{$dashboard->type}}</strong> has been submitted and approved from the project leader/manager and unit head which needs to be checked and approved.
 Brief details in the request are as follows:
 <br><br>
 Requester: {{$user->name}}

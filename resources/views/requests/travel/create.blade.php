@@ -3,13 +3,13 @@
 @include('navbar.navbar')
 <section class="bg-white dark:bg-gray-900">
     <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
-
+        {{--}}
         <div class="relative w-fit-content">
             <div class="absolute top-0 right-0 w-32">
                 <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">DSVTR-231025-1</span>
             </div>
         </div>
-
+        {{--}}
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">{{ __("Duty Travel Request") }}</h2>
         <form method="post" action="{{route('travel-submit')}}">
             @csrf

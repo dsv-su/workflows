@@ -38,7 +38,7 @@
                                                             @case('manager_returned')
                                                             {{__("Returned")}}
                                                             @break
-                                                            @case('fo_approved')
+                                                            @case('head_approved')
                                                             {{__("Processing")}}
                                                             @break
                                                             @case('fo_denied')
@@ -47,7 +47,7 @@
                                                             @case('fo_returned')
                                                             {{__("Returned")}}
                                                             @break
-                                                            @case('head_approved')
+                                                            @case('fo_approved')
                                                             {{__("Approved")}}
                                                             @break
                                                             @case('head_denied')

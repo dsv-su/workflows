@@ -97,13 +97,14 @@ class RequestReviewHandler
                 }
                 break;
             case('manager_approved'):
-                if ($this->dashboard->fo_id == $this->reviewer->id) {
-                    $role = 'fo';
-                }
-                break;
-            case('fo_approved'):
                 if ($this->dashboard->head_id == $this->reviewer->id) {
                     $role = 'head';
+                }
+                break;
+
+            case('head_approved'):
+                if ($this->dashboard->fo_id == $this->reviewer->id) {
+                    $role = 'fo';
                 }
 
         }

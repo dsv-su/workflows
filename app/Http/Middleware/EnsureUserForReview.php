@@ -32,12 +32,12 @@ class EnsureUserForReview
                 }
                 break;
             case('manager_approved'):
-                if($user->id == $dashboard->fo_id) {
+                if($user->id == $dashboard->head_id) {
                     return $next($request);
                 }
                 break;
-            case('fo_approved'):
-                if($user->id == $dashboard->head_id) {
+            case('head_approved'):
+                if($user->id == $dashboard->fo_id) {
                     return $next($request);
                 }
                 break;

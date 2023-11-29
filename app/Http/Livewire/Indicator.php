@@ -28,8 +28,8 @@ class Indicator extends Component
         //Check dashboard
         //Tasks
         $manager = collect(Dashboard::where('state', 'submitted')->where('manager_id', $this->auth_user)->get());
-        $fo = collect(Dashboard::where('state', 'manager_approved')->where('fo_id', $this->auth_user)->get());
-        $head = collect(Dashboard::where('state', 'fo_approved')->where('head_id', $this->auth_user)->get());
+        $head = collect(Dashboard::where('state', 'manager_approved')->where('head_id', $this->auth_user)->get());
+        $fo = collect(Dashboard::where('state', 'head_approved')->where('fo_id', $this->auth_user)->get());
         //User
         $manager_return = collect(Dashboard::where('state', 'manager_returned')->where('user_id', $this->auth_user)->where('status', 'unread')->get());
         $manager_deny = collect(Dashboard::where('state', 'manager_denied')->where('user_id', $this->auth_user)->where('status', 'unread')->get());

@@ -22,8 +22,8 @@ class Requestnotifications extends Component
     public function getRequests()
     {
         $manager = collect(Dashboard::where('state', 'submitted')->where('manager_id', $this->auth_user)->get());
-        $fo = collect(Dashboard::where('state', 'manager_approved')->where('fo_id', $this->auth_user)->get());
-        $head = collect(Dashboard::where('state', 'fo_approved')->where('head_id', $this->auth_user)->get());
+        $head = collect(Dashboard::where('state', 'manager_approved')->where('head_id', $this->auth_user)->get());
+        $fo = collect(Dashboard::where('state', 'head_approved')->where('fo_id', $this->auth_user)->get());
         $this->requests = $manager->merge($fo)->merge($head);
     }
 
