@@ -100,18 +100,18 @@
 <div id="workflow-notification-tooltip" role="tooltip"
      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
      style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1443px, 692px);"
-     data-popper-placement="top">E-services notifications
+     data-popper-placement="top">Notifications
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
 <div id="workflow-requests-tooltip" role="tooltip"
      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
      style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1443px, 692px);"
-     data-popper-placement="top">E-services
+     data-popper-placement="top">E-forms
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
 <div id="lists-requests-tooltip" role="tooltip"
      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
      style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1443px, 692px);"
-     data-popper-placement="top">A list of user requests
+     data-popper-placement="top">List user requests
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
