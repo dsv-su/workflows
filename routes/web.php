@@ -39,4 +39,5 @@ Route::get('/travel/pdf/{id}', [\App\Http\Controllers\FOController::class, 'down
 
 //Test
 Route::get('/test', [TestController::class, 'test'])->name('workflow-dashboard');
+Route::get('/truncate', [TestController::class, 'truncate'])->name('truncate');
 
