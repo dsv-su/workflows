@@ -5,6 +5,7 @@ namespace App\Workflows;
 use App\Workflows\Notifications\NewRequestNotification;
 use App\Workflows\Notifications\StateUpdateNotification;
 use App\Workflows\Partials\CheckRoleforApprove;
+use App\Workflows\Partials\RequestStates;
 use App\Workflows\Transitions\StateUpdateTransition;
 use Finite\State\State;
 use Finite\State\StateInterface;
@@ -16,7 +17,7 @@ use Workflow\SignalMethod;
 use Workflow\Workflow;
 use Workflow\WorkflowStub;
 
-class TravelRequestWorkflow extends Workflow implements StatefulInterface
+class DSVRequestWorkflow extends Workflow implements StatefulInterface
 {
     private $state;
     private $stateMachine;
@@ -201,13 +202,13 @@ class TravelRequestWorkflow extends Workflow implements StatefulInterface
     }
 
 
-    public function execute($travelRequest)
+    public function execute($userRequest)
     {
         //Submitted by requester
         yield WorkflowStub::await(fn () => $this->isSubmitted());
 
         //Fire email to manager
-        yield ActivityStub::make(NewRequestNotification::class, 'manager', $travelRequest);
+        yield ActivityStub::make(NewRequestNotification::class, RequestStates::MANAGER, $userRequest);
 
         //Wait for manager to process request
         yield WorkflowStub::await(fn () => $this->ManagerApproved() || $this->ManagerDenied() || $this->ManagerReturned());
@@ -216,69 +217,66 @@ class TravelRequestWorkflow extends Workflow implements StatefulInterface
         $newState = $this->getState();
 
         // Activities
-        $commonActivities = $this->getCommonActivities($travelRequest, $newState);
+        $commonActivities = $this->getCommonActivities($userRequest, $newState);
 
         switch ($newState) {
-            case 'manager_approved':
+            case RequestStates::MANAGER_APPROVED:
                 // Request has been approved by manager
                 yield $commonActivities[0];
                 break;
-            case 'manager_returned':
-            case 'manager_denied':
+            case RequestStates::MANAGER_RETURNED:
+            case RequestStates::MANAGER_DENIED:
                 // Request had been returned or denied by manager
                 foreach ($commonActivities as $activity) {
                     yield $activity;
                 }
+                //End workflow
                 return $this->stateMachine->getCurrentState()->getName();
-                break;
         }
 
 
-        if($this->checkRole->isSameManagerHead($travelRequest)) {
+        if($this->checkRole->isSameManagerHead($userRequest)) {
 
             // Manager and Head is same person
             $this->head_approve();
 
             // Retrive new state
             $newState = $this->getState();
-            $commonActivities = $this->getCommonActivities($travelRequest, $newState);
+            $commonActivities = $this->getCommonActivities($userRequest, $newState);
 
             // Await stateupdate
             yield $commonActivities[0];
 
             // Notify FO
-            yield ActivityStub::make(NewRequestNotification::class, 'fo', $travelRequest);
+            yield ActivityStub::make(NewRequestNotification::class, RequestStates::FINACIAL_OFFICER, $userRequest);
 
         } else {
 
             // Notify Head
-            yield ActivityStub::make(NewRequestNotification::class, 'head', $travelRequest);
+            yield ActivityStub::make(NewRequestNotification::class, RequestStates::UNIT_HEAD, $userRequest);
 
             //Wait for Head to process request
             yield WorkflowStub::await(fn () => $this->HeadApproved() || $this->HeadDenied() || $this->HeadReturned());
 
             //Handle Head decision
-            switch ($newState = $this->getState()) {
-                case('head_approved'):
+            $newState = $this->getState();
+            $commonActivities = $this->getCommonActivities($userRequest, $newState);
+
+            switch ($newState) {
+                case RequestStates::HEAD_APPROVED:
                     //Request has been approved by head
-                    yield ActivityStub::make(StateUpdateTransition::class, $newState, $travelRequest);
+                    yield $commonActivities[0];
                     //Notify FO
-                    yield ActivityStub::make(NewRequestNotification::class, 'fo', $travelRequest);
+                    yield ActivityStub::make(NewRequestNotification::class, RequestStates::FINACIAL_OFFICER, $userRequest);
                     break;
-                case('head_returned'):
-                    //Request had been returned by head
-                    yield ActivityStub::make(StateUpdateTransition::class, $newState, $travelRequest);
-                    //Notify requester
-                    yield ActivityStub::make(StateUpdateNotification::class, $travelRequest);
+                case RequestStates::HEAD_RETURNED:
+                case RequestStates::HEAD_DENIED:
+                    //Request has been returned or denied by head
+                    foreach ($commonActivities as $activity) {
+                        yield $activity;
+                    }
+                    //End workflow
                     return $this->stateMachine->getCurrentState()->getName();
-                    break;
-                case('head_denied'):
-                    //Request has been denied by head
-                    yield ActivityStub::make(StateUpdateTransition::class, $newState, $travelRequest);
-                    //Notify requester
-                    yield ActivityStub::make(StateUpdateNotification::class, $travelRequest);
-                    return $this->stateMachine->getCurrentState()->getName();
-                    break;
             }
 
         }
@@ -287,30 +285,27 @@ class TravelRequestWorkflow extends Workflow implements StatefulInterface
         yield WorkflowStub::await(fn () => $this->FOApproved() || $this->FODenied() || $this->FOReturned());
 
         //Handle FO decision
-        switch ($newState = $this->getState()) {
-            case('fo_approved'):
+        $newState = $this->getState();
+        $commonActivities = $this->getCommonActivities($userRequest, $newState);
+
+        switch ($newState) {
+            case RequestStates::FO_APPROVED:
                 //Request has been approved by fo
-                yield ActivityStub::make(StateUpdateTransition::class, $newState, $travelRequest);
-                //Approved request - Notify user
-                yield ActivityStub::make(StateUpdateNotification::class, $travelRequest);
+                foreach ($commonActivities as $activity) {
+                    yield $activity;
+                }
                 break;
-            case('fo_returned'):
-                //Request has been returned by fo
-                yield ActivityStub::make(StateUpdateTransition::class, $newState, $travelRequest);
-                //Notify requester
-                yield ActivityStub::make(StateUpdateNotification::class, $travelRequest);
+            case RequestStates::FO_RETURNED:
+            case RequestStates::FO_DENIED:
+                //Request has been returned or denied by fo
+                foreach ($commonActivities as $activity) {
+                    yield $activity;
+                }
+                //End workflow
                 return $this->stateMachine->getCurrentState()->getName();
-                break;
-            case('fo_denied'):
-                //Request has been denied by fo
-                yield ActivityStub::make(StateUpdateTransition::class, $newState, $travelRequest);
-                //Notify requester
-                yield ActivityStub::make(StateUpdateNotification::class, $travelRequest);
-                return $this->stateMachine->getCurrentState()->getName();
-                break;
         }
 
-
+        //End workflow
         return $this->stateMachine->getCurrentState()->getName();
     }
 
@@ -319,11 +314,11 @@ class TravelRequestWorkflow extends Workflow implements StatefulInterface
         return $this->stateMachine->getCurrentState()->getName();
     }
 
-    protected function getCommonActivities($travelRequest, $newState)
+    protected function getCommonActivities($userRequest, $newState)
     {
         return [
-            ActivityStub::make(StateUpdateTransition::class, $newState, $travelRequest),
-            ActivityStub::make(StateUpdateNotification::class, $travelRequest),
+            ActivityStub::make(StateUpdateTransition::class, $newState, $userRequest),
+            ActivityStub::make(StateUpdateNotification::class, $userRequest),
         ];
     }
 

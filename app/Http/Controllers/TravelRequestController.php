@@ -6,7 +6,7 @@ use App\Models\Country;
 use App\Models\Dashboard;
 use App\Models\TravelRequest;
 use App\Models\User;
-use App\Workflows\TravelRequestWorkflow;
+use App\Workflows\DSVRequestWorkflow;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -111,7 +111,7 @@ class TravelRequestController extends Controller
             ]);
 
             // Create workflow
-            $workflow = WorkflowStub::make(TravelRequestWorkflow::class);
+            $workflow = WorkflowStub::make(DSVRequestWorkflow::class);
             // start workflow [DashboardId]
             $workflow->start($dashboard->id);
             //Submit TR

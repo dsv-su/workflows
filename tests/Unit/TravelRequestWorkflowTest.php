@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\Dashboard;
 use App\Models\TravelRequest;
-use App\Workflows\TravelRequestWorkflow;
+use App\Workflows\DSVRequestWorkflow;
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
 use Workflow\WorkflowStub;
@@ -49,7 +49,7 @@ class TravelRequestWorkflowTest extends TestCase
             'fo_id' => 2,
             'head_id' => 2
         ]);
-        $workflow = WorkflowStub::make(TravelRequestWorkflow::class);
+        $workflow = WorkflowStub::make(DSVRequestWorkflow::class);
         $workflow->start($dashboard->id);
         $workflow->submit();
         $this->assertEquals('created', $workflow->getFiniteState());
@@ -57,7 +57,7 @@ class TravelRequestWorkflowTest extends TestCase
 
     public function testSubmitTransition()
     {
-        $workflow = new TravelRequestWorkflow(/* Provide necessary dependencies */);
+        $workflow = new DSVRequestWorkflow(/* Provide necessary dependencies */);
         $workflow->submit();
 
         $this->assertEquals('submitted', $workflow->getFiniteState());

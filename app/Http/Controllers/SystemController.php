@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Settings\AuthHandler;
 use App\Services\Settings\ConfigurationHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
