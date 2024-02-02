@@ -1,4 +1,4 @@
-<div class="fixed bottom-20 left-0 z-50 w-full md:h-fit bg-white dark:bg-gray-900 dark:border-gray-600">
+<div class="fixed bottom-20 left-0 z-50 w-full {{--}}md:h-fit{{--}} bg-white dark:bg-gray-900 dark:border-gray-600">
     <form method="POST" action="{{route('review', $tr)}}">
         @csrf
         <div class="sm:hidden sm:col-span-4 my-4">
