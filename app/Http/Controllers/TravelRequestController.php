@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use App\Models\Dashboard;
+use App\Models\SettingsFo;
 use App\Models\TravelRequest;
 use App\Models\User;
 use App\Workflows\DSVRequestWorkflow;
@@ -70,8 +71,11 @@ class TravelRequestController extends Controller
             ]);
 
             //Financial officer
+            /*
             $roleIds = DB::table('role_user')->where('role_id', 'financial_officer')->pluck('user_id');
             $fo = User::whereIn('id', $roleIds)->first();
+            */
+            $fo = SettingsFo::find(1);
 
             //Create a new Travelreqeust
             $travelrequest = TravelRequest::create([
@@ -106,7 +110,7 @@ class TravelRequestController extends Controller
                 'type' => 'travelrequest',
                 'user_id' => auth()->user()->id,
                 'manager_id' => $request->project_leader,
-                'fo_id' => $fo->id,
+                'fo_id' => $fo->user_id,
                 'head_id' => $request->unit_head
             ]);
 

@@ -37,6 +37,8 @@ Route::get('/list', [\App\Http\Controllers\FOController::class, 'list'])->name('
 Route::get('/show/{id}', [\App\Http\Controllers\FOController::class, 'show'])->name('fo-request-show');
 Route::get('/viewpdf/{id}', [\App\Http\Controllers\FOController::class, 'pdfview'])->name('travel-request-pdfview');
 Route::get('/travel/pdf/{id}', [\App\Http\Controllers\FOController::class, 'download'])->name('travel-request-pdf');
+Route::get('/settings', [\App\Http\Controllers\FOController::class, 'settings'])->name('settings');
+Route::post('/fo', [\App\Http\Controllers\FOController::class, 'settings_fo'])->name('fo');
 
 //Test
 Route::get('/test', [TestController::class, 'test'])->name('workflow-dashboard');
