@@ -242,6 +242,32 @@
             @endif
         </td>
       </tr>
+      <tr>
+          <td>
+              <b>{{__("Daily subsistence allowances")}}</b>
+          </td>
+          <td>
+              @if($tr->daily == null or $tr->daily == 0)
+                  0
+              @else
+                  {{$tr->daily}}
+              @endif
+          </td>
+          <td>
+              @if($tr->days == null or $tr->days == 0)
+                  0
+              @else
+                  {{$tr->days}}
+              @endif
+          </td>
+          <td>
+              @if(($tr->daily * $tr->days)  == null or ($tr->daily * $tr->days) == 0)
+                  0
+              @else
+                  {{($tr->daily * $tr->days)}}
+              @endif
+          </td>
+      </tr>
     </tbody>
   </table>
   <br><br>
