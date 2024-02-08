@@ -33,8 +33,8 @@ Route::get('/travel/review/{id}', [\App\Http\Controllers\ReviewController::class
 Route::post('/review/{id}', [\App\Http\Controllers\ReviewController::class, 'review'])->name('review');
 
 //FO Handler
-Route::get('/list', [\App\Http\Controllers\FOController::class, 'list'])->name('request-list');
-
+Route::get('/list', [\App\Http\Controllers\FOController::class, 'list'])->name('request-list')->middleware('checklang');
+Route::get('/swe/list', [\App\Http\Controllers\FOController::class, 'svlist']);
 
 Route::get('/show/{id}', [\App\Http\Controllers\FOController::class, 'show'])->name('fo-request-show');
 Route::get('/viewpdf/{id}', [\App\Http\Controllers\FOController::class, 'pdfview'])->name('travel-request-pdfview');

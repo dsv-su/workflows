@@ -42,6 +42,14 @@ class FOController extends Controller
             ->layout('mylayout');
     }
 
+    public function svlist()
+    {
+        App::setLocale('sv');
+        return (new \Statamic\View\View)
+            ->template('requests.fo.list')
+            ->layout('mylayout');
+    }
+
     public function pdfview($id)
     {
         $tr = TravelRequest::find($id);
@@ -53,6 +61,7 @@ class FOController extends Controller
 
     public function download($id)
     {
+        App::setLocale('sv');
         $tr = TravelRequest::find($id);
         $user = User::find(Dashboard::where('request_id', $tr->id)->first()->user_id);
         $manager = User::find(Dashboard::where('request_id', $tr->id)->first()->manager_id);

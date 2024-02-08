@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'review' => \App\Http\Middleware\EnsureUserForReview::class,
         'show' => \App\Http\Middleware\EnsureUserForShow::class,
         'fo' => \App\Http\Middleware\EnsureUserIsFO::class,
+        'checklang' => \App\Http\Middleware\CheckLocalizaion::class
     ];
 }
