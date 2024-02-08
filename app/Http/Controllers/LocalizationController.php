@@ -26,8 +26,8 @@ class LocalizationController extends Controller
                 case('/swe'):
                     return redirect(url('') );
                 default:
-                    $intended['path'] = ltrim($intended['path'], '/swe/');
-                    return redirect(url('') . '/' . $intended['path']);
+                    $intended['path'] = substr($intended['path'], 4);
+                    return redirect(url('') . $intended['path']);
             }
 
         }
