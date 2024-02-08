@@ -2,23 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Cookie;
 
 class LocalizationController extends Controller
 {
-    public function index(Request $request, $locale)
+    public function index($locale)
     {
-        App::setlocale($locale);
-        session()->put('locale', $locale);
-        session(['localisation' => App::getLocale()]);
+        $intended = url()->previous();
+        $intended = parse_url($intended);
 
-        if($locale == 'sv') {
-            /*return back()->withInput()->cookie(
-                'language', 'se', 0, null, null, false, false
-            );*/
-            return back();
+        if($locale == 'swe') {
+            App::setlocale('sv');
+            switch ($intended['path']) {
+                case('/'):
+                    return redirect(url('') . $intended['path'] . $locale);
+                default:
+                    return redirect(url('') . '/'. $locale . $intended['path']);
+            }
+        }
+        elseif($locale == 'English') {
+            App::setlocale('en');
+            switch ($intended['path']) {
+                case('/swe'):
+                    return redirect(url('') );
+                default:
+                    $intended['path'] = ltrim($intended['path'], '/swe/');
+                    return redirect(url('') . '/' . $intended['path']);
+            }
+
         }
         return back();
     }

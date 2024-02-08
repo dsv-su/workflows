@@ -20,7 +20,7 @@ Route::get('/sulogin', 'SystemController@SUlogin')->name('sulogin');
 Route::get($login, [SystemController::class, 'login'])->name('login');
 
 //Language
-Route::get('lang/{lang}', [LocalizationController::class, 'index'])->name('language');
+Route::get('/lang/{lang}', [LocalizationController::class, 'index'])->name('language');
 Route::statamic('search', 'search')->name('search');
 
 //Travelrequest
@@ -34,6 +34,8 @@ Route::post('/review/{id}', [\App\Http\Controllers\ReviewController::class, 'rev
 
 //FO Handler
 Route::get('/list', [\App\Http\Controllers\FOController::class, 'list'])->name('request-list');
+
+
 Route::get('/show/{id}', [\App\Http\Controllers\FOController::class, 'show'])->name('fo-request-show');
 Route::get('/viewpdf/{id}', [\App\Http\Controllers\FOController::class, 'pdfview'])->name('travel-request-pdfview');
 Route::get('/travel/pdf/{id}', [\App\Http\Controllers\FOController::class, 'download'])->name('travel-request-pdf');

@@ -67,7 +67,8 @@
                     @foreach($sites as $lang)
                         @if($lang != $site->handle)
                             <li>
-                                <a href="{{$lang->url}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                <a {{--}}href="{{$lang->url}}"{{--}} href="{{route('language', ['lang' => $lang])}}"
+                                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
                                     <div class="inline-flex items-center">
                                         @if($lang == 'swe')
                                             <img src="{{asset('images/globallinks-lang-sv.gif')}}" class="w-5 h5 mr-2">

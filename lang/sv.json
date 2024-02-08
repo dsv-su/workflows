@@ -43,6 +43,35 @@
     "Resources": "Resurser",
     "Follow us": "Följ oss",
     "Your Polopoly profile page": "Din profilsida i Polopoly",
-    "Settings": "Inställningar"
+    "Settings": "Inställningar",
+    "TRAVELREQUEST": "RESEBEGÄRAN",
+    "Created Date": "Skapat Datum",
+    "ProjectID": "ProjektID",
+    "Project leader": "Projektledare",
+    "Unit head": "Enhetschef",
+    "Approved date": "Godkänt datum",
+    "Country": "Land",
+    "Daily subsistence allowances": "Traktamente",
+    "Departure date": "Avgångsdatum",
+    "Return date": "Returdatum",
+    "Total days": "Totalt dagar",
+    "Purpose": "Syfte",
+    "Paper accepted": "Artikel accepterat",
+    "Comments from": "Kommentarer från",
+    "Financial Officer": "Ekonomiansvarig",
+    "No comments": "Inga kommentarer",
+    "Expenses": "Utgifter",
+    "Amount": "Belopp",
+    "Total": "Total",
+    "Flight": "Flyg",
+    "Hotel": "Hotell",
+    "Other costs": "Andra kostnader",
+    "Subtotal": "Delsumma",
+    "VAT": "Moms",
+    "Request type": "Begäran"
+
+
+
+
 
 }
