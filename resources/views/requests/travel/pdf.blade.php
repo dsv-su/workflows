@@ -51,7 +51,7 @@
         <tr>
             <th>{{__("ProjectID")}}</th>
             <th>{{__("Project leader")}}</th>
-            <th>{{__("Unit head")}}</th>
+            <th>{{__("Unit Head")}}</th>
             <th>{{__("Approved date")}}</th>
         </tr>
         </thead>
