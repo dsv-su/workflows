@@ -48,7 +48,7 @@
     "Created Date": "Skapat Datum",
     "ProjectID": "ProjektID",
     "Project leader": "Projektledare",
-    "Unit head": "Enhetschef",
+    "Unit Head": "Enhetschef",
     "Approved date": "Godkänt datum",
     "Country": "Land",
     "Daily subsistence allowances": "Traktamente",
@@ -68,7 +68,8 @@
     "Other costs": "Andra kostnader",
     "Subtotal": "Delsumma",
     "VAT": "Moms",
-    "Request type": "Begäran"
+    "Request type": "Begäran",
+    "days": "dagar"
 
 
 

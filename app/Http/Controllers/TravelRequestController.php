@@ -68,6 +68,8 @@ class TravelRequestController extends Controller
                 'country' => 'required',
                 'project_leader' => 'required',
                 'unit_head' => 'required',
+                'start' => 'required',
+                'end' => 'required'
             ]);
 
             //Financial officer
