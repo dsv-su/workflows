@@ -19,6 +19,7 @@ class TravelRequestController extends Controller
     public function __construct()
     {
         $this->middleware('show')->except(['create', 'submit']);
+        $this->middleware(['checklang', 'locale']);
     }
 
     /**

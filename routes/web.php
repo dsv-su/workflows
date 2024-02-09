@@ -25,6 +25,7 @@ Route::statamic('search', 'search')->name('search');
 
 //Travelrequest
 Route::get('/travel', [\App\Http\Controllers\TravelRequestController::class, 'create'])->name('travel-request-create');
+Route::get('/swe/travel', [\App\Http\Controllers\TravelRequestController::class, 'create']);
 Route::get('/travel/show/{id}', [\App\Http\Controllers\TravelRequestController::class, 'show'])->name('travel-request-show');
 Route::post('/travel', [\App\Http\Controllers\TravelRequestController::class, 'submit'])->name('travel-submit');
 

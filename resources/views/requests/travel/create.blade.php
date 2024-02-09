@@ -16,17 +16,17 @@
             <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
                 <!--Name-->
                 <div class="w-full">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("You may change this name") }}<span class="text-red-600"> *</span>
+                    <label for="name" class="font-sans block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("You may change this name") }}<span class="text-red-600"> *</span>
                         <button id="name-button" data-modal-toggle="name-modal" class="inline" type="button">
                             <svg class="w-[16px] h-[16px] inline text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg>
                         </button>
                     </label>
-                    <input type="text" name="name" id="project" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    <input type="text" name="name" id="project" class="font-mono bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                            value="{{ old('name') ? old('name'): $name ??  'Travelrequest for '. auth()->user()->name  }}" placeholder="Name" required="">
                     @error('name')
-                    <p class="mt-3 text-sm leading-6 text-red-600">{{__("This is a required input")}}</p>
+                    <p class="mt-3 text-sm leading-6 text-red-600" x-init="$el.closest('form').scrollIntoView()">{{__("This is a required input")}} </p>
                     @enderror
                 </div>
 
@@ -40,11 +40,11 @@
                         </button>
                     </label>
                     <textarea id="purpose" rows="4" name="purpose"
-                              class="@error('purpose') border-red-500 @enderror block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300
+                              class="@error('purpose') border-red-500 @enderror font-mono block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300
                               focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                              placeholder="Describe the purpose of your mission">{{ old('purpose') ? old('purpose'): $purpose ?? '' }}</textarea>
+                              placeholder="{{__("Describe the purpose of your mission")}}">{{ old('purpose') ? old('purpose'): $purpose ?? '' }}</textarea>
                     @error('purpose')
-                        <p class="mt-3 text-sm leading-6 text-red-600">{{__("This is a required input")}}</p>
+                        <p class="mt-3 text-sm leading-6 text-red-600" x-init="$el.closest('form').scrollIntoView()">{{__("This is a required input")}}</p>
                     @enderror
                 </div>
 
@@ -58,9 +58,9 @@
                         </button>
                     </label>
                     <select id="paper" name="paper"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <option selected="" value="0">No</option>
-                        <option value="1">Yes</option>
+                            class="font-mono bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option selected="" value="0">{{__("No")}}</option>
+                        <option value="1">{{__("Yes")}}</option>
                     </select>
                 </div>
                 <br>
@@ -81,7 +81,7 @@
                         </button>
                     </label>
                     <select id="project_leader" name="project_leader"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            class="font-mono bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         @foreach($projectleaders as $projectleader)
                             <option value="{{$projectleader->id}}">{{$projectleader->name}}</option>
                         @endforeach
@@ -97,7 +97,7 @@
                         </button>
                     </label>
                     <select id="unit_head" name="unit_head"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            class="font-mono bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         @foreach($unitheads as $unithead)
                             <option value="{{$unithead->id}}">{{$unithead->name}}</option>
                         @endforeach
