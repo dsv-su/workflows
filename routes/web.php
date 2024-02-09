@@ -32,6 +32,7 @@ Route::post('/travel', [\App\Http\Controllers\TravelRequestController::class, 's
 //ReviewHandler
 Route::get('/travel/review/{id}', [\App\Http\Controllers\ReviewController::class, 'show'])->name('travel-request-review');
 Route::post('/review/{id}', [\App\Http\Controllers\ReviewController::class, 'review'])->name('review');
+Route::post('/fo_review/{id}', [\App\Http\Controllers\ReviewController::class, 'fo_review'])->name('fo_review');
 
 //FO Handler
 Route::get('/list', [\App\Http\Controllers\FOController::class, 'list'])->name('request-list')->middleware('checklang');

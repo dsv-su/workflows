@@ -7,7 +7,7 @@
         </button>
     </label>
     <div class="w-full" x-data="{open:false}" x-on:click.away="open=false">
-        <button type="button" class="bg-gray-50 border border-gray-300 text-gray-900 p-2.5 rounded-lg shadow-inner w-full flex justify-between items-center text-sm focus:outline-none" x-on:click="open=!open">
+        <button type="button" class="font-mono bg-gray-50 border border-gray-300 text-gray-900 p-2.5 rounded-lg shadow-inner w-full flex justify-between items-center text-sm focus:outline-none" x-on:click="open=!open">
             <span class="float-left">{{$Project->project ?? __("Select Project")}}</span>
             <svg class="h-4 transform float-right fill-current text-black" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129" :class="{'rotate-180': open}">
                 <g>

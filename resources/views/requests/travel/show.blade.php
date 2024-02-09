@@ -1,18 +1,32 @@
 @extends('layouts.app')
 @include('dsvheader')
 @include('navbar.navbar')
+<style>
+    /* Media query for smaller screens */
+    .gap-8 {
+        gap: 8px; /* Adjust the gap between flex items */
+    }
+
+    /* Media query for screens smaller than 600px */
+    @media (max-width: 600px) {
+        .flex {
+            display: flex;
+            flex-wrap: wrap; /* Ensures items wrap to the next line on smaller screens */
+        }
+        .gap-8 {
+            gap: 4px; /* Decrease the gap for smaller screens */
+        }
+    }
+</style>
+@if($formtype == 'fo_review')
+    <form method="POST" action="{{route('fo_review', $tr)}}">
+        @csrf
+@endif
 <section class="bg-white dark:bg-gray-900">
     <div class="max-w-6xl px-4 py-8 mx-auto lg:py-16">
-        {{--}}
-        <div class="relative w-fit-content">
-            <div class="absolute top-0 right-0 w-32">
-                <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">DSVTR-231025-1</span>
-            </div>
-        </div>
-        {{--}}
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">{{ __("Duty Travel Request") }}</h2>
-        <div class="grid gap-8 lg:grid-cols-2">
-            <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
+        <div class="flex gap-8">
+            <div class="w-3/4 grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
                 <!--Name-->
                 <div class="w-full">
                     <label for="project" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Name") }} </label>
@@ -41,7 +55,11 @@
                     </div>
                 </div>
                 <br>
+
                 <!-- Project -->
+                @if($formtype == 'fo_review')
+                    <livewire:select2.project-select2 :id="$tr->project">
+                @else
                 <div class="w-full">
                     <label for="project" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Project") }} </label>
                     <div class="font-mono bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block
@@ -49,7 +67,7 @@
                         {{$tr->project}}
                     </div>
                 </div>
-
+                @endif
                 <!--Country-->
                 <div class="w-full">
                     <label for="project" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __("Country") }} </label>
@@ -135,6 +153,8 @@
 @if($formtype == 'review')
     <!-- Add Comments -->
     @include('review.bar')
+@elseif($formtype == 'fo_review')
+    @include('review.fobar')
 @endif
 
 @include('layouts.darktoggler')
