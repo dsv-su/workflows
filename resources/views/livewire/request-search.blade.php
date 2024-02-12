@@ -14,10 +14,10 @@
             <tr>
                 <th scope="col" class="px-4 py-3">{{__("Request type")}}</th>
                 <th scope="col" class="px-4 py-3">{{__("Name")}}</th>
-                <th scope="col" class="px-4 py-3">RequestId</th>
-                <th scope="col" class="px-4 py-3">State</th>
-                <th scope="col" class="px-4 py-3">User</th>
-                <th scope="col" class="px-4 py-3">Created</th>
+                <th scope="col" class="px-4 py-3">{{__("RequestId")}}</th>
+                <th scope="col" class="px-4 py-3">{{__("State")}}</th>
+                <th scope="col" class="px-4 py-3">{{__("User")}}</th>
+                <th scope="col" class="px-4 py-3">{{__("Created")}}</th>
             </tr>
             </thead>
             <tbody>

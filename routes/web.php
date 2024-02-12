@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\FOController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\TestController;
 use App\Services\Settings\AuthHandler;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TravelRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +26,12 @@ Route::get('/lang/{lang}', [LocalizationController::class, 'index'])->name('lang
 Route::statamic('search', 'search')->name('search');
 
 //Travelrequest
-Route::get('/travel', [\App\Http\Controllers\TravelRequestController::class, 'create'])->name('travel-request-create');
-Route::get('/swe/travel', [\App\Http\Controllers\TravelRequestController::class, 'create']);
-Route::get('/travel/show/{id}', [\App\Http\Controllers\TravelRequestController::class, 'show'])->name('travel-request-show');
-Route::post('/travel', [\App\Http\Controllers\TravelRequestController::class, 'submit'])->name('travel-submit');
+Route::get('/travel', [TravelRequestController::class, 'create'])->name('travel-request-create');
+Route::get('/{lang?}/travel', [TravelRequestController::class, 'create']);
+
+
+Route::get('/travel/show/{id}', [TravelRequestController::class, 'show'])->name('travel-request-show');
+Route::post('/travel', [TravelRequestController::class, 'submit'])->name('travel-submit');
 
 //ReviewHandler
 Route::get('/travel/review/{id}', [\App\Http\Controllers\ReviewController::class, 'show'])->name('travel-request-review');
@@ -35,10 +39,11 @@ Route::post('/review/{id}', [\App\Http\Controllers\ReviewController::class, 'rev
 Route::post('/fo_review/{id}', [\App\Http\Controllers\ReviewController::class, 'fo_review'])->name('fo_review');
 
 //FO Handler
-Route::get('/list', [\App\Http\Controllers\FOController::class, 'list'])->name('request-list')->middleware('checklang');
-Route::get('/swe/list', [\App\Http\Controllers\FOController::class, 'svlist']);
+Route::get('/list', [FOController::class, 'list'])->name('request-list')->middleware('checklang');
+Route::get('/{lang?}/list', [FOController::class, 'svlist'])->middleware('checklang');
 
 Route::get('/show/{id}', [\App\Http\Controllers\FOController::class, 'show'])->name('fo-request-show');
+Route::get('{lang?}/show/{id}', [\App\Http\Controllers\FOController::class, 'show']);
 Route::get('/viewpdf/{id}', [\App\Http\Controllers\FOController::class, 'pdfview'])->name('travel-request-pdfview');
 Route::get('/travel/pdf/{id}', [\App\Http\Controllers\FOController::class, 'download'])->name('travel-request-pdf');
 Route::get('/settings', [\App\Http\Controllers\FOController::class, 'settings'])->name('settings');

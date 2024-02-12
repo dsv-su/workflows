@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Dashboard;
 use App\Models\SettingsFo;
 use App\Models\TravelRequest;
-use App\Models\User;
 use App\Services\Review\RequestReviewHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class ReviewController extends Controller
 {
@@ -62,14 +60,17 @@ class ReviewController extends Controller
 
     public function fo_review(Request $request, $req)
     {
-
-        //Update project id
-        $tr = TravelRequest::find($req);
-        $tr->project = $request->project;
-        $tr->save();
-
         //Check request type
         $dashboard = Dashboard::find($req);
+
+        switch($dashboard->type) {
+            case('travelrequest'):
+                //Update project id
+                $tr = TravelRequest::find($req);
+                $tr->project = $request->project;
+                $tr->save();
+                break;
+        }
 
         // Retrieve the currently authenticated user's ID
         $user = Auth::user();

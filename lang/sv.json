@@ -101,6 +101,21 @@
     "Duty Travel Request Projectleader or Manager": "Resebegäran Projektledaren",
     "Please select you project leader or manager for the project.": "Välj din projektledare eller chef för projektet.",
     "Duty Travel Request Unit Head": "Resebegäran Enhetschef",
-    "Please select the unit head who is responsible for the project.": "Välj den enhetschef som är ansvarig för projektet."
-
+    "Please select the unit head who is responsible for the project.": "Välj den enhetschef som är ansvarig för projektet.",
+    "RequestId": "ID",
+    "State": "Status",
+    "User": "Användare",
+    "Created": "Skapad",
+    "Submitted": "Inskickad",
+    "Approved by manager": "Godkänd av Projektledaren",
+    "Denied by manager": "Nekad av Projektledaren",
+    "Returned by manager": "Returnerad av Projektledaren",
+    "Approved by FO": "Godkänd av Ekonomi",
+    "Denied by FO": "Nekad av Ekonomi",
+    "Returned by FO": "Återlämnad av Ekonomi",
+    "Approved by Unit head": "Godkänd av Enhetschefen",
+    "Denied by Unit head": "Nekad av Enhetschefen",
+    "Returned by Unit head": "Återlämnad av Enhetschefen",
+    "Show": "Visa",
+    "Download": "Ladda ner"
 }
