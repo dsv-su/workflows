@@ -68,6 +68,7 @@ class FOController extends Controller
         $head = User::find(Dashboard::where('request_id', $tr->id)->first()->head_id);
         $pdf = Pdf::loadView('requests.travel.pdf', ['tr' => $tr, 'user' => $user, 'manager' => $manager, 'head' => $head]);
         return $pdf->download('travelrequest_'.$tr->id.'.pdf');
+        //return $pdf->stream('travelrequest_'.$tr->id.'.pdf');
     }
 
     public function settings()
